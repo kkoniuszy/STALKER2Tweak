@@ -1,0 +1,89 @@
+name: create-release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version number'
+        required: true
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  build:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: 'true'
+
+    - name: setup-msbuild
+      uses: microsoft/setup-msbuild@v2
+      
+    - run: msbuild ${{ github.event.repository.name }}.sln -t:rebuild -verbosity:diag -property:Configuration=Release -property:Platform=x86
+    - run: cp Win32\Release\${{ github.event.repository.name }}.asi ${{ github.event.repository.name }}.asi
+
+    - uses: robinraju/release-downloader@v1.11
+      with:
+        repository: "ThirteenAG/Ultimate-ASI-Loader"
+        latest: true
+        fileName: "Ultimate-ASI-Loader.zip"
+
+    - name: Prepare Ultimate ASI Loader
+      run: |
+        unzip Ultimate-ASI-Loader.zip -d .\
+        C:\msys64\usr\bin\wget.exe -O .\UltimateASILoader_LICENSE.md https://raw.githubusercontent.com/ThirteenAG/Ultimate-ASI-Loader/master/license
+        
+    - name: Create Directory Structure
+      run: |
+        mkdir .\zip\xbox\Stalker2\Binaries\WinGDK
+        mkdir .\zip\steam\Stalker2\Binaries\Win64
+
+    - name: Prepare Xbox Files
+      run: |
+        cp ${{ github.event.repository.name }}.asi .\zip\xbox\Stalker2\Binaries\WinGDK
+        cp ${{ github.event.repository.name }}.ini .\zip\xbox\Stalker2\Binaries\WinGDK
+        cp dinput8.dll .\zip\xbox\Stalker2\Binaries\WinGDK\dsound.dll        
+        cp UltimateASILoader_LICENSE.md .\zip\xbox
+        New-Item -Path ".\zip\xbox\EXTRACT_TO_GAME_FOLDER" -ItemType File
+    
+    - name: Create Xbox Zip
+      run: |
+        cd .\zip\xbox
+        7z a -r -tzip ..\..\${{ github.event.repository.name }}_${{ github.event.inputs.version }}_Xbox.zip .\*
+
+    - name: Prepare Steam Files
+      run: |
+        cp ${{ github.event.repository.name }}.asi .\zip\steam\Stalker2\Binaries\Win64
+        cp ${{ github.event.repository.name }}.ini .\zip\steam\Stalker2\Binaries\Win64
+        cp dinput8.dll .\zip\steam\Stalker2\Binaries\Win64\dsound.dll        
+        cp UltimateASILoader_LICENSE.md .\zip\steam
+        New-Item -Path ".\zip\steam\EXTRACT_TO_GAME_FOLDER" -ItemType File
+    
+    - name: Create Steam Zip
+      run: |
+        cd .\zip\steam
+        7z a -r -tzip ..\..\${{ github.event.repository.name }}_${{ github.event.inputs.version }}_Steam.zip .\*
+
+    - name: Update release_body.md
+      run: |
+        $releaseBody = "release_body.md"
+        $xboxZipName = "${{ github.event.repository.name }}_${{ github.event.inputs.version }}_Xbox.zip" 
+        $steamZipName = "${{ github.event.repository.name }}_${{ github.event.inputs.version }}_Steam.zip" 
+        (Get-Content $releaseBody -Raw) -replace '<XBOX_RELEASE_ZIP_NAME>', $xboxZipName | Set-Content $releaseBody
+        (Get-Content $releaseBody -Raw) -replace '<STEAM_RELEASE_ZIP_NAME>', $steamZipName | Set-Content $releaseBody
+        
+    - uses: ncipollo/release-action@v1
+      with:
+        artifacts: "${{ github.event.repository.name }}_${{ github.event.inputs.version }}_Xbox.zip, ${{ github.event.repository.name }}_${{ github.event.inputs.version }}_Steam.zip"
+        token: ${{ secrets.GITHUB_TOKEN }}
+        tag: ${{ github.event.inputs.version }}
+        name: "${{ github.event.inputs.version }}"
+        draft: true
+        bodyFile: "release_body.md"
+        generateReleaseNotes: true
+        artifactErrorsFailBuild: true
