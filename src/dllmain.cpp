@@ -214,7 +214,7 @@ void CurrentResolution()
     iCurrentResY = DesktopDimensions.second;
     CalculateAspectRatio(true);
 
-    // Current Resolution
+    // Current resolution
     std::uint8_t* CurrentResolutionScanResult = Memory::PatternScan(exeModule, "45 ?? ?? 44 ?? ?? 48 8B ?? E8 ?? ?? ?? ?? 49 ?? ?? E8 ?? ?? ?? ?? 8B ?? ?? ?? ?? ?? BE 01 00 00 00");
     if (CurrentResolutionScanResult) {
         spdlog::info("Current Resolution: Address is {:s}+{:x}", sExeName.c_str(), CurrentResolutionScanResult - (std::uint8_t*)exeModule);
@@ -290,7 +290,29 @@ void AspectRatioFOV()
         else {
             spdlog::error("Viewmodel FOV: Pattern scan failed.");
         }
-    }   
+    }
+}
+
+void Miscellaneous()
+{
+    // X/Y Sensitivity
+    // Thanks to Strangorth @ https://www.nexusmods.com/stalker2heartofchornobyl/mods/57?tab=description for explaining the fix for this.
+    std::uint8_t* SensitivityXYScanResult = Memory::PatternScan(exeModule, "F6 ?? ?? 01 48 8B ?? ?? ?? 75 ?? F3 0F ?? ?? ?? ?? ?? ?? F3 0F ?? ?? 0F 28 ??");
+    if (SensitivityXYScanResult) {
+        spdlog::info("X/Y Sensitvity: Address is {:s}+{:x}", sExeName.c_str(), SensitivityXYScanResult - (std::uint8_t*)exeModule);
+        static SafetyHookMid SensitivityXYMidHook{};
+        SensitivityXYMidHook = safetyhook::create_mid(SensitivityXYScanResult + 0x4,
+            [](SafetyHookContext& ctx) {
+                // Check if BaseTurnRate and BaseLookUpRate are equalised.
+                if (ctx.xmm8.f32[0] != ctx.xmm9.f32[0]) {
+                    ctx.xmm8.f32[0] = 40.00f; // BaseLookUpRate = 30.00f
+                    ctx.xmm9.f32[0] = 40.00f; // BaseTurnRate = 40.00f
+                }
+            });
+    }
+    else {
+        spdlog::error("X/Y Sensitvity: Pattern scan failed.");
+    }
 }
 
 void EnableConsole() {
@@ -364,7 +386,7 @@ void CheatManager()
         }
     }
 }
-    
+
 DWORD __stdcall Main(void*)
 {
     Logging();
@@ -372,6 +394,7 @@ DWORD __stdcall Main(void*)
     UpdateOffsets();
     CurrentResolution();
     AspectRatioFOV();
+    Miscellaneous();
     EnableConsole();
     return true;
 }
