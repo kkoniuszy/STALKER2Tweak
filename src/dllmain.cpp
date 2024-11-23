@@ -2,6 +2,7 @@
 #include "helper.hpp"
 
 #include "SDK\Engine_classes.hpp"
+
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/basic_file_sink.h>
 #include <inipp/inipp.h>
@@ -14,7 +15,7 @@ HMODULE thisModule;
 
 // Fix details
 std::string sFixName = "STALKER2Tweak";
-std::string sFixVersion = "0.0.2";
+std::string sFixVersion = "0.0.3";
 std::filesystem::path sFixPath;
 
 // Ini
@@ -42,13 +43,17 @@ float fHUDHeightOffset;
 bool bFixAspect = true;
 bool bFixFOV = true;
 bool bEnableConsole = true;
+bool bFixMouseSens = true;
+bool bSkipLogos = true;
 
 // Variables
 int iCurrentResX;
 int iCurrentResY;
 int iOldResX;
 int iOldResY;
+bool bHasSkippedLogos = false;
 SDK::UEngine* Engine = nullptr;
+SDK::UInputSettings* InputSettings = nullptr;
 
 void Logging()
 {
@@ -118,13 +123,33 @@ void Configuration()
     inipp::get_value(ini.sections["Fix Aspect Ratio"], "Enabled", bFixAspect);
     inipp::get_value(ini.sections["Fix FOV"], "Enabled", bFixFOV);
     inipp::get_value(ini.sections["Developer Console"], "Enabled", bEnableConsole);
+    inipp::get_value(ini.sections["Fix Mouse Sensitivity"], "Enabled", bFixMouseSens);
+    inipp::get_value(ini.sections["Logo Skip"], "Enabled", bSkipLogos);
 
     // Log ini parse
     spdlog_confparse(bFixAspect);
     spdlog_confparse(bFixFOV);
     spdlog_confparse(bEnableConsole);
+    spdlog_confparse(bFixMouseSens);
+    spdlog_confparse(bSkipLogos);
 
     spdlog::info("----------");
+}
+
+void IntroSkip()
+{
+    if (bSkipLogos) {
+        // Skip logos + disclaimers
+        std::uint8_t* SkipLogosScanResult = Memory::PatternScan(exeModule, "7D ?? 48 ?? ?? 48 8D ?? ?? 48 ?? ?? 04 49 ?? ?? 48 89 ?? ?? ?? ?? ?? EB ??");
+        if (SkipLogosScanResult) {
+            spdlog::info("Skip Logos: Address is {:s}+{:x}", sExeName.c_str(), SkipLogosScanResult - (std::uint8_t*)exeModule);
+            Memory::PatchBytes(SkipLogosScanResult, "\xEB", 1);
+            spdlog::info("Skip Logos: Patched instruction.");
+        }
+        else {
+            spdlog::error("Skip Logos: Pattern scan failed.");
+        }
+    }
 }
 
 void UpdateOffsets()
@@ -295,23 +320,32 @@ void AspectRatioFOV()
 
 void Miscellaneous()
 {
-    // X/Y Sensitivity
-    // Thanks to Strangorth @ https://www.nexusmods.com/stalker2heartofchornobyl/mods/57?tab=description for explaining the fix for this.
-    std::uint8_t* SensitivityXYScanResult = Memory::PatternScan(exeModule, "F6 ?? ?? 01 48 8B ?? ?? ?? 75 ?? F3 0F ?? ?? ?? ?? ?? ?? F3 0F ?? ?? 0F 28 ??");
-    if (SensitivityXYScanResult) {
-        spdlog::info("X/Y Sensitvity: Address is {:s}+{:x}", sExeName.c_str(), SensitivityXYScanResult - (std::uint8_t*)exeModule);
-        static SafetyHookMid SensitivityXYMidHook{};
-        SensitivityXYMidHook = safetyhook::create_mid(SensitivityXYScanResult + 0x4,
-            [](SafetyHookContext& ctx) {
-                // Check if BaseTurnRate and BaseLookUpRate are equalised.
-                if (ctx.xmm8.f32[0] != ctx.xmm9.f32[0]) {
-                    ctx.xmm8.f32[0] = 40.00f; // BaseLookUpRate = 30.00f
-                    ctx.xmm9.f32[0] = 40.00f; // BaseTurnRate = 40.00f
-                }
-            });
-    }
-    else {
-        spdlog::error("X/Y Sensitvity: Pattern scan failed.");
+    if (bFixMouseSens) {
+        // X/Y Sensitivity
+        // Thanks to Strangorth @ https://www.nexusmods.com/stalker2heartofchornobyl/mods/57?tab=description for explaining the fix for this.
+        std::uint8_t* SensitivityXYScanResult = Memory::PatternScan(exeModule, "0F 11 ?? ?? ?? 66 0F ?? ?? 45 0F ?? ?? 45 0F ?? ?? F2 44 ?? ?? ??");
+        if (SensitivityXYScanResult) {
+            spdlog::info("X/Y Sensitvity: Address is {:s}+{:x}", sExeName.c_str(), SensitivityXYScanResult - (std::uint8_t*)exeModule);
+            static SafetyHookMid SensitivityXYMidHook{};
+            SensitivityXYMidHook = safetyhook::create_mid(SensitivityXYScanResult,
+                [](SafetyHookContext& ctx) {
+                    // Disable mouse smoothing
+                    if (!InputSettings) {
+                        InputSettings = (SDK::UInputSettings*)SDK::UInputSettings::GetDefaultObj();
+                        if (InputSettings) {
+                            InputSettings->bEnableMouseSmoothing = false;
+                            spdlog::info("X/Y Sensitivity: Disabled mouse smoothing.");
+                        }
+                    }
+               
+                    // Check if BaseLookUpRate and BaseTurnRate are equalised.
+                    if (ctx.xmm8.f32[0] != ctx.xmm9.f32[0])
+                        ctx.xmm8.f32[0] = ctx.xmm9.f32[0];
+                });
+        }
+        else {
+            spdlog::error("X/Y Sensitvity: Pattern scan failed.");
+        }
     }
 }
 
@@ -359,38 +393,11 @@ void EnableConsole() {
     }
 }
 
-void CheatManager()
-{
-    // TODO: Constructing CheatManager works but will cause a fatal world leak error on returning to the main menu.
-
-    if (bEnableConsole) {
-        // UGameInstance::Init()
-        std::uint8_t* GameInstanceInitScanResult = Memory::PatternScan(exeModule, "40 ?? 56 48 8D ?? ?? ?? ?? ?? ?? 48 81 ?? ?? ?? ?? ?? 48 8B ?? ?? ?? ?? ?? 48 33 ?? 48 89 ?? ?? 48 8B ?? 4C 89 ?? ??");
-        if (GameInstanceInitScanResult) {
-            spdlog::info("Cheat Manager: Address is {:s}+{:x}", sExeName.c_str(), GameInstanceInitScanResult - (std::uint8_t*)exeModule);
-            static SafetyHookMid GameInstanceInitMidHook{};
-            GameInstanceInitMidHook = safetyhook::create_mid(GameInstanceInitScanResult,
-                [](SafetyHookContext& ctx) {
-                    SDK::UWorld* World = SDK::UWorld::GetWorld();
-                    if (World && World->OwningGameInstance && World->OwningGameInstance->LocalPlayers[0]) {
-                        SDK::APlayerController* PC = World->OwningGameInstance->LocalPlayers[0]->PlayerController;
-                        if (PC && !PC->CheatManager) {
-                            PC->CheatManager = (SDK::UCheatManager*)SDK::UGameplayStatics::SpawnObject(SDK::UCheatManager::StaticClass(), PC);
-                            spdlog::info("Cheat Manager: Activated cheat manager.");
-                        }
-                    }
-                });
-        }
-        else {
-            spdlog::error("Cheat Manager: Pattern scan failed.");
-        }
-    }
-}
-
 DWORD __stdcall Main(void*)
 {
     Logging();
     Configuration();
+    IntroSkip();
     UpdateOffsets();
     CurrentResolution();
     AspectRatioFOV();
