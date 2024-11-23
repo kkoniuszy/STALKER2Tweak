@@ -104,7 +104,8 @@ namespace Memory
 
 namespace Util
 {
-    std::pair<int, int> GetPhysicalDesktopDimensions() {
+    std::pair<int, int> GetPhysicalDesktopDimensions() 
+    {
         if (DEVMODE devMode{ .dmSize = sizeof(DEVMODE) }; EnumDisplaySettings(nullptr, ENUM_CURRENT_SETTINGS, &devMode))
             return { devMode.dmPelsWidth, devMode.dmPelsHeight };
 
@@ -120,7 +121,8 @@ namespace Util
         return str;
     }
 
-    bool stringcmp_caseless(const std::string& str1, const std::string& str2) {
+    bool stringcmp_caseless(const std::string& str1, const std::string& str2) 
+    {
         if (str1.size() != str2.size()) {
             return false;
         }
@@ -128,5 +130,10 @@ namespace Util
             [](char a, char b) {
                 return std::tolower(a) == std::tolower(b);
             });
+    }
+
+    template <typename T>
+    void clamp_config(T& setting, const T& min, const T& max) {
+        setting = std::clamp(setting, min, max);
     }
 }
