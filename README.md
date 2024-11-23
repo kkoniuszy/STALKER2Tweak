@@ -2,7 +2,7 @@
 [![Patreon-Button](https://raw.githubusercontent.com/Lyall/STALKER2Tweak/refs/heads/master/.github/Patreon-Button.png)](https://www.patreon.com/Wintermance) [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/W7W01UAI9)<br />
 [![Github All Releases](https://img.shields.io/github/downloads/Lyall/STALKER2Tweak/total.svg)](https://github.com/Lyall/STALKER2Tweak/releases)
 
-This is an ASI plugin for for STALKER 2: Heart of Chronobyl that fixes ultrawide issues, enables the console and more.
+This is an ASI plugin for for STALKER 2: Heart of Chornobyl that fixes ultrawide issues, enables the console and more.
 
 ## Features
 ### General
