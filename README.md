@@ -33,8 +33,6 @@ This is an ASI plugin for for STALKER 2: Heart of Chronobyl that fixes ultrawide
 ## Known Issues
 Please report any issues you see.
 
-- After the intro cutscene, the character viewmodel may appear vert-. This is a known game issue - open the display options, adjust the fov slider and apply to fix.
-
 ## Credits
 [Ultimate ASI Loader](https://github.com/ThirteenAG/Ultimate-ASI-Loader) for ASI loading. <br />
 [inipp](https://github.com/mcmtroffaes/inipp) for ini reading. <br />
