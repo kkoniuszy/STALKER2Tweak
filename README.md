@@ -26,7 +26,7 @@ This is an ASI plugin for for STALKER 2: Heart of Chronobyl that fixes ultrawide
 
 ## Screenshots
 
-|  |
+| ![ezgif-6-a05ea5d701](https://github.com/user-attachments/assets/cdf6a125-a112-4f29-a637-71f22743f388) |
 |:--------------------------:|
 | Cutscene |
 
