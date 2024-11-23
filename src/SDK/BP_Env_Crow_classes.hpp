@@ -35,13 +35,13 @@ public:
 	class UAkAudioEvent*                          IdleSFX;                                           // 0x02D8(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void BndEvt__BP_CrowLifeUp_Sphere_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const struct FHitResult& SweepResult);
-	void ExecuteUbergraph_BP_Env_Crow(int32 EntryPoint);
-	void OnEmissionWeatherStarted();
-	void ReceiveBeginPlay();
-	void Timeline_0__FinishedFunc();
-	void Timeline_0__UpdateFunc();
 	void TryPlayScaredSound();
+	void Timeline_0__UpdateFunc();
+	void Timeline_0__FinishedFunc();
+	void ReceiveBeginPlay();
+	void OnEmissionWeatherStarted();
+	void ExecuteUbergraph_BP_Env_Crow(int32 EntryPoint);
+	void BndEvt__BP_CrowLifeUp_Sphere_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const struct FHitResult& SweepResult);
 
 public:
 	static class UClass* StaticClass()

@@ -38,7 +38,7 @@ static_assert(sizeof(UCtrlRig_Exoskeleton_C) == 0x000560, "Wrong size on UCtrlRi
 
 // RigVMMemoryStorageGeneratorClass CtrlRig_Exoskeleton.RigVMMemory_Literal
 // 0x0368 (0x0390 - 0x0028)
-class URigVMMemory_Literal final : public URigVMMemoryStorage
+class CtrlRig_Exoskeleton::URigVMMemory_Literal final : public URigVMMemoryStorage
 {
 public:
 	struct FRigElementKey                         RigVMModel___AimItem_Item__Const;                  // 0x0028(0x000C)(Edit, EditConst, NonTransactional, NoDestructor, HasGetValueTypeHash)
@@ -89,59 +89,59 @@ public:
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"RigVMMemory_Literal">();
+		return StaticClassImpl<"RigVMMemoryStorageGeneratorClass CtrlRig_Exoskeleton.RigVMMemory_Literal", true>();
 	}
-	static class URigVMMemory_Literal* GetDefaultObj()
+	static class CtrlRig_Exoskeleton::URigVMMemory_Literal* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<URigVMMemory_Literal>();
+		return GetDefaultObjImpl<CtrlRig_Exoskeleton::URigVMMemory_Literal>();
 	}
 };
-static_assert(alignof(URigVMMemory_Literal) == 0x000010, "Wrong alignment on URigVMMemory_Literal");
-static_assert(sizeof(URigVMMemory_Literal) == 0x000390, "Wrong size on URigVMMemory_Literal");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___AimItem_Item__Const) == 0x000028, "Member 'URigVMMemory_Literal::RigVMModel___AimItem_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___AimItem_Primary__Const) == 0x000038, "Member 'URigVMMemory_Literal::RigVMModel___AimItem_Primary__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_Item__Const) == 0x000080, "Member 'URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_Space__Const) == 0x00008C, "Member 'URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_Space__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___AimItem_Secondary__Const) == 0x000090, "Member 'URigVMMemory_Literal::RigVMModel___AimItem_Secondary__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___AimItem_Weight__Const) == 0x0000D8, "Member 'URigVMMemory_Literal::RigVMModel___AimItem_Weight__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___AimItem_DebugSettings__Const) == 0x0000E0, "Member 'URigVMMemory_Literal::RigVMModel___AimItem_DebugSettings__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___AimItem_1_Item__Const) == 0x000150, "Member 'URigVMMemory_Literal::RigVMModel___AimItem_1_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_1_Item__Const) == 0x00015C, "Member 'URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_1_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___AimItem_1_Secondary__Const) == 0x000168, "Member 'URigVMMemory_Literal::RigVMModel___AimItem_1_Secondary__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___AimItem_1_1_Item__Const) == 0x0001B0, "Member 'URigVMMemory_Literal::RigVMModel___AimItem_1_1_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_2_Item__Const) == 0x0001BC, "Member 'URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_2_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___AimItem_1_1_Secondary__Const) == 0x0001C8, "Member 'URigVMMemory_Literal::RigVMModel___AimItem_1_1_Secondary__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___AimItem_2_Item__Const) == 0x000210, "Member 'URigVMMemory_Literal::RigVMModel___AimItem_2_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_3_Item__Const) == 0x00021C, "Member 'URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_3_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___AimItem_2_Secondary__Const) == 0x000228, "Member 'URigVMMemory_Literal::RigVMModel___AimItem_2_Secondary__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___AimItem_1_2_Item__Const) == 0x000270, "Member 'URigVMMemory_Literal::RigVMModel___AimItem_1_2_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_4_Item__Const) == 0x00027C, "Member 'URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_4_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___AimItem_1_1_1_Item__Const) == 0x000288, "Member 'URigVMMemory_Literal::RigVMModel___AimItem_1_1_1_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_5_Item__Const) == 0x000294, "Member 'URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_5_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___AimItem_2_1_Item__Const) == 0x0002A0, "Member 'URigVMMemory_Literal::RigVMModel___AimItem_2_1_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_6_Item__Const) == 0x0002AC, "Member 'URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_6_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___AimItem_2_1_1_Item__Const) == 0x0002B8, "Member 'URigVMMemory_Literal::RigVMModel___AimItem_2_1_1_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_7_Item__Const) == 0x0002C4, "Member 'URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_7_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___AimItem_2_1_1_1_Item__Const) == 0x0002D0, "Member 'URigVMMemory_Literal::RigVMModel___AimItem_2_1_1_1_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_8_Item__Const) == 0x0002DC, "Member 'URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_8_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___AimItem_2_1_1_1_1_Item__Const) == 0x0002E8, "Member 'URigVMMemory_Literal::RigVMModel___AimItem_2_1_1_1_1_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_9_Item__Const) == 0x0002F4, "Member 'URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_9_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___AimItem_2_1_1_1_1_1_Item__Const) == 0x000300, "Member 'URigVMMemory_Literal::RigVMModel___AimItem_2_1_1_1_1_1_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_10_Item__Const) == 0x00030C, "Member 'URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_10_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___AimItem_2_1_2_Item__Const) == 0x000318, "Member 'URigVMMemory_Literal::RigVMModel___AimItem_2_1_2_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_11_Item__Const) == 0x000324, "Member 'URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_11_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___AimItem_2_1_1_2_Item__Const) == 0x000330, "Member 'URigVMMemory_Literal::RigVMModel___AimItem_2_1_1_2_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_12_Item__Const) == 0x00033C, "Member 'URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_12_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___AimItem_2_1_1_1_2_Item__Const) == 0x000348, "Member 'URigVMMemory_Literal::RigVMModel___AimItem_2_1_1_1_2_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_13_Item__Const) == 0x000354, "Member 'URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_13_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___AimItem_2_1_1_1_1_2_Item__Const) == 0x000360, "Member 'URigVMMemory_Literal::RigVMModel___AimItem_2_1_1_1_1_2_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_14_Item__Const) == 0x00036C, "Member 'URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_14_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___AimItem_2_1_1_1_1_1_1_Item__Const) == 0x000378, "Member 'URigVMMemory_Literal::RigVMModel___AimItem_2_1_1_1_1_1_1_Item__Const' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_15_Item__Const) == 0x000384, "Member 'URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_15_Item__Const' has a wrong offset!");
+static_assert(alignof(CtrlRig_Exoskeleton::URigVMMemory_Literal) == 0x000010, "Wrong alignment on CtrlRig_Exoskeleton::URigVMMemory_Literal");
+static_assert(sizeof(CtrlRig_Exoskeleton::URigVMMemory_Literal) == 0x000390, "Wrong size on CtrlRig_Exoskeleton::URigVMMemory_Literal");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___AimItem_Item__Const) == 0x000028, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___AimItem_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___AimItem_Primary__Const) == 0x000038, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___AimItem_Primary__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_Item__Const) == 0x000080, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_Space__Const) == 0x00008C, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_Space__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___AimItem_Secondary__Const) == 0x000090, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___AimItem_Secondary__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___AimItem_Weight__Const) == 0x0000D8, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___AimItem_Weight__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___AimItem_DebugSettings__Const) == 0x0000E0, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___AimItem_DebugSettings__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___AimItem_1_Item__Const) == 0x000150, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___AimItem_1_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_1_Item__Const) == 0x00015C, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_1_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___AimItem_1_Secondary__Const) == 0x000168, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___AimItem_1_Secondary__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___AimItem_1_1_Item__Const) == 0x0001B0, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___AimItem_1_1_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_2_Item__Const) == 0x0001BC, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_2_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___AimItem_1_1_Secondary__Const) == 0x0001C8, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___AimItem_1_1_Secondary__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___AimItem_2_Item__Const) == 0x000210, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___AimItem_2_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_3_Item__Const) == 0x00021C, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_3_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___AimItem_2_Secondary__Const) == 0x000228, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___AimItem_2_Secondary__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___AimItem_1_2_Item__Const) == 0x000270, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___AimItem_1_2_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_4_Item__Const) == 0x00027C, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_4_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___AimItem_1_1_1_Item__Const) == 0x000288, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___AimItem_1_1_1_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_5_Item__Const) == 0x000294, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_5_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___AimItem_2_1_Item__Const) == 0x0002A0, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___AimItem_2_1_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_6_Item__Const) == 0x0002AC, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_6_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___AimItem_2_1_1_Item__Const) == 0x0002B8, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___AimItem_2_1_1_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_7_Item__Const) == 0x0002C4, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_7_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___AimItem_2_1_1_1_Item__Const) == 0x0002D0, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___AimItem_2_1_1_1_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_8_Item__Const) == 0x0002DC, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_8_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___AimItem_2_1_1_1_1_Item__Const) == 0x0002E8, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___AimItem_2_1_1_1_1_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_9_Item__Const) == 0x0002F4, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_9_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___AimItem_2_1_1_1_1_1_Item__Const) == 0x000300, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___AimItem_2_1_1_1_1_1_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_10_Item__Const) == 0x00030C, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_10_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___AimItem_2_1_2_Item__Const) == 0x000318, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___AimItem_2_1_2_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_11_Item__Const) == 0x000324, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_11_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___AimItem_2_1_1_2_Item__Const) == 0x000330, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___AimItem_2_1_1_2_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_12_Item__Const) == 0x00033C, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_12_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___AimItem_2_1_1_1_2_Item__Const) == 0x000348, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___AimItem_2_1_1_1_2_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_13_Item__Const) == 0x000354, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_13_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___AimItem_2_1_1_1_1_2_Item__Const) == 0x000360, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___AimItem_2_1_1_1_1_2_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_14_Item__Const) == 0x00036C, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_14_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___AimItem_2_1_1_1_1_1_1_Item__Const) == 0x000378, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___AimItem_2_1_1_1_1_1_1_Item__Const' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Literal, RigVMModel___RigUnit_GetTransform_15_Item__Const) == 0x000384, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Literal::RigVMModel___RigUnit_GetTransform_15_Item__Const' has a wrong offset!");
 
 // RigVMMemoryStorageGeneratorClass CtrlRig_Exoskeleton.RigVMMemory_Work
 // 0x0F38 (0x0F60 - 0x0028)
-class URigVMMemory_Work final : public URigVMMemoryStorage
+class CtrlRig_Exoskeleton::URigVMMemory_Work final : public URigVMMemoryStorage
 {
 public:
 	struct FControlRigExecuteContext              ExecuteContext_;                                   // 0x0028(0x0038)(Edit, EditConst, NonTransactional)
@@ -260,112 +260,112 @@ public:
 public:
 	static class UClass* StaticClass()
 	{
-		return StaticClassImpl<"RigVMMemory_Work">();
+		return StaticClassImpl<"RigVMMemoryStorageGeneratorClass CtrlRig_Exoskeleton.RigVMMemory_Work", true>();
 	}
-	static class URigVMMemory_Work* GetDefaultObj()
+	static class CtrlRig_Exoskeleton::URigVMMemory_Work* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<URigVMMemory_Work>();
+		return GetDefaultObjImpl<CtrlRig_Exoskeleton::URigVMMemory_Work>();
 	}
 };
-static_assert(alignof(URigVMMemory_Work) == 0x000010, "Wrong alignment on URigVMMemory_Work");
-static_assert(sizeof(URigVMMemory_Work) == 0x000F60, "Wrong size on URigVMMemory_Work");
-static_assert(offsetof(URigVMMemory_Work, ExecuteContext_) == 0x000028, "Member 'URigVMMemory_Work::ExecuteContext_' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_Transform) == 0x000060, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_Transform' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_CachedIndex) == 0x0000C0, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_CachedIndex' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_Primary__IO) == 0x0000D0, "Member 'URigVMMemory_Work::RigVMModel___AimItem_Primary__IO' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_CachedItem) == 0x000118, "Member 'URigVMMemory_Work::RigVMModel___AimItem_CachedItem' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_PrimaryCachedSpace) == 0x000128, "Member 'URigVMMemory_Work::RigVMModel___AimItem_PrimaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_SecondaryCachedSpace) == 0x000138, "Member 'URigVMMemory_Work::RigVMModel___AimItem_SecondaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_1_Transform) == 0x000150, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_1_Transform' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_1_CachedIndex) == 0x0001B0, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_1_CachedIndex' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_1_Primary__IO) == 0x0001C0, "Member 'URigVMMemory_Work::RigVMModel___AimItem_1_Primary__IO' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_1_CachedItem) == 0x000208, "Member 'URigVMMemory_Work::RigVMModel___AimItem_1_CachedItem' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_1_PrimaryCachedSpace) == 0x000218, "Member 'URigVMMemory_Work::RigVMModel___AimItem_1_PrimaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_1_SecondaryCachedSpace) == 0x000228, "Member 'URigVMMemory_Work::RigVMModel___AimItem_1_SecondaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_2_Transform) == 0x000240, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_2_Transform' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_2_CachedIndex) == 0x0002A0, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_2_CachedIndex' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_1_1_Primary__IO) == 0x0002B0, "Member 'URigVMMemory_Work::RigVMModel___AimItem_1_1_Primary__IO' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_1_1_CachedItem) == 0x0002F8, "Member 'URigVMMemory_Work::RigVMModel___AimItem_1_1_CachedItem' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_1_1_PrimaryCachedSpace) == 0x000308, "Member 'URigVMMemory_Work::RigVMModel___AimItem_1_1_PrimaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_1_1_SecondaryCachedSpace) == 0x000318, "Member 'URigVMMemory_Work::RigVMModel___AimItem_1_1_SecondaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_3_Transform) == 0x000330, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_3_Transform' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_3_CachedIndex) == 0x000390, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_3_CachedIndex' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_Primary__IO) == 0x0003A0, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_Primary__IO' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_CachedItem) == 0x0003E8, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_CachedItem' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_PrimaryCachedSpace) == 0x0003F8, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_PrimaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_SecondaryCachedSpace) == 0x000408, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_SecondaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_4_Transform) == 0x000420, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_4_Transform' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_4_CachedIndex) == 0x000480, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_4_CachedIndex' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_1_2_Primary__IO) == 0x000490, "Member 'URigVMMemory_Work::RigVMModel___AimItem_1_2_Primary__IO' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_1_2_CachedItem) == 0x0004D8, "Member 'URigVMMemory_Work::RigVMModel___AimItem_1_2_CachedItem' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_1_2_PrimaryCachedSpace) == 0x0004E8, "Member 'URigVMMemory_Work::RigVMModel___AimItem_1_2_PrimaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_1_2_SecondaryCachedSpace) == 0x0004F8, "Member 'URigVMMemory_Work::RigVMModel___AimItem_1_2_SecondaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_5_Transform) == 0x000510, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_5_Transform' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_5_CachedIndex) == 0x000570, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_5_CachedIndex' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_1_1_1_Primary__IO) == 0x000580, "Member 'URigVMMemory_Work::RigVMModel___AimItem_1_1_1_Primary__IO' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_1_1_1_CachedItem) == 0x0005C8, "Member 'URigVMMemory_Work::RigVMModel___AimItem_1_1_1_CachedItem' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_1_1_1_PrimaryCachedSpace) == 0x0005D8, "Member 'URigVMMemory_Work::RigVMModel___AimItem_1_1_1_PrimaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_1_1_1_SecondaryCachedSpace) == 0x0005E8, "Member 'URigVMMemory_Work::RigVMModel___AimItem_1_1_1_SecondaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_6_Transform) == 0x000600, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_6_Transform' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_6_CachedIndex) == 0x000660, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_6_CachedIndex' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_Primary__IO) == 0x000670, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_Primary__IO' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_CachedItem) == 0x0006B8, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_CachedItem' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_PrimaryCachedSpace) == 0x0006C8, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_PrimaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_SecondaryCachedSpace) == 0x0006D8, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_SecondaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_7_Transform) == 0x0006F0, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_7_Transform' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_7_CachedIndex) == 0x000750, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_7_CachedIndex' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_Primary__IO) == 0x000760, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_Primary__IO' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_CachedItem) == 0x0007A8, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_CachedItem' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_PrimaryCachedSpace) == 0x0007B8, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_PrimaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_SecondaryCachedSpace) == 0x0007C8, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_SecondaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_8_Transform) == 0x0007E0, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_8_Transform' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_8_CachedIndex) == 0x000840, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_8_CachedIndex' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_Primary__IO) == 0x000850, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_Primary__IO' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_CachedItem) == 0x000898, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_CachedItem' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_PrimaryCachedSpace) == 0x0008A8, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_PrimaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_SecondaryCachedSpace) == 0x0008B8, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_SecondaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_9_Transform) == 0x0008D0, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_9_Transform' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_9_CachedIndex) == 0x000930, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_9_CachedIndex' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_Primary__IO) == 0x000940, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_Primary__IO' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_CachedItem) == 0x000988, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_CachedItem' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_PrimaryCachedSpace) == 0x000998, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_PrimaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_SecondaryCachedSpace) == 0x0009A8, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_SecondaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_10_Transform) == 0x0009C0, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_10_Transform' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_10_CachedIndex) == 0x000A20, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_10_CachedIndex' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_1_Primary__IO) == 0x000A30, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_1_Primary__IO' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_1_CachedItem) == 0x000A78, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_1_CachedItem' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_1_PrimaryCachedSpace) == 0x000A88, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_1_PrimaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_1_SecondaryCachedSpace) == 0x000A98, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_1_SecondaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_11_Transform) == 0x000AB0, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_11_Transform' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_11_CachedIndex) == 0x000B10, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_11_CachedIndex' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_2_Primary__IO) == 0x000B20, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_2_Primary__IO' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_2_CachedItem) == 0x000B68, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_2_CachedItem' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_2_PrimaryCachedSpace) == 0x000B78, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_2_PrimaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_2_SecondaryCachedSpace) == 0x000B88, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_2_SecondaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_12_Transform) == 0x000BA0, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_12_Transform' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_12_CachedIndex) == 0x000C00, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_12_CachedIndex' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_2_Primary__IO) == 0x000C10, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_2_Primary__IO' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_2_CachedItem) == 0x000C58, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_2_CachedItem' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_2_PrimaryCachedSpace) == 0x000C68, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_2_PrimaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_2_SecondaryCachedSpace) == 0x000C78, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_2_SecondaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_13_Transform) == 0x000C90, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_13_Transform' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_13_CachedIndex) == 0x000CF0, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_13_CachedIndex' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_2_Primary__IO) == 0x000D00, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_2_Primary__IO' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_2_CachedItem) == 0x000D48, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_2_CachedItem' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_2_PrimaryCachedSpace) == 0x000D58, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_2_PrimaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_2_SecondaryCachedSpace) == 0x000D68, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_2_SecondaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_14_Transform) == 0x000D80, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_14_Transform' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_14_CachedIndex) == 0x000DE0, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_14_CachedIndex' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_2_Primary__IO) == 0x000DF0, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_2_Primary__IO' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_2_CachedItem) == 0x000E38, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_2_CachedItem' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_2_PrimaryCachedSpace) == 0x000E48, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_2_PrimaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_2_SecondaryCachedSpace) == 0x000E58, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_2_SecondaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_15_Transform) == 0x000E70, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_15_Transform' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_15_CachedIndex) == 0x000ED0, "Member 'URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_15_CachedIndex' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_1_1_Primary__IO) == 0x000EE0, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_1_1_Primary__IO' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_1_1_CachedItem) == 0x000F28, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_1_1_CachedItem' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_1_1_PrimaryCachedSpace) == 0x000F38, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_1_1_PrimaryCachedSpace' has a wrong offset!");
-static_assert(offsetof(URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_1_1_SecondaryCachedSpace) == 0x000F48, "Member 'URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_1_1_SecondaryCachedSpace' has a wrong offset!");
+static_assert(alignof(CtrlRig_Exoskeleton::URigVMMemory_Work) == 0x000010, "Wrong alignment on CtrlRig_Exoskeleton::URigVMMemory_Work");
+static_assert(sizeof(CtrlRig_Exoskeleton::URigVMMemory_Work) == 0x000F60, "Wrong size on CtrlRig_Exoskeleton::URigVMMemory_Work");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, ExecuteContext_) == 0x000028, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::ExecuteContext_' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_Transform) == 0x000060, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_Transform' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_CachedIndex) == 0x0000C0, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_CachedIndex' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_Primary__IO) == 0x0000D0, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_Primary__IO' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_CachedItem) == 0x000118, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_CachedItem' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_PrimaryCachedSpace) == 0x000128, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_PrimaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_SecondaryCachedSpace) == 0x000138, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_SecondaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_1_Transform) == 0x000150, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_1_Transform' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_1_CachedIndex) == 0x0001B0, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_1_CachedIndex' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_1_Primary__IO) == 0x0001C0, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_1_Primary__IO' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_1_CachedItem) == 0x000208, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_1_CachedItem' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_1_PrimaryCachedSpace) == 0x000218, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_1_PrimaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_1_SecondaryCachedSpace) == 0x000228, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_1_SecondaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_2_Transform) == 0x000240, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_2_Transform' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_2_CachedIndex) == 0x0002A0, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_2_CachedIndex' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_1_1_Primary__IO) == 0x0002B0, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_1_1_Primary__IO' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_1_1_CachedItem) == 0x0002F8, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_1_1_CachedItem' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_1_1_PrimaryCachedSpace) == 0x000308, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_1_1_PrimaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_1_1_SecondaryCachedSpace) == 0x000318, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_1_1_SecondaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_3_Transform) == 0x000330, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_3_Transform' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_3_CachedIndex) == 0x000390, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_3_CachedIndex' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_Primary__IO) == 0x0003A0, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_Primary__IO' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_CachedItem) == 0x0003E8, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_CachedItem' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_PrimaryCachedSpace) == 0x0003F8, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_PrimaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_SecondaryCachedSpace) == 0x000408, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_SecondaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_4_Transform) == 0x000420, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_4_Transform' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_4_CachedIndex) == 0x000480, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_4_CachedIndex' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_1_2_Primary__IO) == 0x000490, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_1_2_Primary__IO' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_1_2_CachedItem) == 0x0004D8, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_1_2_CachedItem' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_1_2_PrimaryCachedSpace) == 0x0004E8, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_1_2_PrimaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_1_2_SecondaryCachedSpace) == 0x0004F8, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_1_2_SecondaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_5_Transform) == 0x000510, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_5_Transform' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_5_CachedIndex) == 0x000570, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_5_CachedIndex' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_1_1_1_Primary__IO) == 0x000580, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_1_1_1_Primary__IO' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_1_1_1_CachedItem) == 0x0005C8, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_1_1_1_CachedItem' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_1_1_1_PrimaryCachedSpace) == 0x0005D8, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_1_1_1_PrimaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_1_1_1_SecondaryCachedSpace) == 0x0005E8, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_1_1_1_SecondaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_6_Transform) == 0x000600, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_6_Transform' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_6_CachedIndex) == 0x000660, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_6_CachedIndex' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_Primary__IO) == 0x000670, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_Primary__IO' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_CachedItem) == 0x0006B8, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_CachedItem' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_PrimaryCachedSpace) == 0x0006C8, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_PrimaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_SecondaryCachedSpace) == 0x0006D8, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_SecondaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_7_Transform) == 0x0006F0, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_7_Transform' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_7_CachedIndex) == 0x000750, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_7_CachedIndex' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_Primary__IO) == 0x000760, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_Primary__IO' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_CachedItem) == 0x0007A8, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_CachedItem' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_PrimaryCachedSpace) == 0x0007B8, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_PrimaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_SecondaryCachedSpace) == 0x0007C8, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_SecondaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_8_Transform) == 0x0007E0, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_8_Transform' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_8_CachedIndex) == 0x000840, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_8_CachedIndex' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_Primary__IO) == 0x000850, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_Primary__IO' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_CachedItem) == 0x000898, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_CachedItem' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_PrimaryCachedSpace) == 0x0008A8, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_PrimaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_SecondaryCachedSpace) == 0x0008B8, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_SecondaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_9_Transform) == 0x0008D0, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_9_Transform' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_9_CachedIndex) == 0x000930, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_9_CachedIndex' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_Primary__IO) == 0x000940, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_Primary__IO' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_CachedItem) == 0x000988, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_CachedItem' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_PrimaryCachedSpace) == 0x000998, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_PrimaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_SecondaryCachedSpace) == 0x0009A8, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_SecondaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_10_Transform) == 0x0009C0, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_10_Transform' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_10_CachedIndex) == 0x000A20, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_10_CachedIndex' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_1_Primary__IO) == 0x000A30, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_1_Primary__IO' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_1_CachedItem) == 0x000A78, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_1_CachedItem' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_1_PrimaryCachedSpace) == 0x000A88, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_1_PrimaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_1_SecondaryCachedSpace) == 0x000A98, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_1_SecondaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_11_Transform) == 0x000AB0, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_11_Transform' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_11_CachedIndex) == 0x000B10, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_11_CachedIndex' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_2_Primary__IO) == 0x000B20, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_2_Primary__IO' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_2_CachedItem) == 0x000B68, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_2_CachedItem' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_2_PrimaryCachedSpace) == 0x000B78, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_2_PrimaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_2_SecondaryCachedSpace) == 0x000B88, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_2_SecondaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_12_Transform) == 0x000BA0, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_12_Transform' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_12_CachedIndex) == 0x000C00, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_12_CachedIndex' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_2_Primary__IO) == 0x000C10, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_2_Primary__IO' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_2_CachedItem) == 0x000C58, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_2_CachedItem' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_2_PrimaryCachedSpace) == 0x000C68, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_2_PrimaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_2_SecondaryCachedSpace) == 0x000C78, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_2_SecondaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_13_Transform) == 0x000C90, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_13_Transform' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_13_CachedIndex) == 0x000CF0, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_13_CachedIndex' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_2_Primary__IO) == 0x000D00, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_2_Primary__IO' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_2_CachedItem) == 0x000D48, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_2_CachedItem' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_2_PrimaryCachedSpace) == 0x000D58, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_2_PrimaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_2_SecondaryCachedSpace) == 0x000D68, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_2_SecondaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_14_Transform) == 0x000D80, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_14_Transform' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_14_CachedIndex) == 0x000DE0, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_14_CachedIndex' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_2_Primary__IO) == 0x000DF0, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_2_Primary__IO' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_2_CachedItem) == 0x000E38, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_2_CachedItem' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_2_PrimaryCachedSpace) == 0x000E48, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_2_PrimaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_2_SecondaryCachedSpace) == 0x000E58, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_2_SecondaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_15_Transform) == 0x000E70, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_15_Transform' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___RigUnit_GetTransform_15_CachedIndex) == 0x000ED0, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___RigUnit_GetTransform_15_CachedIndex' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_1_1_Primary__IO) == 0x000EE0, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_1_1_Primary__IO' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_1_1_CachedItem) == 0x000F28, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_1_1_CachedItem' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_1_1_PrimaryCachedSpace) == 0x000F38, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_1_1_PrimaryCachedSpace' has a wrong offset!");
+static_assert(offsetof(CtrlRig_Exoskeleton::URigVMMemory_Work, RigVMModel___AimItem_2_1_1_1_1_1_1_SecondaryCachedSpace) == 0x000F48, "Member 'CtrlRig_Exoskeleton::URigVMMemory_Work::RigVMModel___AimItem_2_1_1_1_1_1_1_SecondaryCachedSpace' has a wrong offset!");
 
 }
 

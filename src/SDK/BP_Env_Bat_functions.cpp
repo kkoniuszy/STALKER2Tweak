@@ -17,6 +17,68 @@
 namespace SDK
 {
 
+// Function BP_Env_Bat.BP_Env_Bat_C.TryPlayScaredSound
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void ABP_Env_Bat_C::TryPlayScaredSound()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_Env_Bat_C", "TryPlayScaredSound");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_Env_Bat.BP_Env_Bat_C.ReceiveBeginPlay
+// (Event, Protected, BlueprintEvent)
+
+void ABP_Env_Bat_C::ReceiveBeginPlay()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_Env_Bat_C", "ReceiveBeginPlay");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_Env_Bat.BP_Env_Bat_C.OnEmissionWeatherStarted
+// (Event, Public, BlueprintCallable, BlueprintEvent)
+
+void ABP_Env_Bat_C::OnEmissionWeatherStarted()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_Env_Bat_C", "OnEmissionWeatherStarted");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_Env_Bat.BP_Env_Bat_C.ExecuteUbergraph_BP_Env_Bat
+// (Final, UbergraphFunction, HasDefaults)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void ABP_Env_Bat_C::ExecuteUbergraph_BP_Env_Bat(int32 EntryPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_Env_Bat_C", "ExecuteUbergraph_BP_Env_Bat");
+
+	Params::BP_Env_Bat_C_ExecuteUbergraph_BP_Env_Bat Parms{};
+
+	Parms.EntryPoint = EntryPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function BP_Env_Bat.BP_Env_Bat_C.BndEvt__BP_CrowLifeUp_Sphere_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature
 // (HasOutParams, BlueprintEvent)
 // Parameters:
@@ -44,68 +106,6 @@ void ABP_Env_Bat_C::BndEvt__BP_CrowLifeUp_Sphere_K2Node_ComponentBoundEvent_0_Co
 	Parms.SweepResult = std::move(SweepResult);
 
 	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_Env_Bat.BP_Env_Bat_C.ExecuteUbergraph_BP_Env_Bat
-// (Final, UbergraphFunction, HasDefaults)
-// Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void ABP_Env_Bat_C::ExecuteUbergraph_BP_Env_Bat(int32 EntryPoint)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Env_Bat_C", "ExecuteUbergraph_BP_Env_Bat");
-
-	Params::BP_Env_Bat_C_ExecuteUbergraph_BP_Env_Bat Parms{};
-
-	Parms.EntryPoint = EntryPoint;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_Env_Bat.BP_Env_Bat_C.OnEmissionWeatherStarted
-// (Event, Public, BlueprintCallable, BlueprintEvent)
-
-void ABP_Env_Bat_C::OnEmissionWeatherStarted()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Env_Bat_C", "OnEmissionWeatherStarted");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_Env_Bat.BP_Env_Bat_C.ReceiveBeginPlay
-// (Event, Protected, BlueprintEvent)
-
-void ABP_Env_Bat_C::ReceiveBeginPlay()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Env_Bat_C", "ReceiveBeginPlay");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_Env_Bat.BP_Env_Bat_C.TryPlayScaredSound
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void ABP_Env_Bat_C::TryPlayScaredSound()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Env_Bat_C", "TryPlayScaredSound");
-
-	UObject::ProcessEvent(Func, nullptr);
 }
 
 }

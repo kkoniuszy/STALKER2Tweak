@@ -10,13 +10,13 @@
 
 #include "Basic.hpp"
 
-#include "ControlRig_structs.hpp"
-#include "AnimBP_Player_structs.hpp"
 #include "AnimGraphRuntime_structs.hpp"
 #include "Engine_structs.hpp"
+#include "AnimationWarpingRuntime_structs.hpp"
+#include "AnimBP_Player_structs.hpp"
 #include "Stalker2_structs.hpp"
 #include "Stalker2_classes.hpp"
-#include "AnimationWarpingRuntime_structs.hpp"
+#include "ControlRig_structs.hpp"
 
 
 namespace SDK

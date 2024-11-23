@@ -25,8 +25,8 @@ public:
 	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x0660(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
 
 public:
-	void ExecuteUbergraph_WeatherController_BP(int32 EntryPoint);
 	void ReceiveTick(float DeltaSeconds);
+	void ExecuteUbergraph_WeatherController_BP(int32 EntryPoint);
 
 public:
 	static class UClass* StaticClass()
