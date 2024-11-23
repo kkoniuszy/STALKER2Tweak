@@ -85,5 +85,5 @@ jobs:
         name: "${{ github.event.inputs.version }}"
         draft: true
         bodyFile: "release_body.md"
-        generateReleaseNotes: true
+        generateReleaseNotes: false
         artifactErrorsFailBuild: true
