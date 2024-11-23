@@ -35,7 +35,7 @@ jobs:
 
     - name: Prepare Ultimate ASI Loader
       run: |
-        unzip Ultimate-ASI-Loader.zip -d .\
+        unzip Ultimate-ASI-Loader_x64.zip -d .\
         C:\msys64\usr\bin\wget.exe -O .\UltimateASILoader_LICENSE.md https://raw.githubusercontent.com/ThirteenAG/Ultimate-ASI-Loader/master/license
         
     - name: Create Directory Structure
