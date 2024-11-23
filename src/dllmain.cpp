@@ -48,6 +48,7 @@ int iCurrentResX;
 int iCurrentResY;
 int iOldResX;
 int iOldResY;
+SDK::UEngine* Engine = nullptr;
 
 void Logging()
 {
@@ -164,52 +165,6 @@ void UpdateOffsets()
     }
 }
 
-void EnableConsole() {
-    // Get GEngine
-    SDK::UEngine* Engine = nullptr;
-
-    for (int i = 0; i < 200; ++i) { // 20s
-        Engine = SDK::UEngine::GetEngine();
-
-        if (Engine && Engine->ConsoleClass && Engine->GameViewport)
-            break;
-
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
-    }
-
-    if (!Engine || !Engine->ConsoleClass || !Engine->GameViewport) {
-        spdlog::error("Enable Console: Failed to find GEngine address after 20 seconds.");
-        return;
-    }
-
-    spdlog::info("Enable Console: GEngine address = {:x}", (uintptr_t)Engine);
-
-    // Construct console
-    SDK::UObject* NewObject = SDK::UGameplayStatics::SpawnObject(Engine->ConsoleClass, Engine->GameViewport);
-    if (NewObject) {
-        Engine->GameViewport->ViewportConsole = static_cast<SDK::UConsole*>(NewObject);
-        spdlog::info("Construct Console: Console object constructed.");
-    }
-    else {
-        spdlog::error("Enable Console: Failed to construct console object.");
-        return;
-    }
-
-    // Check console key bind
-    SDK::UInputSettings* InputSettings = SDK::UInputSettings::GetDefaultObj();
-    if (InputSettings) {
-        if (InputSettings->ConsoleKeys && InputSettings->ConsoleKeys.Num() > 0) {
-            spdlog::info("Enable Console: Console enabled - access it using key: {}.", InputSettings->ConsoleKeys[1].KeyName.ToString().c_str());
-        }
-        else {
-            spdlog::error("Enable Console: Console enabled but no console key is bound.\nAdd this to %LOCALAPPDATA%\\Stalker2\\Saved\\Config\\WindowsNoEditor\\Input.ini -\n[/Script/Engine.InputSettings]\nConsoleKeys = Tilde");
-        }
-    }
-    else {
-        spdlog::error("Enable Console: Failed to retreive input settings.");
-    }
-}
-
 void CalculateAspectRatio(bool bLog)
 {
     if (iCurrentResX <= 0 || iCurrentResY <= 0)
@@ -257,17 +212,17 @@ void CurrentResolution()
     DesktopDimensions = Util::GetPhysicalDesktopDimensions();
     iCurrentResX = DesktopDimensions.first;
     iCurrentResY = DesktopDimensions.second;
-    CalculateAspectRatio(false);
+    CalculateAspectRatio(true);
 
     // Current Resolution
-    std::uint8_t* CurrentResolutionScanResult = Memory::PatternScan(exeModule, "48 89 ?? ?? ?? 8B ?? 45 ?? ?? 74 ?? 41 ?? ?? 01 74 ?? 41 ?? ?? 01");
+    std::uint8_t* CurrentResolutionScanResult = Memory::PatternScan(exeModule, "45 ?? ?? 44 ?? ?? 48 8B ?? E8 ?? ?? ?? ?? 49 ?? ?? E8 ?? ?? ?? ?? 8B ?? ?? ?? ?? ?? BE 01 00 00 00");
     if (CurrentResolutionScanResult) {
         spdlog::info("Current Resolution: Address is {:s}+{:x}", sExeName.c_str(), CurrentResolutionScanResult - (std::uint8_t*)exeModule);
         static SafetyHookMid CurrentResolutionMidHook{};
         CurrentResolutionMidHook = safetyhook::create_mid(CurrentResolutionScanResult,
             [](SafetyHookContext& ctx) {
-                int iResX = (int)ctx.rcx;
-                int iResY = (int)ctx.rdx;
+                int iResX = (int)ctx.rdx;
+                int iResY = (int)ctx.r8;
 
                 if (iResX != iCurrentResX || iResY != iCurrentResY) {
                     iCurrentResX = iResX;
@@ -308,13 +263,13 @@ void AspectRatioFOV()
         }
 
         // Aspect ratio setting
-        std::uint8_t* AspectRatioSettingScanResult = Memory::PatternScan(exeModule, "88 ?? ?? ?? ?? ?? 48 8B ?? ?? ?? ?? ?? 48 8B ?? ?? ?? ?? ?? 89 ?? ?? 48 C1 ?? ?? 89 ?? ??");
+        std::uint8_t* AspectRatioSettingScanResult = Memory::PatternScan(exeModule, "41 ?? ?? ?? 83 ?? FF 74 ?? 49 8B ?? ?? ?? ?? ?? 66 0F ?? ?? ?? ?? ?? ?? ?? 48 ?? 48 ?? ?? 05 48 ?? ?? 44 ?? ?? 74 ??");
         if (AspectRatioSettingScanResult) {
             spdlog::info("Aspect Ratio Setting: Address is {:s}+{:x}", sExeName.c_str(), AspectRatioSettingScanResult - (std::uint8_t*)exeModule);
             static SafetyHookMid AspectRatioSettingMidHook{};
-            AspectRatioSettingMidHook = safetyhook::create_mid(AspectRatioSettingScanResult,
+            AspectRatioSettingMidHook = safetyhook::create_mid(AspectRatioSettingScanResult + 0x4,
                 [](SafetyHookContext& ctx) {
-                    ctx.rax |= 0; // Force auto
+                    ctx.rax = 0; // Force auto
                 });
         }
         else {
@@ -323,14 +278,86 @@ void AspectRatioFOV()
     }   
 }
 
+void EnableConsole() {
+    // Get GEngine
+    for (int i = 0; i < 200; ++i) { // 20s
+        Engine = SDK::UEngine::GetEngine();
+
+        if (Engine && Engine->ConsoleClass && Engine->GameViewport)
+            break;
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
+
+    if (!Engine || !Engine->ConsoleClass || !Engine->GameViewport) {
+        spdlog::error("Enable Console: Failed to find GEngine address after 20 seconds.");
+        return;
+    }
+
+    spdlog::info("Enable Console: GEngine address = {:x}", (uintptr_t)Engine);
+
+    // Construct console
+    SDK::UObject* NewObject = SDK::UGameplayStatics::SpawnObject(Engine->ConsoleClass, Engine->GameViewport);
+    if (NewObject) {
+        Engine->GameViewport->ViewportConsole = static_cast<SDK::UConsole*>(NewObject);
+        spdlog::info("Construct Console: Console object constructed.");
+    }
+    else {
+        spdlog::error("Enable Console: Failed to construct console object.");
+        return;
+    }
+
+    // Check console key bind
+    SDK::UInputSettings* InputSettings = SDK::UInputSettings::GetDefaultObj();
+    if (InputSettings) {
+        if (InputSettings->ConsoleKeys && InputSettings->ConsoleKeys.Num() > 0) {
+            spdlog::info("Enable Console: Console enabled - access it using key: {}.", InputSettings->ConsoleKeys[1].KeyName.ToString().c_str());
+        }
+        else {
+            spdlog::error("Enable Console: Console enabled but no console key is bound.\nAdd this to %LOCALAPPDATA%\\Stalker2\\Saved\\Config\\WindowsNoEditor\\Input.ini -\n[/Script/Engine.InputSettings]\nConsoleKeys = Tilde");
+        }
+    }
+    else {
+        spdlog::error("Enable Console: Failed to retreive input settings.");
+    }
+}
+
+void CheatManager()
+{
+    // TODO: Constructing CheatManager works but will cause a fatal world leak error on returning to the main menu.
+
+    if (bEnableConsole) {
+        // UGameInstance::Init()
+        std::uint8_t* GameInstanceInitScanResult = Memory::PatternScan(exeModule, "40 ?? 56 48 8D ?? ?? ?? ?? ?? ?? 48 81 ?? ?? ?? ?? ?? 48 8B ?? ?? ?? ?? ?? 48 33 ?? 48 89 ?? ?? 48 8B ?? 4C 89 ?? ??");
+        if (GameInstanceInitScanResult) {
+            spdlog::info("Cheat Manager: Address is {:s}+{:x}", sExeName.c_str(), GameInstanceInitScanResult - (std::uint8_t*)exeModule);
+            static SafetyHookMid GameInstanceInitMidHook{};
+            GameInstanceInitMidHook = safetyhook::create_mid(GameInstanceInitScanResult,
+                [](SafetyHookContext& ctx) {
+                    SDK::UWorld* World = SDK::UWorld::GetWorld();
+                    if (World && World->OwningGameInstance && World->OwningGameInstance->LocalPlayers[0]) {
+                        SDK::APlayerController* PC = World->OwningGameInstance->LocalPlayers[0]->PlayerController;
+                        if (PC && !PC->CheatManager) {
+                            PC->CheatManager = (SDK::UCheatManager*)SDK::UGameplayStatics::SpawnObject(SDK::UCheatManager::StaticClass(), PC);
+                            spdlog::info("Cheat Manager: Activated cheat manager.");
+                        }
+                    }
+                });
+        }
+        else {
+            spdlog::error("Cheat Manager: Pattern scan failed.");
+        }
+    }
+}
+    
 DWORD __stdcall Main(void*)
 {
     Logging();
     Configuration();
     UpdateOffsets();
-    EnableConsole();
     CurrentResolution();
     AspectRatioFOV();
+    EnableConsole();
     return true;
 }
 
