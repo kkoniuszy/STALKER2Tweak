@@ -14,7 +14,7 @@ HMODULE thisModule;
 
 // Fix details
 std::string sFixName = "STALKER2Tweak";
-std::string sFixVersion = "0.0.1";
+std::string sFixVersion = "0.0.2";
 std::filesystem::path sFixPath;
 
 // Ini
@@ -274,6 +274,21 @@ void AspectRatioFOV()
         }
         else {
             spdlog::error("Aspect Ratio Setting: Pattern scan failed.");
+        }
+
+        // Viewmodel FOV fix
+        std::uint8_t* ViewmodelFOVScanResult = Memory::PatternScan(exeModule, "F6 ?? ?? 01 48 8B ?? ?? ?? 75 ?? F3 0F ?? ?? ?? ?? ?? ?? F3 0F ?? ?? 0F 28 ??");
+        if (ViewmodelFOVScanResult) {
+            spdlog::info("Viewmodel FOV: Address is {:s}+{:x}", sExeName.c_str(), ViewmodelFOVScanResult - (std::uint8_t*)exeModule);
+            static SafetyHookMid ViewmodelFOVMidHook{};
+            ViewmodelFOVMidHook = safetyhook::create_mid(ViewmodelFOVScanResult + 0x4,
+                [](SafetyHookContext& ctx) {
+                    if (fAspectRatio > fNativeAspect)
+                        ctx.rflags |= (1ULL << 6); // Set ZF
+                });
+        }
+        else {
+            spdlog::error("Viewmodel FOV: Pattern scan failed.");
         }
     }   
 }
