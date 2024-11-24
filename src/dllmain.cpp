@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "helper.hpp"
 
 #include "SDK\Engine_classes.hpp"
@@ -45,13 +45,13 @@ bool bFixFOV = true;
 bool bEnableConsole = true;
 bool bFixMouseSens = true;
 bool bSkipLogos = true;
+float fViewmodelFOVMulti = 1.00f;
 
 // Variables
 int iCurrentResX;
 int iCurrentResY;
 int iOldResX;
 int iOldResY;
-bool bHasSkippedLogos = false;
 SDK::UEngine* Engine = nullptr;
 SDK::UInputSettings* InputSettings = nullptr;
 
@@ -125,6 +125,10 @@ void Configuration()
     inipp::get_value(ini.sections["Developer Console"], "Enabled", bEnableConsole);
     inipp::get_value(ini.sections["Fix Mouse Sensitivity"], "Enabled", bFixMouseSens);
     inipp::get_value(ini.sections["Logo Skip"], "Enabled", bSkipLogos);
+    inipp::get_value(ini.sections["Viewmodel FOV"], "Multiplier", fViewmodelFOVMulti);      
+
+    // Clamp settings
+    Util::clamp_config(fViewmodelFOVMulti, 0.10f, 2.00f);
 
     // Log ini parse
     spdlog_confparse(bFixAspect);
@@ -132,6 +136,7 @@ void Configuration()
     spdlog_confparse(bEnableConsole);
     spdlog_confparse(bFixMouseSens);
     spdlog_confparse(bSkipLogos);
+    spdlog_confparse(fViewmodelFOVMulti);
 
     spdlog::info("----------");
 }
@@ -301,15 +306,31 @@ void AspectRatioFOV()
             spdlog::error("Aspect Ratio Setting: Pattern scan failed.");
         }
 
-        // Viewmodel FOV fix
-        std::uint8_t* ViewmodelFOVScanResult = Memory::PatternScan(exeModule, "F6 ?? ?? 01 48 8B ?? ?? ?? 75 ?? F3 0F ?? ?? ?? ?? ?? ?? F3 0F ?? ?? 0F 28 ??");
-        if (ViewmodelFOVScanResult) {
-            spdlog::info("Viewmodel FOV: Address is {:s}+{:x}", sExeName.c_str(), ViewmodelFOVScanResult - (std::uint8_t*)exeModule);
-            static SafetyHookMid ViewmodelFOVMidHook{};
-            ViewmodelFOVMidHook = safetyhook::create_mid(ViewmodelFOVScanResult + 0x4,
+        // Viewmodel FOV bug fix
+        std::uint8_t* ViewmodelFOVBugScanResult = Memory::PatternScan(exeModule, "F6 ?? ?? 01 48 8B ?? ?? ?? 75 ?? F3 0F ?? ?? ?? ?? ?? ?? F3 0F ?? ?? 0F 28 ??");
+        if (ViewmodelFOVBugScanResult) {
+            spdlog::info("Viewmodel FOV Bug: Address is {:s}+{:x}", sExeName.c_str(), ViewmodelFOVBugScanResult - (std::uint8_t*)exeModule);
+            static SafetyHookMid ViewmodelFOVBugMidHook{};
+            ViewmodelFOVBugMidHook = safetyhook::create_mid(ViewmodelFOVBugScanResult + 0x4,
                 [](SafetyHookContext& ctx) {
                     if (fAspectRatio > fNativeAspect)
                         ctx.rflags |= (1ULL << 6); // Set ZF
+                });
+        }
+        else {
+            spdlog::error("Viewmodel FOV Bug: Pattern scan failed.");
+        }
+    }
+
+    if (fViewmodelFOVMulti != 1.00f) {
+        // Viewmodel FOV
+        std::uint8_t* ViewmodelFOVScanResult = Memory::PatternScan(exeModule, "48 8B ?? F3 0F ?? ?? ?? ?? ?? ?? 0F 29 ?? ?? ?? E8 ?? ?? ?? ?? 48 83 ?? ?? ?? ?? ?? 00");
+        if (ViewmodelFOVScanResult) {
+            spdlog::info("Viewmodel FOV: Address is {:s}+{:x}", sExeName.c_str(), ViewmodelFOVScanResult - (std::uint8_t*)exeModule);
+            static SafetyHookMid ViewmodelFOVMidHook{};
+            ViewmodelFOVMidHook = safetyhook::create_mid(ViewmodelFOVScanResult,
+                [](SafetyHookContext& ctx) {
+                    ctx.xmm0.f32[0] *= fViewmodelFOVMulti;
                 });
         }
         else {
