@@ -9,6 +9,7 @@ This is an ASI plugin for for STALKER 2: Heart of Chornobyl that fixes ultrawide
 - Enable developer console.
 - Skip intro logos.
 - Disable mouse smoothing and fix X/Y sensitivity mismatch.
+- Adjust viewmodel FOV.
 
 ### Ultrawide/Narrower
 - Disable pillarboxing/letterboxing in cutscenes.
