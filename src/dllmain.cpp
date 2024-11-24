@@ -15,7 +15,7 @@ HMODULE thisModule;
 
 // Fix details
 std::string sFixName = "STALKER2Tweak";
-std::string sFixVersion = "0.0.3";
+std::string sFixVersion = "0.0.4";
 std::filesystem::path sFixPath;
 
 // Ini
