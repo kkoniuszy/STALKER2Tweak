@@ -368,9 +368,26 @@ void Miscellaneous()
             spdlog::error("X/Y Sensitivity: Pattern scan failed.");
         }
     }
+
+    // Allow setting read-only CVars
+    // FConsoleManager::ProcessUserConsoleInput
+    std::uint8_t* ReadOnlyCVarsScanResult = Memory::PatternScan(exeModule, "0F 84 ?? ?? ?? ?? 48 8B ?? 48 8B ?? FF ?? ?? A8 01");
+    if (ReadOnlyCVarsScanResult) {
+        spdlog::info("Read-only CVars: Address is {:s}+{:x}", sExeName.c_str(), ReadOnlyCVarsScanResult - (std::uint8_t*)exeModule);
+        static SafetyHookMid ReadOnlyCVarsMidHook{};
+        ReadOnlyCVarsMidHook = safetyhook::create_mid(ReadOnlyCVarsScanResult,
+            [](SafetyHookContext& ctx) {
+                if (ctx.rax + 0x18)
+                    *reinterpret_cast<BYTE*>(ctx.rax + 0x18) = 0;
+            });
+    }
+    else {
+        spdlog::error("Read-only CVars: Pattern scan failed.");
+    }
 }
 
-void EnableConsole() {
+void EnableConsole() 
+{
     if (bEnableConsole) {
         // Get GEngine
         for (int i = 0; i < 200; ++i) { // 20s
