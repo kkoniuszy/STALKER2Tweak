@@ -346,7 +346,7 @@ void Miscellaneous()
         // Thanks to Strangorth @ https://www.nexusmods.com/stalker2heartofchornobyl/mods/57?tab=description for explaining the fix for this.
         std::uint8_t* SensitivityXYScanResult = Memory::PatternScan(exeModule, "0F 11 ?? ?? ?? 66 0F ?? ?? 45 0F ?? ?? 45 0F ?? ?? F2 44 ?? ?? ??");
         if (SensitivityXYScanResult) {
-            spdlog::info("X/Y Sensitvity: Address is {:s}+{:x}", sExeName.c_str(), SensitivityXYScanResult - (std::uint8_t*)exeModule);
+            spdlog::info("X/Y Sensitivity: Address is {:s}+{:x}", sExeName.c_str(), SensitivityXYScanResult - (std::uint8_t*)exeModule);
             static SafetyHookMid SensitivityXYMidHook{};
             SensitivityXYMidHook = safetyhook::create_mid(SensitivityXYScanResult,
                 [](SafetyHookContext& ctx) {
@@ -358,59 +358,61 @@ void Miscellaneous()
                             spdlog::info("X/Y Sensitivity: Disabled mouse smoothing.");
                         }
                     }
-               
+
                     // Check if BaseLookUpRate and BaseTurnRate are equalised.
                     if (ctx.xmm8.f32[0] != ctx.xmm9.f32[0])
                         ctx.xmm8.f32[0] = ctx.xmm9.f32[0];
                 });
         }
         else {
-            spdlog::error("X/Y Sensitvity: Pattern scan failed.");
+            spdlog::error("X/Y Sensitivity: Pattern scan failed.");
         }
     }
 }
 
 void EnableConsole() {
-    // Get GEngine
-    for (int i = 0; i < 200; ++i) { // 20s
-        Engine = SDK::UEngine::GetEngine();
+    if (bEnableConsole) {
+        // Get GEngine
+        for (int i = 0; i < 200; ++i) { // 20s
+            Engine = SDK::UEngine::GetEngine();
 
-        if (Engine && Engine->ConsoleClass && Engine->GameViewport)
-            break;
+            if (Engine && Engine->ConsoleClass && Engine->GameViewport)
+                break;
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
-    }
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        }
 
-    if (!Engine || !Engine->ConsoleClass || !Engine->GameViewport) {
-        spdlog::error("Enable Console: Failed to find GEngine address after 20 seconds.");
-        return;
-    }
+        if (!Engine || !Engine->ConsoleClass || !Engine->GameViewport) {
+            spdlog::error("Enable Console: Failed to find GEngine address after 20 seconds.");
+            return;
+        }
 
-    spdlog::info("Enable Console: GEngine address = {:x}", (uintptr_t)Engine);
+        spdlog::info("Enable Console: GEngine address = {:x}", (uintptr_t)Engine);
 
-    // Construct console
-    SDK::UObject* NewObject = SDK::UGameplayStatics::SpawnObject(Engine->ConsoleClass, Engine->GameViewport);
-    if (NewObject) {
-        Engine->GameViewport->ViewportConsole = static_cast<SDK::UConsole*>(NewObject);
-        spdlog::info("Construct Console: Console object constructed.");
-    }
-    else {
-        spdlog::error("Enable Console: Failed to construct console object.");
-        return;
-    }
-
-    // Check console key bind
-    SDK::UInputSettings* InputSettings = SDK::UInputSettings::GetDefaultObj();
-    if (InputSettings) {
-        if (InputSettings->ConsoleKeys && InputSettings->ConsoleKeys.Num() > 0) {
-            spdlog::info("Enable Console: Console enabled - access it using key: {}.", InputSettings->ConsoleKeys[1].KeyName.ToString().c_str());
+        // Construct console
+        SDK::UObject* NewObject = SDK::UGameplayStatics::SpawnObject(Engine->ConsoleClass, Engine->GameViewport);
+        if (NewObject) {
+            Engine->GameViewport->ViewportConsole = static_cast<SDK::UConsole*>(NewObject);
+            spdlog::info("Construct Console: Console object constructed.");
         }
         else {
-            spdlog::error("Enable Console: Console enabled but no console key is bound.\nAdd this to %LOCALAPPDATA%\\Stalker2\\Saved\\Config\\WindowsNoEditor\\Input.ini -\n[/Script/Engine.InputSettings]\nConsoleKeys = Tilde");
+            spdlog::error("Enable Console: Failed to construct console object.");
+            return;
         }
-    }
-    else {
-        spdlog::error("Enable Console: Failed to retreive input settings.");
+
+        // Check console key bind
+        SDK::UInputSettings* InputSettings = SDK::UInputSettings::GetDefaultObj();
+        if (InputSettings) {
+            if (InputSettings->ConsoleKeys && InputSettings->ConsoleKeys.Num() > 0) {
+                spdlog::info("Enable Console: Console enabled - access it using key: {}.", InputSettings->ConsoleKeys[1].KeyName.ToString().c_str());
+            }
+            else {
+                spdlog::error("Enable Console: Console enabled but no console key is bound.\nAdd this to %LOCALAPPDATA%\\Stalker2\\Saved\\Config\\WindowsNoEditor\\Input.ini -\n[/Script/Engine.InputSettings]\nConsoleKeys = Tilde");
+            }
+        }
+        else {
+            spdlog::error("Enable Console: Failed to retreive input settings.");
+        }
     }
 }
 
