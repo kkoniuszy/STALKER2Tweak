@@ -1,7 +1,8 @@
 ﻿#include "stdafx.h"
 #include "helper.hpp"
 
-#include "SDK\Engine_classes.hpp"
+#include "SDK/Engine_classes.hpp"
+#include "SDK/Stalker2_classes.hpp"
 
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/basic_file_sink.h>
@@ -15,7 +16,7 @@ HMODULE thisModule;
 
 // Fix details
 std::string sFixName = "STALKER2Tweak";
-std::string sFixVersion = "0.0.5";
+std::string sFixVersion = "0.0.6";
 std::filesystem::path sFixPath;
 
 // Ini
@@ -55,6 +56,7 @@ int iOldResX;
 int iOldResY;
 SDK::UEngine* Engine = nullptr;
 SDK::UInputSettings* InputSettings = nullptr;
+bool bIsPDAOpen = false;
 
 void Logging()
 {
@@ -345,11 +347,42 @@ void AspectRatioFOV()
             static SafetyHookMid ViewmodelFOVMidHook{};
             ViewmodelFOVMidHook = safetyhook::create_mid(ViewmodelFOVScanResult,
                 [](SafetyHookContext& ctx) {
-                    ctx.xmm0.f32[0] *= fViewmodelFOVMulti;
+                    if (!bIsPDAOpen)
+                        ctx.xmm0.f32[0] *= fViewmodelFOVMulti;
                 });
         }
         else {
             spdlog::error("Viewmodel FOV: Pattern scan failed.");
+        }
+
+        // IsPDAOpen
+        std::uint8_t* IsPDAOpenScanResult = Memory::PatternScan(exeModule, "44 0F ?? ?? 48 85 ?? 74 ?? 4C ?? ?? 48 8D ?? ?? ?? ?? ??");
+        if (IsPDAOpenScanResult) {
+            spdlog::info("IsPDAOpen: Address is {:s}+{:x}", sExeName.c_str(), IsPDAOpenScanResult - (std::uint8_t*)exeModule);
+            static SafetyHookMid IsPDAOpenMidHook{};
+            IsPDAOpenMidHook = safetyhook::create_mid(IsPDAOpenScanResult,
+                [](SafetyHookContext& ctx) {
+                    if (ctx.rcx) {
+                        bIsPDAOpen = false;
+                    }
+                    else {
+                        bIsPDAOpen = true;  
+                    }
+                });
+        }
+        else {
+            spdlog::error("IsPDAOpen: Pattern scan failed.");
+        }
+
+        // UpdateViewmodel
+        std::uint8_t* UpdateViewmodelScanResult = Memory::PatternScan(exeModule, "75 ?? F3 0F ?? ?? ?? ?? ?? ?? F3 ?? ?? ?? 0F ?? ?? ?? ?? ?? ?? 0F ?? ?? ?? ?? ?? ?? 76 ?? 0F ?? ?? F3 0F ?? ?? ?? ?? ?? ??");
+        if (UpdateViewmodelScanResult) {
+            spdlog::info("UpdateViewmodel: Address is {:s}+{:x}", sExeName.c_str(), UpdateViewmodelScanResult - (std::uint8_t*)exeModule);
+            Memory::PatchBytes(UpdateViewmodelScanResult, "\xEB", 1);
+            spdlog::info("UpdateViewmodel: Patched instruction.");
+        }
+        else {
+            spdlog::error("UpdateViewmodel: Pattern scan failed.");
         }
     }
 }
@@ -365,38 +398,38 @@ void Miscellaneous()
             static SafetyHookMid SensitivityXYMidHook{};
             SensitivityXYMidHook = safetyhook::create_mid(SensitivityXYScanResult,
                 [](SafetyHookContext& ctx) {
-                    // Disable mouse smoothing
+                    // Get input settings
                     if (!InputSettings) {
-                        InputSettings = (SDK::UInputSettings*)SDK::UInputSettings::GetDefaultObj();
-                        if (InputSettings) {
-                            InputSettings->bEnableMouseSmoothing = false;
-                            spdlog::info("X/Y Sensitivity: Disabled mouse smoothing.");
-                        }
+                        InputSettings = (SDK::UInputSettings*)SDK::UInputSettings::GetDefaultObj();   
+                    }
+
+                    // Disable mouse smoothing
+                    if (InputSettings && InputSettings->bEnableMouseSmoothing) {
+                        InputSettings->bEnableMouseSmoothing = false;
+                        spdlog::info("X/Y Sensitivity: Disabled mouse smoothing.");
                     }
 
                     // Check if BaseLookUpRate and BaseTurnRate are equalised.
                     if (ctx.xmm8.f32[0] != ctx.xmm9.f32[0])
-                        ctx.xmm8.f32[0] = ctx.xmm9.f32[0];
+                        ctx.xmm8.f32[0] = ctx.xmm9.f32[0]; 
                 });
         }
         else {
             spdlog::error("X/Y Sensitivity: Pattern scan failed.");
         }
     }
-
 }
 
 void EnableConsole() 
 {
     if (bEnableConsole) {
-
         // Allow setting read-only CVars
         // FConsoleManager::ProcessUserConsoleInput
         std::uint8_t* ReadOnlyCVarsScanResult = Memory::PatternScan(exeModule, "0F 84 ?? ?? ?? ?? 48 8B ?? 48 8B ?? FF ?? ?? A8 01");
         if (ReadOnlyCVarsScanResult) {
             spdlog::info("Read-only CVars: Address is {:s}+{:x}", sExeName.c_str(), ReadOnlyCVarsScanResult - (std::uint8_t*)exeModule);
             static SafetyHookMid ReadOnlyCVarsMidHook{};
-            ReadOnlyCVarsMidHook = safetyhook::create_mid(ReadOnlyCVarsScanResult,
+            ReadOnlyCVarsMidHook = safetyhook::create_mid(ReadOnlyCVarsScanResult + 0x6,
                 [](SafetyHookContext& ctx) {
                     if (ctx.rax + 0x18)
                         *reinterpret_cast<BYTE*>(ctx.rax + 0x18) = 0;
