@@ -158,6 +158,7 @@ void IntroSkip()
             spdlog::error("Skip Logos: Pattern scan failed.");
         }
     }
+
     if (bSkipPSO) {
         std::uint8_t* PsoRet = Memory::PatternScan(exeModule, "41 b0 ? 48 8d 05 ? ? ? ? 48 c7 44 24 ? ? ? ? 00 48 89 44 24 ? 48 89 bc 24 ? ? ? ? e8 ? ? ? ?");
         if (PsoRet) {
@@ -383,26 +384,28 @@ void Miscellaneous()
         }
     }
 
-    // Allow setting read-only CVars
-    // FConsoleManager::ProcessUserConsoleInput
-    std::uint8_t* ReadOnlyCVarsScanResult = Memory::PatternScan(exeModule, "0F 84 ?? ?? ?? ?? 48 8B ?? 48 8B ?? FF ?? ?? A8 01");
-    if (ReadOnlyCVarsScanResult) {
-        spdlog::info("Read-only CVars: Address is {:s}+{:x}", sExeName.c_str(), ReadOnlyCVarsScanResult - (std::uint8_t*)exeModule);
-        static SafetyHookMid ReadOnlyCVarsMidHook{};
-        ReadOnlyCVarsMidHook = safetyhook::create_mid(ReadOnlyCVarsScanResult,
-            [](SafetyHookContext& ctx) {
-                if (ctx.rax + 0x18)
-                    *reinterpret_cast<BYTE*>(ctx.rax + 0x18) = 0;
-            });
-    }
-    else {
-        spdlog::error("Read-only CVars: Pattern scan failed.");
-    }
 }
 
 void EnableConsole() 
 {
     if (bEnableConsole) {
+
+        // Allow setting read-only CVars
+        // FConsoleManager::ProcessUserConsoleInput
+        std::uint8_t* ReadOnlyCVarsScanResult = Memory::PatternScan(exeModule, "0F 84 ?? ?? ?? ?? 48 8B ?? 48 8B ?? FF ?? ?? A8 01");
+        if (ReadOnlyCVarsScanResult) {
+            spdlog::info("Read-only CVars: Address is {:s}+{:x}", sExeName.c_str(), ReadOnlyCVarsScanResult - (std::uint8_t*)exeModule);
+            static SafetyHookMid ReadOnlyCVarsMidHook{};
+            ReadOnlyCVarsMidHook = safetyhook::create_mid(ReadOnlyCVarsScanResult,
+                [](SafetyHookContext& ctx) {
+                    if (ctx.rax + 0x18)
+                        *reinterpret_cast<BYTE*>(ctx.rax + 0x18) = 0;
+                });
+        }
+        else {
+            spdlog::error("Read-only CVars: Pattern scan failed.");
+        }
+
         // Get GEngine
         for (int i = 0; i < 200; ++i) { // 20s
             Engine = SDK::UEngine::GetEngine();
