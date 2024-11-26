@@ -15,7 +15,7 @@ HMODULE thisModule;
 
 // Fix details
 std::string sFixName = "STALKER2Tweak";
-std::string sFixVersion = "0.0.4";
+std::string sFixVersion = "0.0.5";
 std::filesystem::path sFixPath;
 
 // Ini
@@ -42,7 +42,7 @@ float fHUDHeightOffset;
 // Ini variables
 bool bFixAspect = true;
 bool bFixFOV = true;
-bool bEnableConsole = true;
+bool bEnableConsole = false;
 bool bFixMouseSens = true;
 bool bSkipLogos = true;
 bool bSkipPSO = false;
