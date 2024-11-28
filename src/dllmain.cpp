@@ -16,7 +16,7 @@ HMODULE thisModule;
 
 // Fix details
 std::string sFixName = "STALKER2Tweak";
-std::string sFixVersion = "0.0.6";
+std::string sFixVersion = "0.0.7";
 std::filesystem::path sFixPath;
 
 // Ini
@@ -56,7 +56,6 @@ int iOldResX;
 int iOldResY;
 SDK::UEngine* Engine = nullptr;
 SDK::UInputSettings* InputSettings = nullptr;
-bool bIsPDAOpen = false;
 
 void Logging()
 {
@@ -347,42 +346,11 @@ void AspectRatioFOV()
             static SafetyHookMid ViewmodelFOVMidHook{};
             ViewmodelFOVMidHook = safetyhook::create_mid(ViewmodelFOVScanResult,
                 [](SafetyHookContext& ctx) {
-                    if (!bIsPDAOpen)
-                        ctx.xmm0.f32[0] *= fViewmodelFOVMulti;
+                    ctx.xmm0.f32[0] *= fViewmodelFOVMulti;
                 });
         }
         else {
             spdlog::error("Viewmodel FOV: Pattern scan failed.");
-        }
-
-        // IsPDAOpen
-        std::uint8_t* IsPDAOpenScanResult = Memory::PatternScan(exeModule, "44 0F ?? ?? 48 85 ?? 74 ?? 4C ?? ?? 48 8D ?? ?? ?? ?? ??");
-        if (IsPDAOpenScanResult) {
-            spdlog::info("IsPDAOpen: Address is {:s}+{:x}", sExeName.c_str(), IsPDAOpenScanResult - (std::uint8_t*)exeModule);
-            static SafetyHookMid IsPDAOpenMidHook{};
-            IsPDAOpenMidHook = safetyhook::create_mid(IsPDAOpenScanResult,
-                [](SafetyHookContext& ctx) {
-                    if (ctx.rcx) {
-                        bIsPDAOpen = false;
-                    }
-                    else {
-                        bIsPDAOpen = true;  
-                    }
-                });
-        }
-        else {
-            spdlog::error("IsPDAOpen: Pattern scan failed.");
-        }
-
-        // UpdateViewmodel
-        std::uint8_t* UpdateViewmodelScanResult = Memory::PatternScan(exeModule, "75 ?? F3 0F ?? ?? ?? ?? ?? ?? F3 ?? ?? ?? 0F ?? ?? ?? ?? ?? ?? 0F ?? ?? ?? ?? ?? ?? 76 ?? 0F ?? ?? F3 0F ?? ?? ?? ?? ?? ??");
-        if (UpdateViewmodelScanResult) {
-            spdlog::info("UpdateViewmodel: Address is {:s}+{:x}", sExeName.c_str(), UpdateViewmodelScanResult - (std::uint8_t*)exeModule);
-            Memory::PatchBytes(UpdateViewmodelScanResult, "\xEB", 1);
-            spdlog::info("UpdateViewmodel: Patched instruction.");
-        }
-        else {
-            spdlog::error("UpdateViewmodel: Pattern scan failed.");
         }
     }
 }
