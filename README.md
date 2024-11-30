@@ -36,7 +36,7 @@ This is an ASI plugin for for STALKER 2: Heart of Chornobyl that fixes ultrawide
 ## Known Issues
 Please report any issues you see.
 
-- Adjusting the viewmodel FOV significantly can lead to visual errors.
+- Adjusting the viewmodel FOV significantly can lead to visual errors. These will not be fixed.
 
 ## Credits
 [Ultimate ASI Loader](https://github.com/ThirteenAG/Ultimate-ASI-Loader) for ASI loading. <br />
