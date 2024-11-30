@@ -3,6 +3,7 @@
 
 #include "SDK/Engine_classes.hpp"
 #include "SDK/Stalker2_classes.hpp"
+#include "SDK/GSCLoadingScreen_classes.hpp"
 
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/basic_file_sink.h>
@@ -145,35 +146,44 @@ void Configuration()
     spdlog::info("----------");
 }
 
-void IntroSkip()
+void CalculateAspectRatio(bool bLog)
 {
-    if (bSkipLogos) {
-        // Skip logos + disclaimers
-        std::uint8_t* SkipLogosScanResult = Memory::PatternScan(exeModule, "8B ?? ?? ?? ?? ?? 83 ?? 01 75 ?? F2 0F ?? ?? ?? ?? ?? ??");
-        if (SkipLogosScanResult) {
-            spdlog::info("Skip Logos: Address is {:s}+{:x}", sExeName.c_str(), SkipLogosScanResult - (std::uint8_t*)exeModule);
-            static SafetyHookMid SkipLogosMidHook{};
-            SkipLogosMidHook = safetyhook::create_mid(SkipLogosScanResult,
-                [](SafetyHookContext& ctx) {
-                    if (ctx.rcx + 0x344)
-                        *reinterpret_cast<int*>(ctx.rcx + 0x344) = 6;
-                });
-        }
-        else {
-            spdlog::error("Skip Logos: Pattern scan failed.");
-        }
+    if (iCurrentResX <= 0 || iCurrentResY <= 0)
+        return;
+
+    if (iCurrentResX == 0 || iCurrentResY == 0) {
+        spdlog::error("Current Resolution: Resolution invalid, using desktop resolution instead.");
+        iCurrentResX = DesktopDimensions.first;
+        iCurrentResY = DesktopDimensions.second;
     }
 
-    if (bSkipPSO) {
-        std::uint8_t* PsoRet = Memory::PatternScan(exeModule, "41 b0 ? 48 8d 05 ? ? ? ? 48 c7 44 24 ? ? ? ? 00 48 89 44 24 ? 48 89 bc 24 ? ? ? ? e8 ? ? ? ?");
-        if (PsoRet) {
-            spdlog::info("Skip PSO Warmup: Address is {:s}+{:x}", sExeName.c_str(), PsoRet - (std::uint8_t*)exeModule);
-            Memory::PatchBytes(PsoRet + 2, "\x00", 1);
-            spdlog::info("Skip PSO Warmup: Patched instruction.");
-        }
-        else {
-            spdlog::error("Skip PSO Warmup: Pattern scan failed.");
-        }
+    // Calculate aspect ratio
+    fAspectRatio = (float)iCurrentResX / (float)iCurrentResY;
+    fAspectMultiplier = fAspectRatio / fNativeAspect;
+
+    // HUD 
+    fHUDWidth = (float)iCurrentResY * fNativeAspect;
+    fHUDHeight = (float)iCurrentResY;
+    fHUDWidthOffset = (float)(iCurrentResX - fHUDWidth) / 2.00f;
+    fHUDHeightOffset = 0.00f;
+    if (fAspectRatio < fNativeAspect) {
+        fHUDWidth = (float)iCurrentResX;
+        fHUDHeight = (float)iCurrentResX / fNativeAspect;
+        fHUDWidthOffset = 0.00f;
+        fHUDHeightOffset = (float)(iCurrentResY - fHUDHeight) / 2.00f;
+    }
+
+    // Log details about current resolution
+    if (bLog) {
+        spdlog::info("----------");
+        spdlog::info("Current Resolution: Resolution: {:d}x{:d}", iCurrentResX, iCurrentResY);
+        spdlog::info("Current Resolution: fAspectRatio: {}", fAspectRatio);
+        spdlog::info("Current Resolution: fAspectMultiplier: {}", fAspectMultiplier);
+        spdlog::info("Current Resolution: fHUDWidth: {}", fHUDWidth);
+        spdlog::info("Current Resolution: fHUDHeight: {}", fHUDHeight);
+        spdlog::info("Current Resolution: fHUDWidthOffset: {}", fHUDWidthOffset);
+        spdlog::info("Current Resolution: fHUDHeightOffset: {}", fHUDHeightOffset);
+        spdlog::info("----------");
     }
 }
 
@@ -215,44 +225,37 @@ void UpdateOffsets()
     }
 }
 
-void CalculateAspectRatio(bool bLog)
+void IntroSkip()
 {
-    if (iCurrentResX <= 0 || iCurrentResY <= 0)
-        return;
-
-    if (iCurrentResX == 0 || iCurrentResY == 0) {
-        spdlog::error("Current Resolution: Resolution invalid, using desktop resolution instead.");
-        iCurrentResX = DesktopDimensions.first;
-        iCurrentResY = DesktopDimensions.second;
+    if (bSkipLogos) {
+        // Skip logos + disclaimers
+        std::uint8_t* SkipLogosScanResult = Memory::PatternScan(exeModule, "8B ?? ?? ?? ?? ?? 83 ?? 01 75 ?? F2 0F ?? ?? ?? ?? ?? ??");
+        if (SkipLogosScanResult) {
+            spdlog::info("Skip Logos: Address is {:s}+{:x}", sExeName.c_str(), SkipLogosScanResult - (std::uint8_t*)exeModule);
+            static SafetyHookMid SkipLogosMidHook{};
+            SkipLogosMidHook = safetyhook::create_mid(SkipLogosScanResult,
+                [](SafetyHookContext& ctx) {
+                    if (SDK::UGSCLoadingScreenSettings::GetDefaultObj() && SDK::UGSCLoadingScreenSettings::GetDefaultObj()->ScreenOrder.Num() > 0) {
+                        SDK::UGSCLoadingScreenSettings::GetDefaultObj()->ScreenOrder.Clear();
+                        spdlog::info("Skip Logos: Skipped logos and disclaimer screens.");
+                    }
+                });
+        }
+        else {
+            spdlog::error("Skip Logos: Pattern scan failed.");
+        }
     }
 
-    // Calculate aspect ratio
-    fAspectRatio = (float)iCurrentResX / (float)iCurrentResY;
-    fAspectMultiplier = fAspectRatio / fNativeAspect;
-
-    // HUD 
-    fHUDWidth = (float)iCurrentResY * fNativeAspect;
-    fHUDHeight = (float)iCurrentResY;
-    fHUDWidthOffset = (float)(iCurrentResX - fHUDWidth) / 2.00f;
-    fHUDHeightOffset = 0.00f;
-    if (fAspectRatio < fNativeAspect) {
-        fHUDWidth = (float)iCurrentResX;
-        fHUDHeight = (float)iCurrentResX / fNativeAspect;
-        fHUDWidthOffset = 0.00f;
-        fHUDHeightOffset = (float)(iCurrentResY - fHUDHeight) / 2.00f;
-    }
-
-    // Log details about current resolution
-    if (bLog) {
-        spdlog::info("----------");
-        spdlog::info("Current Resolution: Resolution: {:d}x{:d}", iCurrentResX, iCurrentResY);
-        spdlog::info("Current Resolution: fAspectRatio: {}", fAspectRatio);
-        spdlog::info("Current Resolution: fAspectMultiplier: {}", fAspectMultiplier);
-        spdlog::info("Current Resolution: fHUDWidth: {}", fHUDWidth);
-        spdlog::info("Current Resolution: fHUDHeight: {}", fHUDHeight);
-        spdlog::info("Current Resolution: fHUDWidthOffset: {}", fHUDWidthOffset);
-        spdlog::info("Current Resolution: fHUDHeightOffset: {}", fHUDHeightOffset);
-        spdlog::info("----------");
+    if (bSkipPSO) {
+        std::uint8_t* PsoRet = Memory::PatternScan(exeModule, "41 b0 ? 48 8d 05 ? ? ? ? 48 c7 44 24 ? ? ? ? 00 48 89 44 24 ? 48 89 bc 24 ? ? ? ? e8 ? ? ? ?");
+        if (PsoRet) {
+            spdlog::info("Skip PSO Warmup: Address is {:s}+{:x}", sExeName.c_str(), PsoRet - (std::uint8_t*)exeModule);
+            Memory::PatchBytes(PsoRet + 2, "\x00", 1);
+            spdlog::info("Skip PSO Warmup: Patched instruction.");
+        }
+        else {
+            spdlog::error("Skip PSO Warmup: Pattern scan failed.");
+        }
     }
 }
 
@@ -459,8 +462,8 @@ DWORD __stdcall Main(void*)
 {
     Logging();
     Configuration();
-    IntroSkip();
     UpdateOffsets();
+    IntroSkip();
     CurrentResolution();
     AspectRatioFOV();
     Miscellaneous();
