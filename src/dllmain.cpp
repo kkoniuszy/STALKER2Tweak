@@ -149,11 +149,15 @@ void IntroSkip()
 {
     if (bSkipLogos) {
         // Skip logos + disclaimers
-        std::uint8_t* SkipLogosScanResult = Memory::PatternScan(exeModule, "7D ?? 48 ?? ?? 48 8D ?? ?? 48 ?? ?? 04 49 ?? ?? 48 89 ?? ?? ?? ?? ?? EB ??");
+        std::uint8_t* SkipLogosScanResult = Memory::PatternScan(exeModule, "8B ?? ?? ?? ?? ?? 83 ?? 01 75 ?? F2 0F ?? ?? ?? ?? ?? ??");
         if (SkipLogosScanResult) {
             spdlog::info("Skip Logos: Address is {:s}+{:x}", sExeName.c_str(), SkipLogosScanResult - (std::uint8_t*)exeModule);
-            Memory::PatchBytes(SkipLogosScanResult, "\xEB", 1);
-            spdlog::info("Skip Logos: Patched instruction.");
+            static SafetyHookMid SkipLogosMidHook{};
+            SkipLogosMidHook = safetyhook::create_mid(SkipLogosScanResult,
+                [](SafetyHookContext& ctx) {
+                    if (ctx.rcx + 0x344)
+                        *reinterpret_cast<int*>(ctx.rcx + 0x344) = 6;
+                });
         }
         else {
             spdlog::error("Skip Logos: Pattern scan failed.");
