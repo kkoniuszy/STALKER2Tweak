@@ -291,31 +291,33 @@ void CurrentResolution()
 
 void AspectRatioFOV()
 {
-    // Aspect Ratio / FOV
-    std::uint8_t* AspectRatioFOVScanResult = Memory::PatternScan(exeModule, "F3 0F ?? ?? ?? 0F 57 C0 8B ?? ?? ?? ?? ?? 89 ?? ?? 0F ?? ?? ?? ?? ?? ??");
-    if (AspectRatioFOVScanResult) {
-        spdlog::info("Aspect Ratio/FOV: Address is {:s}+{:x}", sExeName.c_str(), AspectRatioFOVScanResult - (std::uint8_t*)exeModule);
-        if (bFixFOV) {
-            static SafetyHookMid FOVMidHook{};
-            FOVMidHook = safetyhook::create_mid(AspectRatioFOVScanResult,
-                [](SafetyHookContext& ctx) {
-                    // Fix vert- FOV
-                    if (fAspectRatio > fNativeAspect)
-                        ctx.xmm0.f32[0] = atanf(tanf(ctx.xmm0.f32[0] * (fPi / 360)) / fNativeAspect * fAspectRatio) * (360 / fPi);
-                });
-        }
+    if (bFixAspect || bFixFOV) {
+        // Aspect Ratio / FOV
+        std::uint8_t* AspectRatioFOVScanResult = Memory::PatternScan(exeModule, "F3 0F ?? ?? ?? 0F 57 C0 8B ?? ?? ?? ?? ?? 89 ?? ?? 0F ?? ?? ?? ?? ?? ??");
+        if (AspectRatioFOVScanResult) {
+            spdlog::info("Aspect Ratio/FOV: Address is {:s}+{:x}", sExeName.c_str(), AspectRatioFOVScanResult - (std::uint8_t*)exeModule);
+            if (bFixFOV) {
+                static SafetyHookMid FOVMidHook{};
+                FOVMidHook = safetyhook::create_mid(AspectRatioFOVScanResult,
+                    [](SafetyHookContext& ctx) {
+                        // Fix vert- FOV
+                        if (fAspectRatio > fNativeAspect)
+                            ctx.xmm0.f32[0] = atanf(tanf(ctx.xmm0.f32[0] * (fPi / 360)) / fNativeAspect * fAspectRatio) * (360 / fPi);
+                    });
+            }
 
-        if (bFixAspect) {
-            static SafetyHookMid AspectRatioMidHook{};
-            AspectRatioMidHook = safetyhook::create_mid(AspectRatioFOVScanResult + 0xE,
-                [](SafetyHookContext& ctx) {
-                    if (fAspectRatio != fNativeAspect)
-                        ctx.rax = *(uint32_t*)&fAspectRatio;
-                });
+            if (bFixAspect) {
+                static SafetyHookMid AspectRatioMidHook{};
+                AspectRatioMidHook = safetyhook::create_mid(AspectRatioFOVScanResult + 0xE,
+                    [](SafetyHookContext& ctx) {
+                        if (fAspectRatio != fNativeAspect)
+                            ctx.rax = *(uint32_t*)&fAspectRatio;
+                    });
+            }
         }
-    }
-    else {
-        spdlog::error("Aspect Ratio/FOV: Pattern scan failed.");
+        else {
+            spdlog::error("Aspect Ratio/FOV: Pattern scan failed.");
+        }
     }
 
     if (bFixAspect) {
@@ -363,27 +365,6 @@ void AspectRatioFOV()
         else {
             spdlog::error("Viewmodel FOV: Pattern scan failed.");
         }
-    }
-}
-
-void HUD()
-{
-    //SizeBoxSlot'W_GameHUD_C:WidgetTree.SizeBox_112
-    std::uint8_t* LevelSequencePostLoadScanResult = Memory::PatternScan(exeModule, "40 ?? 48 83 ?? ?? 48 8B ?? E8 ?? ?? ?? ?? 48 8B ?? ?? ?? ?? ?? 48 85 ?? 74 ?? 48 8B ?? ?? ?? ?? ?? 48 85 ?? 74 ?? 48 3B ?? ?? ?? ?? ?? 74 ??");
-    if (LevelSequencePostLoadScanResult) {
-        spdlog::info("LevelPostLoad: Address is {:s}+{:x}", sExeName.c_str(), LevelSequencePostLoadScanResult - (std::uint8_t*)exeModule);
-        static SafetyHookMid LevelSequencePostLoadMidHook{};
-        LevelSequencePostLoadMidHook = safetyhook::create_mid(LevelSequencePostLoadScanResult - 0x10,
-            [](SafetyHookContext& ctx) {
-                auto sizebox = SDK::UObject::FindObject<SDK::USizeBox>("SizeBox /Game/GameLite/FPS_Game/UIRemaster/HUD/W_GameHUD.W_GameHUD_C.WidgetTree.SizeBox");
-                if (sizebox) {
-                    
-                }
-                
-            });
-    }
-    else {
-        spdlog::error("LevelPostLoad: Pattern scan failed.");
     }
 }
 
@@ -491,7 +472,6 @@ DWORD __stdcall Main(void*)
     IntroSkip();
     CurrentResolution();
     AspectRatioFOV();
-    //HUD();
     Miscellaneous();
     EnableConsole();
     return true;
