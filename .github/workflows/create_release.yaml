@@ -64,22 +64,22 @@ jobs:
         cp UltimateASILoader_LICENSE.md .\zip\steam
         New-Item -Path ".\zip\steam\EXTRACT_TO_GAME_FOLDER" -ItemType File
     
-    - name: Create Steam Zip
+    - name: Create Steam/GOG Zip
       run: |
         cd .\zip\steam
-        7z a -r -tzip ..\..\${{ github.event.repository.name }}_${{ github.event.inputs.version }}_Steam.zip .\*
+        7z a -r -tzip ..\..\${{ github.event.repository.name }}_${{ github.event.inputs.version }}.zip .\*
 
     - name: Update release_body.md
       run: |
         $releaseBody = "release_body.md"
         $xboxZipName = "${{ github.event.repository.name }}_${{ github.event.inputs.version }}_Xbox.zip" 
-        $steamZipName = "${{ github.event.repository.name }}_${{ github.event.inputs.version }}_Steam.zip" 
+        $steamZipName = "${{ github.event.repository.name }}_${{ github.event.inputs.version }}.zip" 
         (Get-Content $releaseBody -Raw) -replace '<XBOX_RELEASE_ZIP_NAME>', $xboxZipName | Set-Content $releaseBody
         (Get-Content $releaseBody -Raw) -replace '<STEAM_RELEASE_ZIP_NAME>', $steamZipName | Set-Content $releaseBody
         
     - uses: ncipollo/release-action@v1
       with:
-        artifacts: "${{ github.event.repository.name }}_${{ github.event.inputs.version }}_Xbox.zip, ${{ github.event.repository.name }}_${{ github.event.inputs.version }}_Steam.zip"
+        artifacts: "${{ github.event.repository.name }}_${{ github.event.inputs.version }}_Xbox.zip, ${{ github.event.repository.name }}_${{ github.event.inputs.version }}.zip"
         token: ${{ secrets.GITHUB_TOKEN }}
         tag: ${{ github.event.inputs.version }}
         name: "${{ github.event.inputs.version }}"

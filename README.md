@@ -17,8 +17,8 @@ This is an ASI plugin for for STALKER 2: Heart of Chornobyl that fixes ultrawide
 
 ## Installation
 - Grab the latest release of STALKER2Tweak from [here.](https://github.com/Lyall/STALKER2Tweak/releases)
-- Extract the contents of the release zip in to the the game folder. <br />
-(e.g. "**steamapps\common\S.T.A.L.K.E.R. 2 Heart of Chornobyl**" for Steam).
+- Extract the contents of the release zip in to the the game folder.
+(e.g. "**steamapps\common\S.T.A.L.K.E.R. 2 Heart of Chornobyl**" for Steam or "**XboxGames\S.T.A.L.K.E.R. 2\Content**" for Xbox).
 
 ### Steam Deck/Linux Additional Instructions
 🚩**You do not need to do this if you are using Windows!**
