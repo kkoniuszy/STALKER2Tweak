@@ -42,13 +42,14 @@ float fHUDHeight;
 float fHUDHeightOffset;
 
 // Ini variables
-bool bFixAspect = true;
-bool bFixFOV = true;
-bool bEnableConsole = false;
-bool bFixMouseSens = true;
-bool bSkipLogos = true;
-bool bSkipPSO = false;
-float fViewmodelFOVMulti = 1.00f;
+bool bFixAspect;
+bool bFixFOV;
+bool bEnableConsole;
+bool bFixMouseSens;
+bool bSkipLogos;
+bool bSkipPSO;
+float fViewmodelFOVMulti;
+float fHUDAspectRatio;
 
 // Variables
 int iCurrentResX;
@@ -57,6 +58,7 @@ int iOldResX;
 int iOldResY;
 SDK::UEngine* Engine = nullptr;
 SDK::UInputSettings* InputSettings = nullptr;
+SDK::UPlayerGameHUDView* GameHUD = nullptr;
 
 void Logging()
 {
@@ -125,23 +127,26 @@ void Configuration()
     // Load settings from ini
     inipp::get_value(ini.sections["Fix Aspect Ratio"], "Enabled", bFixAspect);
     inipp::get_value(ini.sections["Fix FOV"], "Enabled", bFixFOV);
-    inipp::get_value(ini.sections["Developer Console"], "Enabled", bEnableConsole);
+    inipp::get_value(ini.sections["HUD Size"], "AspectRatio", fHUDAspectRatio);
+    inipp::get_value(ini.sections["Skip Logos"], "Enabled", bSkipLogos);
+    inipp::get_value(ini.sections["Skip Shader Compilation"], "Enabled", bSkipPSO);
     inipp::get_value(ini.sections["Fix Mouse Sensitivity"], "Enabled", bFixMouseSens);
-    inipp::get_value(ini.sections["Logo Skip"], "Enabled", bSkipLogos);
-    inipp::get_value(ini.sections["Shader Compile Skip"], "Enabled", bSkipPSO);
-    inipp::get_value(ini.sections["Viewmodel FOV"], "Multiplier", fViewmodelFOVMulti);      
+    inipp::get_value(ini.sections["Viewmodel FOV"], "Multiplier", fViewmodelFOVMulti); 
+    inipp::get_value(ini.sections["Developer Console"], "Enabled", bEnableConsole);
 
     // Clamp settings
-    Util::clamp_config(fViewmodelFOVMulti, 0.10f, 2.00f);
+    fViewmodelFOVMulti = std::clamp(fViewmodelFOVMulti, 0.10f, 2.00f);
+    fHUDAspectRatio = std::clamp(fHUDAspectRatio, 0.10f, 8.00f);
 
     // Log ini parse
     spdlog_confparse(bFixAspect);
     spdlog_confparse(bFixFOV);
-    spdlog_confparse(bEnableConsole);
-    spdlog_confparse(bFixMouseSens);
+    spdlog_confparse(fHUDAspectRatio);
     spdlog_confparse(bSkipLogos);
     spdlog_confparse(bSkipPSO);
+    spdlog_confparse(bFixMouseSens);
     spdlog_confparse(fViewmodelFOVMulti);
+    spdlog_confparse(bEnableConsole);
 
     spdlog::info("----------");
 }
@@ -368,6 +373,45 @@ void AspectRatioFOV()
     }
 }
 
+void HUD()
+{
+    if (std::fabs(fHUDAspectRatio - fNativeAspect) > 0.01f) {
+        // Game HUD
+        std::uint8_t* GameHUDScanResult = Memory::PatternScan(exeModule, "0F 10 ?? ?? ?? ?? ?? 48 8B ?? F2 0F ?? ?? ?? ?? F2 0F ?? ?? 66 0F ?? ?? F2 0F ?? ?? ?? ??");
+        if (GameHUDScanResult) {
+            spdlog::info("GameHUD: Address is {:s}+{:x}", sExeName.c_str(), GameHUDScanResult - (std::uint8_t*)exeModule);
+            static SafetyHookMid GameHUDMidHook{};
+            GameHUDMidHook = safetyhook::create_mid(GameHUDScanResult,
+                [](SafetyHookContext& ctx) {
+                    if (!ctx.rax)
+                        return;
+
+                    SDK::UObject* obj = (SDK::UObject*)ctx.rax;
+                    std::string objName = obj->GetName();
+
+                    if (objName.contains("W_GameHUD_C")) {
+                        if (GameHUD != obj) {
+                            GameHUD = (SDK::UPlayerGameHUDView*)obj;
+                            SDK::USizeBox* sizeBox = (SDK::USizeBox*)GameHUD->Container->Slot->Parent;
+
+                            if (fHUDAspectRatio > fNativeAspect) {
+                                sizeBox->SetWidthOverride(1080.00f * fHUDAspectRatio);
+                                sizeBox->SetHeightOverride(1080.00f);
+                            }
+                            else if (fHUDAspectRatio < fNativeAspect) {
+                                sizeBox->SetWidthOverride(1920.00f);
+                                sizeBox->SetHeightOverride(1920.00f / fHUDAspectRatio);
+                            }
+                        }
+                    }
+                });
+        }
+        else {
+            spdlog::error("GameHUD: Pattern scan failed.");
+        }
+    }
+}
+
 void Miscellaneous()
 {
     if (bFixMouseSens) {
@@ -390,7 +434,7 @@ void Miscellaneous()
                         spdlog::info("X/Y Sensitivity: Disabled mouse smoothing.");
                     }
 
-                    // Check if BaseLookUpRate and BaseTurnRate are equalised.
+                    // Check if BaseLookUpRate and BaseTurnRate are equalised
                     if (ctx.xmm8.f32[0] != ctx.xmm9.f32[0])
                         ctx.xmm8.f32[0] = ctx.xmm9.f32[0]; 
                 });
@@ -472,6 +516,7 @@ DWORD __stdcall Main(void*)
     IntroSkip();
     CurrentResolution();
     AspectRatioFOV();
+    HUD();
     Miscellaneous();
     EnableConsole();
     return true;
