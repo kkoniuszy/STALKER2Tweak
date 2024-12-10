@@ -39,7 +39,8 @@ namespace Memory
         return bytes;
     }
 
-    std::uint8_t* PatternScan(void* module, const char* signature) {
+    std::uint8_t* PatternScan(void* module, const char* signature) 
+    {
         auto dosHeader = (PIMAGE_DOS_HEADER)module;
         auto ntHeaders = (PIMAGE_NT_HEADERS)((std::uint8_t*)module + dosHeader->e_lfanew);
 
@@ -66,7 +67,8 @@ namespace Memory
         return nullptr;
     }
 
-    std::uint8_t* MultiPatternScan(void* module, const std::vector<const char*>& signatures) {
+    std::uint8_t* MultiPatternScan(void* module, const std::vector<const char*>& signatures) 
+    {
         for (const auto& signature : signatures) {
             if (std::uint8_t* result = PatternScan(module, signature)) {
                 return result;
@@ -130,10 +132,5 @@ namespace Util
             [](char a, char b) {
                 return std::tolower(a) == std::tolower(b);
             });
-    }
-
-    template <typename T>
-    void clamp_config(T& setting, const T& min, const T& max) {
-        setting = std::clamp(setting, min, max);
     }
 }
