@@ -14,6 +14,7 @@ This is an ASI plugin for for STALKER 2: Heart of Chornobyl that fixes ultrawide
 ### Ultrawide/Narrower
 - Disable pillarboxing/letterboxing in cutscenes.
 - Fix vert- FOV when playing on an ultrawide display.
+- Adjust gameplay HUD size.
 
 ## Installation
 - Grab the latest release of STALKER2Tweak from [here.](https://github.com/Lyall/STALKER2Tweak/releases)
