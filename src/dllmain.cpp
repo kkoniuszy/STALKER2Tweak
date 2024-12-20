@@ -17,7 +17,7 @@ HMODULE thisModule;
 
 // Fix details
 std::string sFixName = "STALKER2Tweak";
-std::string sFixVersion = "0.0.8";
+std::string sFixVersion = "0.0.9";
 std::filesystem::path sFixPath;
 
 // Ini
@@ -424,9 +424,8 @@ void Miscellaneous()
             SensitivityXYMidHook = safetyhook::create_mid(SensitivityXYScanResult,
                 [](SafetyHookContext& ctx) {
                     // Get input settings
-                    if (!InputSettings) {
+                    if (!InputSettings)
                         InputSettings = (SDK::UInputSettings*)SDK::UInputSettings::GetDefaultObj();   
-                    }
 
                     // Disable mouse smoothing
                     if (InputSettings && InputSettings->bEnableMouseSmoothing) {
