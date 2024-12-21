@@ -488,7 +488,7 @@ void EnableConsole()
         SDK::UObject* NewObject = SDK::UGameplayStatics::SpawnObject(Engine->ConsoleClass, Engine->GameViewport);
         if (NewObject) {
             Engine->GameViewport->ViewportConsole = static_cast<SDK::UConsole*>(NewObject);
-            spdlog::info("Construct Console: Console object constructed.");
+            spdlog::info("Enable Console: Console object constructed.");
         }
         else {
             spdlog::error("Enable Console: Failed to construct console object.");
@@ -517,11 +517,11 @@ DWORD __stdcall Main(void*)
     Configuration();
     UpdateOffsets();
     IntroSkip();
-    //CurrentResolution();
-    //AspectRatioFOV();
-    //HUD();
-    //Miscellaneous();
-    //EnableConsole();
+    CurrentResolution();
+    AspectRatioFOV();
+    HUD();
+    Miscellaneous();
+    EnableConsole();
     return true;
 }
 
