@@ -207,16 +207,16 @@ void UpdateOffsets()
         spdlog::error("Offsets: GObjects: Pattern scan failed.");
     }
 
-    // GNames
-    std::uint8_t* GNamesScanResult = Memory::PatternScan(exeModule, "74 ?? 48 8D ?? ?? ?? ?? ?? EB ?? 48 8D ?? ?? ?? ?? ?? E8 ?? ?? ?? ?? C6 ?? ?? ?? ?? ?? 01");
-    if (GNamesScanResult) {
-        spdlog::info("Offsets: GNames: Address is {:s}+{:x}", sExeName.c_str(), GNamesScanResult - (std::uint8_t*)exeModule);
-        std::uint8_t* GNamesAddr = Memory::GetAbsolute(GNamesScanResult + 0x5);
-        SDK::Offsets::GNames = GNamesAddr - (std::uint8_t*)exeModule;
-        spdlog::info("Offsets: GNames: {:x}", (uintptr_t)SDK::Offsets::GNames);
+    // AppendString
+    std::uint8_t* AppendStringScanResult = Memory::PatternScan(exeModule, "48 8B ?? E8 ?? ?? ?? ?? B9 ?? ?? ?? ?? E8 ?? ?? ?? ?? 4C 8B ?? 48 85 ?? 0F 84 ?? ?? ?? ?? 41 8B ?? ?? ?? ?? ??");
+    if (AppendStringScanResult) {
+        spdlog::info("Offsets: AppendString: Address is {:s}+{:x}", sExeName.c_str(), AppendStringScanResult - (std::uint8_t*)exeModule);
+        std::uint8_t* AppendStringAddr = Memory::GetAbsolute(AppendStringScanResult + 0x4);
+        SDK::Offsets::AppendString = AppendStringAddr - (std::uint8_t*)exeModule;
+        spdlog::info("Offsets: AppendString: {:x}", (uintptr_t)SDK::Offsets::AppendString);
     }
     else {
-        spdlog::error("Offsets: GNames: Pattern scan failed.");
+        spdlog::error("Offsets: AppendString: Pattern scan failed.");
     }
 
     // ProcessEvent
