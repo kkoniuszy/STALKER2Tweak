@@ -104,7 +104,7 @@ void Logging()
 void Configuration()
 {
     // Inipp initialisation
-    std::ifstream iniFile(sFixPath.string() + sConfigFile);
+    std::ifstream iniFile(sFixPath / sConfigFile);
     if (!iniFile) {
         AllocConsole();
         FILE* dummy;
@@ -112,6 +112,7 @@ void Configuration()
         std::cout << "" << sFixName.c_str() << " v" << sFixVersion.c_str() << " loaded." << std::endl;
         std::cout << "ERROR: Could not locate config file." << std::endl;
         std::cout << "ERROR: Make sure " << sConfigFile.c_str() << " is located in " << sFixPath.string().c_str() << std::endl;
+        spdlog::error("ERROR: Could not locate config file {}", sConfigFile);
         spdlog::shutdown();
         FreeLibraryAndExitThread(thisModule, 1);
     }
@@ -234,16 +235,19 @@ void IntroSkip()
 {
     if (bSkipLogos) {
         // Skip logos + disclaimers
-        std::uint8_t* SkipLogosScanResult = Memory::PatternScan(exeModule, "8B ?? ?? ?? ?? ?? 83 ?? 01 75 ?? F2 0F ?? ?? ?? ?? ?? ??");
+        std::uint8_t* SkipLogosScanResult = Memory::PatternScan(exeModule, "F2 0F ?? ?? ?? ?? ?? ?? 4C 8B ?? ?? ?? ?? ?? 4D 85 ?? 0F 84 ?? ?? ?? ??");
         if (SkipLogosScanResult) {
             spdlog::info("Skip Logos: Address is {:s}+{:x}", sExeName.c_str(), SkipLogosScanResult - (std::uint8_t*)exeModule);
             static SafetyHookMid SkipLogosMidHook{};
-            SkipLogosMidHook = safetyhook::create_mid(SkipLogosScanResult,
+            SkipLogosMidHook = safetyhook::create_mid(SkipLogosScanResult + 0xF,
                 [](SafetyHookContext& ctx) {
-                    if (SDK::UGSCLoadingScreenSettings::GetDefaultObj() && SDK::UGSCLoadingScreenSettings::GetDefaultObj()->ScreenOrder.Num() > 0) {
-                        SDK::UGSCLoadingScreenSettings::GetDefaultObj()->ScreenOrder.Clear();
-                        spdlog::info("Skip Logos: Skipped logos and disclaimer screens.");
-                    }
+                    if (ctx.r8) {
+                        SDK::UGSCLoadingScreenSettings* introLogos = (SDK::UGSCLoadingScreenSettings*)ctx.r8;
+                        if (introLogos && introLogos->ScreenOrder.Num() > 0) {
+                            introLogos->ScreenOrder.Clear();
+                            spdlog::info("Skip Logos: Skipped logos and disclaimer screens.");
+                        } 
+                    }          
                 });
         }
         else {
@@ -513,11 +517,11 @@ DWORD __stdcall Main(void*)
     Configuration();
     UpdateOffsets();
     IntroSkip();
-    CurrentResolution();
-    AspectRatioFOV();
-    HUD();
-    Miscellaneous();
-    EnableConsole();
+    //CurrentResolution();
+    //AspectRatioFOV();
+    //HUD();
+    //Miscellaneous();
+    //EnableConsole();
     return true;
 }
 
