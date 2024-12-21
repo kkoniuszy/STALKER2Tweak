@@ -229,6 +229,8 @@ void UpdateOffsets()
     else {
         spdlog::error("Offsets: ProcessEvent: Pattern scan failed.");
     }
+
+    spdlog::info("----------");
 }
 
 void IntroSkip()
