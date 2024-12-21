@@ -12,8 +12,8 @@
 
 #include "AnimGraphRuntime_structs.hpp"
 #include "Engine_structs.hpp"
-#include "AnimBP_viper_tp_structs.hpp"
 #include "Stalker2_classes.hpp"
+#include "AnimBP_viper_tp_structs.hpp"
 
 
 namespace SDK

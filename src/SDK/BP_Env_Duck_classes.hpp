@@ -34,11 +34,11 @@ public:
 	class UTimelineComponent*                     Timeline_0;                                        // 0x02D0(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void BndEvt__BP_CrowLifeUp_Sphere_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const struct FHitResult& SweepResult);
-	void ExecuteUbergraph_BP_Env_Duck(int32 EntryPoint);
-	void OnEmissionWeatherStarted();
-	void Timeline_0__FinishedFunc();
 	void Timeline_0__UpdateFunc();
+	void Timeline_0__FinishedFunc();
+	void OnEmissionWeatherStarted();
+	void ExecuteUbergraph_BP_Env_Duck(int32 EntryPoint);
+	void BndEvt__BP_CrowLifeUp_Sphere_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature(class UPrimitiveComponent* OverlappedComponent, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const struct FHitResult& SweepResult);
 
 public:
 	static class UClass* StaticClass()

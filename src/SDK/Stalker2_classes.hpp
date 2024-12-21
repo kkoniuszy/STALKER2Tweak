@@ -2096,7 +2096,7 @@ static_assert(offsetof(UAnimNotify_SetStateTag, bEnabled) == 0x000044, "Member '
 
 // Class Stalker2.RepairPriceWidget
 // 0x0008 (0x0280 - 0x0278)
-class URepairPriceWidget final : public UWidgetBase
+class URepairPriceWidget : public UWidgetBase
 {
 public:
 	class UTextBlock*                             Price;                                             // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
@@ -3203,7 +3203,7 @@ static_assert(offsetof(UEquipmentSlots, NavBorderSlot) == 0x000468, "Member 'UEq
 
 // Class Stalker2.AmmoWidget
 // 0x0128 (0x03A0 - 0x0278)
-class UAmmoWidget final : public UChildViewBase
+class UAmmoWidget : public UChildViewBase
 {
 public:
 	class UTextBlock*                             AmmoCount;                                         // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -3529,7 +3529,7 @@ static_assert(offsetof(ULockableComponent, bLocked) == 0x000270, "Member 'ULocka
 
 // Class Stalker2.SkipKeyHint
 // 0x0008 (0x0280 - 0x0278)
-class USkipKeyHint final : public UUserWidget
+class USkipKeyHint : public UUserWidget
 {
 public:
 	class UHintControllerBase*                    InputController;                                   // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
@@ -3901,7 +3901,7 @@ static_assert(offsetof(ADynamicEnvironmentParticleActor, EnvironmentParticleComp
 
 // Class Stalker2.AnimInstanceCodelock
 // 0x0010 (0x0410 - 0x0400)
-class UAnimInstanceCodelock : public UAnimInstanceBase
+class UAnimInstanceCodelock final : public UAnimInstanceBase
 {
 public:
 	class UPlayerCodelockAnimCollection*          CodelockAnimCollection;                            // 0x0400(0x0008)(Edit, BlueprintVisible, ZeroConstructor, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
@@ -3943,7 +3943,7 @@ static_assert(sizeof(UQuickSlotBaseIPU) == 0x000048, "Wrong size on UQuickSlotBa
 
 // Class Stalker2.FireTypeWidget
 // 0x0028 (0x02A0 - 0x0278)
-class UFireTypeWidget final : public UWidgetBase
+class UFireTypeWidget : public UWidgetBase
 {
 public:
 	class UImage*                                 Background;                                        // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -4196,7 +4196,7 @@ static_assert(offsetof(AExpulsionAnomaly, PushDistanceDelayCurve) == 0x0003D0, "
 
 // Class Stalker2.AnimInstanceMutant
 // 0x0770 (0x0B70 - 0x0400)
-class UAnimInstanceMutant : public UAnimInstanceBase
+class UAnimInstanceMutant final : public UAnimInstanceBase
 {
 public:
 	struct FAnimHitData                           HitData;                                           // 0x0400(0x0138)(Edit, BlueprintVisible, Protected, NativeAccessSpecifierProtected)
@@ -4461,7 +4461,7 @@ static_assert(offsetof(UEnvironmentParticleManager, EmissionCrowsFall) == 0x0000
 
 // Class Stalker2.AnimInstancePlayerFirearm
 // 0x0040 (0x0470 - 0x0430)
-class UAnimInstancePlayerFirearm : public UAnimInstancePlayerWeaponBase
+class UAnimInstancePlayerFirearm final : public UAnimInstancePlayerWeaponBase
 {
 public:
 	class UPlayerFirearmAnimCollection*           WeaponAnimCollection;                              // 0x0428(0x0008)(Edit, BlueprintVisible, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
@@ -4660,7 +4660,7 @@ static_assert(offsetof(UDebugTextWidgetBase, DebugText) == 0x0002A0, "Member 'UD
 
 // Class Stalker2.AnimInstancePlayerWeaponAttach
 // 0x0040 (0x0440 - 0x0400)
-class UAnimInstancePlayerWeaponAttach : public UAnimInstanceBase
+class UAnimInstancePlayerWeaponAttach final : public UAnimInstanceBase
 {
 public:
 	class UWeaponAttachAnimCollection*            AttachAnimCollection;                              // 0x0400(0x0008)(Edit, BlueprintVisible, ZeroConstructor, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
@@ -4754,7 +4754,7 @@ static_assert(sizeof(UGAEventsLibrary) == 0x000028, "Wrong size on UGAEventsLibr
 
 // Class Stalker2.AnimInstanceSyncPoint
 // 0x00D0 (0x0440 - 0x0370)
-class UAnimInstanceSyncPoint : public UAnimInstance
+class UAnimInstanceSyncPoint final : public UAnimInstance
 {
 public:
 	uint8                                         Pad_368[0xD8];                                     // 0x0368(0x00D8)(Fixing Struct Size After Last Property [ Dumper-7 ])
@@ -5802,7 +5802,7 @@ static_assert(offsetof(UAnimNotifyState_ThrowGrenade, BoneName) == 0x000038, "Me
 
 // Class Stalker2.QuickPanel
 // 0x01F8 (0x0470 - 0x0278)
-class UQuickPanel final : public UChildViewBase
+class UQuickPanel : public UChildViewBase
 {
 public:
 	uint8                                         Pad_278[0x50];                                     // 0x0278(0x0050)(Fixing Size After Last Property [ Dumper-7 ])
@@ -6471,7 +6471,7 @@ static_assert(offsetof(UBookViewBase, NavigationPanel) == 0x0002D8, "Member 'UBo
 
 // Class Stalker2.PDAView
 // 0x0070 (0x0350 - 0x02E0)
-class UPDAView final : public UBookViewBase
+class UPDAView : public UBookViewBase
 {
 public:
 	uint8                                         Pad_2E0[0x10];                                     // 0x02E0(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
@@ -6645,7 +6645,7 @@ static_assert(offsetof(UPDASlotPanelBase, ArrowActionIdDown) == 0x0002B8, "Membe
 
 // Class Stalker2.PDAUpgradePanel
 // 0x0070 (0x0350 - 0x02E0)
-class UPDAUpgradePanel final : public UPDASlotPanelBase
+class UPDAUpgradePanel : public UPDASlotPanelBase
 {
 public:
 	class UUpgradeMenuWidget*                     UpgradeMenu;                                       // 0x02E0(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -7389,7 +7389,7 @@ static_assert(offsetof(UPDAPage, PDAPage) == 0x000290, "Member 'UPDAPage::PDAPag
 
 // Class Stalker2.NotesPage
 // 0x00E0 (0x0378 - 0x0298)
-class UNotesPage final : public UPDAPage
+class UNotesPage : public UPDAPage
 {
 public:
 	class UPDANotesDetails*                       NoteDetails;                                       // 0x0298(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -8003,7 +8003,7 @@ static_assert(offsetof(UAnimNotify_MakeAttack, bInstantAttack) == 0x000040, "Mem
 
 // Class Stalker2.PDANotePanel
 // 0x0078 (0x0358 - 0x02E0)
-class UPDANotePanel final : public UPDASlotPanelBase
+class UPDANotePanel : public UPDASlotPanelBase
 {
 public:
 	class USizeBox*                               AbsentNoteSizeBox;                                 // 0x02E0(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -8848,7 +8848,7 @@ static_assert(offsetof(UButtonBase, ButtonId) == 0x0002B4, "Member 'UButtonBase:
 
 // Class Stalker2.PDAArrowButton
 // 0x0020 (0x02E0 - 0x02C0)
-class UPDAArrowButton final : public UButtonBase
+class UPDAArrowButton : public UButtonBase
 {
 public:
 	class UImage*                                 ArrowIcon;                                         // 0x02C0(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -8953,7 +8953,7 @@ static_assert(offsetof(UPDAButtonBase, bShouldShowNewItem) == 0x00031C, "Member 
 
 // Class Stalker2.PDAQuestButton
 // 0x0020 (0x0340 - 0x0320)
-class UPDAQuestButton final : public UPDAButtonBase
+class UPDAQuestButton : public UPDAButtonBase
 {
 public:
 	class UTextWidget*                            ButtonText;                                        // 0x0320(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -9387,7 +9387,7 @@ static_assert(offsetof(UHoverIndicator, OnHoverIndicator) == 0x000280, "Member '
 
 // Class Stalker2.PDAQuestTaskContainer
 // 0x0068 (0x02F8 - 0x0290)
-class UPDAQuestTaskContainer final : public UHoverIndicator
+class UPDAQuestTaskContainer : public UHoverIndicator
 {
 public:
 	class UScrollBox*                             TaskScroll;                                        // 0x0290(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -9630,7 +9630,7 @@ static_assert(offsetof(UArtifactStrafeBehaviourComponent, AnotherAnomalyJumpChan
 
 // Class Stalker2.AsyncHintBox
 // 0x0048 (0x02C0 - 0x0278)
-class UAsyncHintBox : public UWidgetBase
+class UAsyncHintBox final : public UWidgetBase
 {
 public:
 	uint8                                         Pad_278[0x28];                                     // 0x0278(0x0028)(Fixing Size After Last Property [ Dumper-7 ])
@@ -9905,7 +9905,7 @@ static_assert(offsetof(UPDASlotBase, CultureCutPreference) == 0x0002A8, "Member 
 
 // Class Stalker2.PDANotesSlot
 // 0x0018 (0x0318 - 0x0300)
-class UPDANotesSlot final : public UPDASlotBase
+class UPDANotesSlot : public UPDASlotBase
 {
 public:
 	FMulticastInlineDelegateProperty_             OnNoteSlotClick;                                   // 0x0300(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
@@ -10141,7 +10141,7 @@ static_assert(offsetof(UCrosshairWidgetBase, CrosshairAnimationSpeed) == 0x0002A
 
 // Class Stalker2.CrosshairWidgetPoint
 // 0x0008 (0x02D0 - 0x02C8)
-class UCrosshairWidgetPoint final : public UCrosshairWidgetBase
+class UCrosshairWidgetPoint : public UCrosshairWidgetBase
 {
 public:
 	class UImage*                                 Point;                                             // 0x02C8(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
@@ -10886,7 +10886,7 @@ static_assert(sizeof(UBaseDLCInstanceSubsystem) == 0x000040, "Wrong size on UBas
 
 // Class Stalker2.PDATutorialPanel
 // 0x0090 (0x0370 - 0x02E0)
-class UPDATutorialPanel final : public UPDASlotPanelBase
+class UPDATutorialPanel : public UPDASlotPanelBase
 {
 public:
 	class USizeBox*                               AbsentTutorialSizeBox;                             // 0x02E0(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -11291,7 +11291,7 @@ static_assert(offsetof(UCustomButton, FloatTag) == 0x000690, "Member 'UCustomBut
 
 // Class Stalker2.BedView
 // 0x0088 (0x0330 - 0x02A8)
-class ABedView final : public AUIDActor_Bed
+class ABedView : public AUIDActor_Bed
 {
 public:
 	uint8                                         Pad_2A8[0x8];                                      // 0x02A8(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
@@ -11420,7 +11420,7 @@ static_assert(sizeof(UCustomConsoleManagerSD) == 0x0000A8, "Wrong size on UCusto
 
 // Class Stalker2.Bloodsucker
 // 0x0010 (0x0AE0 - 0x0AD0)
-class ABloodsucker : public AAgent
+class ABloodsucker final : public AAgent
 {
 public:
 	class UNiagaraComponent*                      InvisibilityTransferParticles;                     // 0x0AD0(0x0008)(Edit, ExportObject, ZeroConstructor, DisableEditOnInstance, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
@@ -11501,7 +11501,7 @@ static_assert(offsetof(UBloodsuckerInvisibilityComponent, DynamicMaterials) == 0
 
 // Class Stalker2.UpgradeSlot
 // 0x0108 (0x0380 - 0x0278)
-class UUpgradeSlot final : public UWidgetBase
+class UUpgradeSlot : public UWidgetBase
 {
 public:
 	uint8                                         Pad_278[0x30];                                     // 0x0278(0x0030)(Fixing Size After Last Property [ Dumper-7 ])
@@ -11648,7 +11648,7 @@ static_assert(sizeof(USpaceRestrictorsCheats) == 0x000028, "Wrong size on USpace
 
 // Class Stalker2.StatPanel
 // 0x0160 (0x03D8 - 0x0278)
-class UStatPanel final : public UChildViewBase
+class UStatPanel : public UChildViewBase
 {
 public:
 	uint8                                         Pad_278[0x8];                                      // 0x0278(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
@@ -11904,7 +11904,7 @@ static_assert(sizeof(UCustomConsoleManagerYK) == 0x0000B0, "Wrong size on UCusto
 
 // Class Stalker2.BulbAnomaly
 // 0x0128 (0x03C0 - 0x0298)
-class ABulbAnomaly final : public AActor
+class ABulbAnomaly : public AActor
 {
 public:
 	uint8                                         Pad_298[0x8];                                      // 0x0298(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
@@ -12059,7 +12059,7 @@ static_assert(sizeof(UBusVolumeInterpolatorComponent) == 0x0000B8, "Wrong size o
 
 // Class Stalker2.PDATextBorder
 // 0x0028 (0x02A0 - 0x0278)
-class UPDATextBorder final : public UWidgetBase
+class UPDATextBorder : public UWidgetBase
 {
 public:
 	class UImage*                                 LeftBorder;                                        // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -12203,7 +12203,7 @@ static_assert(sizeof(USaveButtonStateDefiner) == 0x000030, "Wrong size on USaveB
 
 // Class Stalker2.PDAQuestRewardSlot
 // 0x0008 (0x0280 - 0x0278)
-class UPDAQuestRewardSlot final : public UWidgetBase
+class UPDAQuestRewardSlot : public UWidgetBase
 {
 public:
 	class UImage*                                 RewardIcon;                                        // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -12577,7 +12577,7 @@ static_assert(offsetof(UGameInstanceSubsystemButtonStateDefiner, ExcludeSubsyste
 
 // Class Stalker2.SystemNotificationItem
 // 0x0248 (0x04C0 - 0x0278)
-class USystemNotificationItem final : public UWidgetBase
+class USystemNotificationItem : public UWidgetBase
 {
 public:
 	uint8                                         Pad_278[0x30];                                     // 0x0278(0x0030)(Fixing Size After Last Property [ Dumper-7 ])
@@ -12856,7 +12856,7 @@ static_assert(sizeof(UCameraModifier_ResetRelativeRotation) == 0x000050, "Wrong 
 
 // Class Stalker2.PDAMenuButton
 // 0x0068 (0x0328 - 0x02C0)
-class UPDAMenuButton final : public UButtonBase
+class UPDAMenuButton : public UButtonBase
 {
 public:
 	uint8                                         Pad_2C0[0x8];                                      // 0x02C0(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
@@ -13114,7 +13114,7 @@ static_assert(sizeof(UNiagaraTerrainOffsetProvider) == 0x000108, "Wrong size on 
 
 // Class Stalker2.CrosshairWidgetCircle
 // 0x0038 (0x0300 - 0x02C8)
-class UCrosshairWidgetCircle final : public UCrosshairWidgetBase
+class UCrosshairWidgetCircle : public UCrosshairWidgetBase
 {
 public:
 	class UImage*                                 Point;                                             // 0x02C8(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
@@ -13248,7 +13248,7 @@ static_assert(sizeof(USettingsElementResolutionSwitcher) == 0x001DC0, "Wrong siz
 
 // Class Stalker2.CarouselAnomaly
 // 0x00F8 (0x0490 - 0x0398)
-class ACarouselAnomaly : public AAnomaly
+class ACarouselAnomaly final : public AAnomaly
 {
 public:
 	class UStaticMeshComponent*                   CollisionMeshPtr;                                  // 0x0398(0x0008)(Edit, ExportObject, ZeroConstructor, DisableEditOnInstance, EditConst, InstancedReference, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
@@ -13485,7 +13485,7 @@ static_assert(offsetof(UCharacterStatSlot, StatIcon) == 0x000298, "Member 'UChar
 
 // Class Stalker2.NavigationPanel
 // 0x00D8 (0x0350 - 0x0278)
-class UNavigationPanel final : public UWidgetBase
+class UNavigationPanel : public UWidgetBase
 {
 public:
 	class UPanelWidget*                           SlotContainer;                                     // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -13569,7 +13569,7 @@ static_assert(sizeof(AUIDActor_DestructibleObject) == 0x0002A8, "Wrong size on A
 
 // Class Stalker2.CheckBoxWidget
 // 0x0068 (0x02E0 - 0x0278)
-class UCheckBoxWidget final : public UWidgetBase
+class UCheckBoxWidget : public UWidgetBase
 {
 public:
 	class UImageWidget*                           ImageObj;                                          // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -13647,7 +13647,7 @@ static_assert(offsetof(AChemicalAnomaly, GrenadeExplosion) == 0x0003B0, "Member 
 
 // Class Stalker2.PDATutorialButton
 // 0x0020 (0x0340 - 0x0320)
-class UPDATutorialButton final : public UPDAButtonBase
+class UPDATutorialButton : public UPDAButtonBase
 {
 public:
 	class UImageWidget*                           ButtonIcon;                                        // 0x0320(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -13779,7 +13779,7 @@ static_assert(offsetof(UPossessedShootingWeaponComponent, WeaponMuzzleComponent)
 
 // Class Stalker2.ClassicFireAnomaly
 // 0x0020 (0x03B8 - 0x0398)
-class AClassicFireAnomaly : public AAnomaly
+class AClassicFireAnomaly final : public AAnomaly
 {
 public:
 	class UStaticMeshComponent*                   CollisionMeshPtr;                                  // 0x0398(0x0008)(Edit, ExportObject, ZeroConstructor, DisableEditOnInstance, EditConst, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
@@ -13936,7 +13936,7 @@ static_assert(offsetof(UCodeComponent, MaximumCodeLength) == 0x0000D0, "Member '
 
 // Class Stalker2.PlayerStash
 // 0x0010 (0x02F8 - 0x02E8)
-class APlayerStash final : public AInteractableObject
+class APlayerStash : public AInteractableObject
 {
 public:
 	class USkeletalMeshComponent*                 SkeletalMeshComponent;                             // 0x02E8(0x0008)(Edit, ExportObject, ZeroConstructor, EditConst, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
@@ -13959,7 +13959,7 @@ static_assert(offsetof(APlayerStash, InteractionComponent) == 0x0002F0, "Member 
 
 // Class Stalker2.Codelock
 // 0x0218 (0x0500 - 0x02E8)
-class alignas(0x10) ACodelock : public AInteractableObject
+class alignas(0x10) ACodelock final : public AInteractableObject
 {
 public:
 	class USkeletalMeshComponent*                 Mesh;                                              // 0x02E8(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
@@ -14071,7 +14071,7 @@ static_assert(sizeof(UCodelockClearAllIPU) == 0x000040, "Wrong size on UCodelock
 
 // Class Stalker2.QuestNotification
 // 0x00E0 (0x0358 - 0x0278)
-class UQuestNotification final : public UWidgetBase
+class UQuestNotification : public UWidgetBase
 {
 public:
 	uint8                                         Pad_278[0x10];                                     // 0x0278(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
@@ -15075,7 +15075,7 @@ static_assert(sizeof(UCustomConsoleManagerBuild) == 0x0000B8, "Wrong size on UCu
 
 // Class Stalker2.CompassWidget
 // 0x0178 (0x03F0 - 0x0278)
-class UCompassWidget final : public UChildViewBase
+class UCompassWidget : public UChildViewBase
 {
 public:
 	class UImage*                                 StealthNoiseIndicator;                             // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -15192,7 +15192,7 @@ static_assert(sizeof(UNoteMouseIPU) == 0x000040, "Wrong size on UNoteMouseIPU");
 
 // Class Stalker2.ConfirmUpgradePopup
 // 0x0020 (0x0298 - 0x0278)
-class UConfirmUpgradePopup final : public UWidgetBase
+class UConfirmUpgradePopup : public UWidgetBase
 {
 public:
 	class UTextWidget*                            Title;                                             // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
@@ -15546,7 +15546,7 @@ static_assert(offsetof(UContextualActionNeedEffect, ChangeValuePerSelector) == 0
 
 // Class Stalker2.CustomSimplifiedGridSlot
 // 0x0070 (0x0480 - 0x0410)
-class UCustomSimplifiedGridSlot final : public UItemSlotBaseWidget
+class UCustomSimplifiedGridSlot : public UItemSlotBaseWidget
 {
 public:
 	class USizeBox*                               ItemImageSizeBox;                                  // 0x0410(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
@@ -15782,7 +15782,7 @@ static_assert(offsetof(UPopupBase, AttentionIcon) == 0x0002E0, "Member 'UPopupBa
 
 // Class Stalker2.PDANotesDetails
 // 0x00D8 (0x0350 - 0x0278)
-class UPDANotesDetails final : public UWidgetBase
+class UPDANotesDetails : public UWidgetBase
 {
 public:
 	class UVerticalBox*                           NotesBox;                                          // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -16472,7 +16472,7 @@ static_assert(sizeof(USettingsElementRefreshRateSwitcher) == 0x001DC0, "Wrong si
 
 // Class Stalker2.CrosshairWidgetCross
 // 0x0030 (0x02F8 - 0x02C8)
-class UCrosshairWidgetCross final : public UCrosshairWidgetBase
+class UCrosshairWidgetCross : public UCrosshairWidgetBase
 {
 public:
 	float                                         Shift;                                             // 0x02C8(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -16506,7 +16506,7 @@ static_assert(offsetof(UCrosshairWidgetCross, Point) == 0x0002F0, "Member 'UCros
 
 // Class Stalker2.CrosshairWidgetSwitcher
 // 0x00E8 (0x0360 - 0x0278)
-class UCrosshairWidgetSwitcher final : public UChildViewBase
+class UCrosshairWidgetSwitcher : public UChildViewBase
 {
 public:
 	class UWidgetSwitcher*                        CrosshairSwitcher;                                 // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
@@ -17380,7 +17380,7 @@ static_assert(offsetof(UStatPanelDataAsset, SleepinessFadeIn) == 0x000090, "Memb
 
 // Class Stalker2.CustomSimplifiedGrid
 // 0x0260 (0x04D8 - 0x0278)
-class UCustomSimplifiedGrid final : public UUserWidget
+class UCustomSimplifiedGrid : public UUserWidget
 {
 public:
 	class UCanvasPanel*                           CanvasPanel;                                       // 0x0278(0x0008)(ExportObject, ZeroConstructor, Transient, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
@@ -19049,7 +19049,7 @@ static_assert(offsetof(UGAPlayerComponent, Processors) == 0x0000A0, "Member 'UGA
 
 // Class Stalker2.PDANotesButton
 // 0x0020 (0x0340 - 0x0320)
-class UPDANotesButton final : public UPDAButtonBase
+class UPDANotesButton : public UPDAButtonBase
 {
 public:
 	class UImageWidget*                           ButtonIcon;                                        // 0x0320(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -19226,7 +19226,7 @@ static_assert(offsetof(UGreetingsPopup, BackgroundImage) == 0x000358, "Member 'U
 
 // Class Stalker2.PDATimePanel
 // 0x0038 (0x02B0 - 0x0278)
-class UPDATimePanel final : public UChildViewBase
+class UPDATimePanel : public UChildViewBase
 {
 public:
 	class UTextWidget*                            HourText;                                          // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -20031,7 +20031,7 @@ static_assert(offsetof(UHeadFlashlightComponent, FlashlightBurnOutAudioEvent) ==
 
 // Class Stalker2.HintAction
 // 0x0020 (0x0360 - 0x0340)
-class UHintAction final : public UCommonHint
+class UHintAction : public UCommonHint
 {
 public:
 	class UButton*                                HintButton;                                        // 0x0340(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -20053,7 +20053,7 @@ static_assert(offsetof(UHintAction, HintButton) == 0x000340, "Member 'UHintActio
 
 // Class Stalker2.HintActionRichText
 // 0x0038 (0x0378 - 0x0340)
-class UHintActionRichText final : public UCommonHint
+class UHintActionRichText : public UCommonHint
 {
 public:
 	class UHorizontalBox*                         HorizontalBox;                                     // 0x0340(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -20200,7 +20200,7 @@ static_assert(offsetof(UHintControllerBase, RightGap) == 0x000340, "Member 'UHin
 
 // Class Stalker2.HintDecoratorBase
 // 0x01C0 (0x01F0 - 0x0030)
-class UHintDecoratorBase final : public URichTextBlockImageDecorator
+class UHintDecoratorBase : public URichTextBlockImageDecorator
 {
 public:
 	EGSCInputDeviceType                           DefaultPlatform;                                   // 0x0030(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -20377,7 +20377,7 @@ static_assert(offsetof(UHintInputController, bHandleMouseInput) == 0x000350, "Me
 
 // Class Stalker2.HintKey
 // 0x0120 (0x0430 - 0x0310)
-class UHintKey final : public UHintBase
+class UHintKey : public UHintBase
 {
 public:
 	class UHintRichTextWidget*                    HintRichTextWidget;                                // 0x0310(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -20474,7 +20474,7 @@ static_assert(sizeof(UHintProgressIPU) == 0x000058, "Wrong size on UHintProgress
 
 // Class Stalker2.QuestTaskNotification
 // 0x0090 (0x0308 - 0x0278)
-class UQuestTaskNotification final : public UWidgetBase
+class UQuestTaskNotification : public UWidgetBase
 {
 public:
 	class URichTextWidget*                        TextWidget;                                        // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -20567,7 +20567,7 @@ static_assert(sizeof(UHintRichTextWidget) == 0x000990, "Wrong size on UHintRichT
 
 // Class Stalker2.HintSwitcher
 // 0x0030 (0x0340 - 0x0310)
-class UHintSwitcher final : public UHintBase
+class UHintSwitcher : public UHintBase
 {
 public:
 	class UPlatformSwitcher*                      HintSwitcher;                                      // 0x0310(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -20596,7 +20596,7 @@ static_assert(offsetof(UHintSwitcher, HintKeys) == 0x000330, "Member 'UHintSwitc
 
 // Class Stalker2.StatSlot
 // 0x0060 (0x02D8 - 0x0278)
-class UStatSlot final : public UWidgetBase
+class UStatSlot : public UWidgetBase
 {
 public:
 	class UImage*                                 Icon;                                              // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -20641,7 +20641,7 @@ static_assert(offsetof(UStatSlot, BlinkingAnim) == 0x0002D0, "Member 'UStatSlot:
 
 // Class Stalker2.HintTutorialController
 // 0x0018 (0x0360 - 0x0348)
-class UHintTutorialController final : public UHintControllerBase
+class UHintTutorialController : public UHintControllerBase
 {
 public:
 	float                                         IntervalClick;                                     // 0x0348(0x0004)(Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
@@ -20854,7 +20854,7 @@ static_assert(offsetof(UPossessedObjectComponent, SoundComponent) == 0x0006B8, "
 
 // Class Stalker2.HUDContextualLegend
 // 0x0028 (0x02A0 - 0x0278)
-class UHUDContextualLegend final : public UChildViewBase
+class UHUDContextualLegend : public UChildViewBase
 {
 public:
 	class URichTextBlock*                         LegendText;                                        // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
@@ -20879,7 +20879,7 @@ static_assert(offsetof(UHUDContextualLegend, GuitarPCAHintSID) == 0x000290, "Mem
 
 // Class Stalker2.HudHintsPanel
 // 0x0068 (0x02E0 - 0x0278)
-class UHudHintsPanel final : public UChildViewBase
+class UHudHintsPanel : public UChildViewBase
 {
 public:
 	uint8                                         Pad_278[0x10];                                     // 0x0278(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
@@ -21134,7 +21134,7 @@ static_assert(offsetof(UIdleScreenView, ProgressBarShaderCompiling) == 0x0002F8,
 
 // Class Stalker2.PushOptionButton
 // 0x0000 (0x0300 - 0x0300)
-class UPushOptionButton : public UMenuButtonBase
+class UPushOptionButton final : public UMenuButtonBase
 {
 public:
 	static class UClass* StaticClass()
@@ -22232,7 +22232,7 @@ static_assert(sizeof(ANavRebuildVolume) == 0x0002D8, "Wrong size on ANavRebuildV
 
 // Class Stalker2.ItemInfo
 // 0x0AC8 (0x0D40 - 0x0278)
-class UItemInfo final : public UWidgetBase
+class UItemInfo : public UWidgetBase
 {
 public:
 	class UImage*                                 FullBackCenter;                                    // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
@@ -22706,7 +22706,7 @@ static_assert(offsetof(UItemSelectorWeaponSlot, IconSettings) == 0x000450, "Memb
 
 // Class Stalker2.ItemSlotState
 // 0x0070 (0x02E8 - 0x0278)
-class UItemSlotState final : public UUserWidget
+class UItemSlotState : public UUserWidget
 {
 public:
 	class UImage*                                 Highlight;                                         // 0x0278(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
@@ -22763,7 +22763,7 @@ static_assert(offsetof(URegionToEpicIDConfig, RegionToEpicMap) == 0x000038, "Mem
 
 // Class Stalker2.ItemsStatsUpgrades
 // 0x0170 (0x03E8 - 0x0278)
-class UItemsStatsUpgrades final : public UWidgetBase
+class UItemsStatsUpgrades : public UWidgetBase
 {
 public:
 	class UTextWidget*                            DurabilityPercentText;                             // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
@@ -22843,7 +22843,7 @@ static_assert(offsetof(UItemsStatsUpgrades, ItemStatValueArray) == 0x0003D8, "Me
 
 // Class Stalker2.ItemStatProgress
 // 0x0060 (0x02D8 - 0x0278)
-class UItemStatProgress final : public UUserWidget
+class UItemStatProgress : public UUserWidget
 {
 public:
 	class UImage*                                 IconImage;                                         // 0x0278(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
@@ -22878,7 +22878,7 @@ static_assert(offsetof(UItemStatProgress, BuffColor) == 0x0002C8, "Member 'UItem
 
 // Class Stalker2.ItemStatValue
 // 0x0068 (0x02E0 - 0x0278)
-class UItemStatValue final : public UWidgetBase
+class UItemStatValue : public UWidgetBase
 {
 public:
 	class UTextWidget*                            Name_0;                                            // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
@@ -23073,7 +23073,7 @@ static_assert(offsetof(UNPCWetnessComponent, DropSpawnRateParamName) == 0x000100
 
 // Class Stalker2.JournalPage
 // 0x00F0 (0x0388 - 0x0298)
-class UJournalPage final : public UPDAPage
+class UJournalPage : public UPDAPage
 {
 public:
 	class UPDAQuestButton*                        CurrentQuestButton;                                // 0x0298(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -23513,7 +23513,7 @@ static_assert(offsetof(URazerChromaSettings, CinematicEvents) == 0x0002E0, "Memb
 
 // Class Stalker2.LastSaveTimeMenuWidget
 // 0x0018 (0x0290 - 0x0278)
-class ULastSaveTimeMenuWidget : public UWidgetBase
+class ULastSaveTimeMenuWidget final : public UWidgetBase
 {
 public:
 	class UTextWidget*                            Timestamp;                                         // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
@@ -23594,7 +23594,7 @@ static_assert(sizeof(UPCSaveLoadIO) == 0x000028, "Wrong size on UPCSaveLoadIO");
 
 // Class Stalker2.LayeredItemImage
 // 0x01A8 (0x0420 - 0x0278)
-class ULayeredItemImage final : public UWidgetBase
+class ULayeredItemImage : public UWidgetBase
 {
 public:
 	class FString                                 PathSuffix;                                        // 0x0278(0x0010)(Edit, ZeroConstructor, DisableEditOnTemplate, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
@@ -23775,7 +23775,7 @@ static_assert(offsetof(ULightBulbComponent, bAutoLightOnNight) == 0x0000C1, "Mem
 
 // Class Stalker2.LightningBallAnomaly
 // 0x00C0 (0x0458 - 0x0398)
-class ALightningBallAnomaly : public AAnomaly
+class ALightningBallAnomaly final : public AAnomaly
 {
 public:
 	class USphereComponent*                       OverlapDamageComponent;                            // 0x0398(0x0008)(Edit, ExportObject, ZeroConstructor, DisableEditOnInstance, EditConst, InstancedReference, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
@@ -24102,7 +24102,7 @@ static_assert(offsetof(ULookAtSourceComponent, LookAtAngleParams) == 0x0000B0, "
 
 // Class Stalker2.PDAQuestSlot
 // 0x0070 (0x0370 - 0x0300)
-class UPDAQuestSlot final : public UPDASlotBase
+class UPDAQuestSlot : public UPDASlotBase
 {
 public:
 	class UTextWidget*                            RegionText;                                        // 0x0300(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -24486,7 +24486,7 @@ static_assert(offsetof(UPhysicsInteractionComponent, PhysicsInteractionPrototype
 
 // Class Stalker2.MapLegend
 // 0x0048 (0x02C0 - 0x0278)
-class UMapLegend final : public UWidgetBase
+class UMapLegend : public UWidgetBase
 {
 public:
 	uint8                                         Pad_278[0x20];                                     // 0x0278(0x0020)(Fixing Size After Last Property [ Dumper-7 ])
@@ -24519,7 +24519,7 @@ static_assert(offsetof(UMapLegend, FadeOutAnimationSpeed) == 0x0002B8, "Member '
 
 // Class Stalker2.MapLegendNote
 // 0x0038 (0x02B0 - 0x0278)
-class UMapLegendNote final : public UWidgetBase
+class UMapLegendNote : public UWidgetBase
 {
 public:
 	class UImage*                                 MarkerIcon;                                        // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
@@ -24739,7 +24739,7 @@ static_assert(offsetof(UMarkerSettings, MarkerSettingsDefaultObject) == 0x000088
 
 // Class Stalker2.PDATutorialDetails
 // 0x0158 (0x03E8 - 0x0290)
-class UPDATutorialDetails final : public UHoverIndicator
+class UPDATutorialDetails : public UHoverIndicator
 {
 public:
 	class UVerticalBox*                           TutorialBox;                                       // 0x0290(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -25191,7 +25191,7 @@ static_assert(sizeof(USetCampaign) == 0x000078, "Wrong size on USetCampaign");
 
 // Class Stalker2.PDARegionPanel
 // 0x0030 (0x02A8 - 0x0278)
-class UPDARegionPanel final : public UChildViewBase
+class UPDARegionPanel : public UChildViewBase
 {
 public:
 	class UProgressBar*                           Progress;                                          // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -26334,7 +26334,7 @@ static_assert(sizeof(UModioAuthView) == 0x000490, "Wrong size on UModioAuthView"
 
 // Class Stalker2.NotificationWidget
 // 0x00F8 (0x0370 - 0x0278)
-class UNotificationWidget final : public UWidgetBase
+class UNotificationWidget : public UWidgetBase
 {
 public:
 	uint8                                         Pad_278[0x70];                                     // 0x0278(0x0070)(Fixing Size After Last Property [ Dumper-7 ])
@@ -26936,7 +26936,7 @@ static_assert(offsetof(UModioLegendSubView, LegendData) == 0x0002C0, "Member 'UM
 
 // Class Stalker2.PauseMenuMainView
 // 0x0000 (0x0338 - 0x0338)
-class UPauseMenuMainView : public UMenuMainViewBase
+class UPauseMenuMainView final : public UMenuMainViewBase
 {
 public:
 	static class UClass* StaticClass()
@@ -27489,7 +27489,7 @@ static_assert(offsetof(AMovementPathBuilderTestingActor, AdvancedPathfindingTime
 
 // Class Stalker2.PDAQuestDescription
 // 0x0050 (0x02C8 - 0x0278)
-class UPDAQuestDescription final : public UChildViewBase
+class UPDAQuestDescription : public UChildViewBase
 {
 public:
 	class UTextWidget*                            DescriptionText;                                   // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -27828,7 +27828,7 @@ static_assert(sizeof(UNavArea_Scripted) == 0x000048, "Wrong size on UNavArea_Scr
 
 // Class Stalker2.PDAUpgradesButton
 // 0x0018 (0x0338 - 0x0320)
-class UPDAUpgradesButton final : public UPDAButtonBase
+class UPDAUpgradesButton : public UPDAButtonBase
 {
 public:
 	class UImageWidget*                           ButtonIcon;                                        // 0x0320(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -28214,7 +28214,7 @@ static_assert(sizeof(UPDAOpenIPU) == 0x000040, "Wrong size on UPDAOpenIPU");
 
 // Class Stalker2.PDAQuestDetails
 // 0x0268 (0x04E0 - 0x0278)
-class UPDAQuestDetails final : public UChildViewBase
+class UPDAQuestDetails : public UChildViewBase
 {
 public:
 	class UVerticalBox*                           QuestInfoBox;                                      // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -28299,7 +28299,7 @@ static_assert(offsetof(UPDAQuestDetails, OnStageSlotHover) == 0x000498, "Member 
 
 // Class Stalker2.PDAQuestPanel
 // 0x00F0 (0x03D0 - 0x02E0)
-class UPDAQuestPanel final : public UPDASlotPanelBase
+class UPDAQuestPanel : public UPDASlotPanelBase
 {
 public:
 	class UPDATextBorder*                         MainQuestBorder;                                   // 0x02E0(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -28353,7 +28353,7 @@ static_assert(offsetof(UPDAQuestPanel, ScenarioManager) == 0x0003A0, "Member 'UP
 
 // Class Stalker2.PDAQuestTaskSlot
 // 0x00B0 (0x0328 - 0x0278)
-class UPDAQuestTaskSlot final : public UWidgetBase
+class UPDAQuestTaskSlot : public UWidgetBase
 {
 public:
 	class UImage*                                 ImageTask;                                         // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -28394,7 +28394,7 @@ static_assert(offsetof(UPDAQuestTaskSlot, SlotData) == 0x000308, "Member 'UPDAQu
 
 // Class Stalker2.PDATutorialSlot
 // 0x0080 (0x0380 - 0x0300)
-class UPDATutorialSlot final : public UPDASlotBase
+class UPDATutorialSlot : public UPDASlotBase
 {
 public:
 	class UTexture2D*                             NavigationIcon;                                    // 0x0300(0x0008)(Edit, ZeroConstructor, DisableEditOnInstance, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -28434,7 +28434,7 @@ static_assert(offsetof(UPDATutorialSlot, CategoryText) == 0x000370, "Member 'UPD
 
 // Class Stalker2.PDAUpgradesSlot
 // 0x0078 (0x0378 - 0x0300)
-class UPDAUpgradesSlot final : public UPDASlotBase
+class UPDAUpgradesSlot : public UPDASlotBase
 {
 public:
 	FMulticastInlineDelegateProperty_             OnUpgradeSlotClick;                                // 0x0300(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
@@ -28544,7 +28544,7 @@ static_assert(offsetof(UPlayerCodelockAnimCollection, CodelockInteractionAnimati
 
 // Class Stalker2.PlayerContextualAction
 // 0x0020 (0x02B8 - 0x0298)
-class APlayerContextualAction final : public AActor
+class APlayerContextualAction : public AActor
 {
 public:
 	class USingleClickComponent*                  SingleClickComponent;                              // 0x0298(0x0008)(Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, EditConst, InstancedReference, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
@@ -28595,7 +28595,7 @@ static_assert(sizeof(UPlayerContextualActionExitIPU) == 0x000040, "Wrong size on
 
 // Class Stalker2.PlayerGameHUDView
 // 0x0110 (0x03D0 - 0x02C0)
-class UPlayerGameHUDView final : public UViewBase
+class UPlayerGameHUDView : public UViewBase
 {
 public:
 	class UHUDContextualLegend*                   ContextualLegend;                                  // 0x02C0(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
@@ -28683,7 +28683,7 @@ static_assert(sizeof(UPlayerModeManager) == 0x000228, "Wrong size on UPlayerMode
 
 // Class Stalker2.PlayerStorageData
 // 0x0010 (0x0288 - 0x0278)
-class UPlayerStorageData final : public UWidgetBase
+class UPlayerStorageData : public UWidgetBase
 {
 public:
 	class UTooltipRecord*                         ItemsAmount;                                       // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
@@ -28966,7 +28966,7 @@ static_assert(sizeof(UPsyPhantomManager) == 0x000330, "Wrong size on UPsyPhantom
 
 // Class Stalker2.QuestMenuWidget
 // 0x0050 (0x02C8 - 0x0278)
-class UQuestMenuWidget : public UWidgetBase
+class UQuestMenuWidget final : public UWidgetBase
 {
 public:
 	class UTaskIcon*                              QuestIcon;                                         // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
@@ -29112,7 +29112,7 @@ static_assert(sizeof(UQuickLoadIPU) == 0x000040, "Wrong size on UQuickLoadIPU");
 
 // Class Stalker2.QuickSlot
 // 0x01C8 (0x0440 - 0x0278)
-class UQuickSlot final : public UWidgetBase
+class UQuickSlot : public UWidgetBase
 {
 public:
 	uint8                                         Pad_278[0x78];                                     // 0x0278(0x0078)(Fixing Size After Last Property [ Dumper-7 ])
@@ -29243,7 +29243,7 @@ static_assert(offsetof(URazerChromaEventTracker, Subsystem) == 0x000170, "Member
 
 // Class Stalker2.RazorAnomaly
 // 0x0088 (0x0420 - 0x0398)
-class ARazorAnomaly : public AAnomaly
+class ARazorAnomaly final : public AAnomaly
 {
 public:
 	class UStaticMeshComponent*                   RootComponentPtr;                                  // 0x0398(0x0008)(Edit, ExportObject, ZeroConstructor, EditConst, InstancedReference, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
@@ -29866,7 +29866,7 @@ static_assert(sizeof(USummonStateComponent) == 0x0000F0, "Wrong size on USummonS
 
 // Class Stalker2.SystemNotificationWidget
 // 0x0238 (0x04B0 - 0x0278)
-class alignas(0x10) USystemNotificationWidget final : public UWidgetBase
+class alignas(0x10) USystemNotificationWidget : public UWidgetBase
 {
 public:
 	class UVerticalBox*                           VerticalBox;                                       // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
@@ -30030,7 +30030,7 @@ static_assert(offsetof(UTaskIcon, SecondaryQuestColorStyleID) == 0x0002A0, "Memb
 
 // Class Stalker2.TaskListMenuWidget
 // 0x0048 (0x02C0 - 0x0278)
-class UTaskListMenuWidget : public UWidgetBase
+class UTaskListMenuWidget final : public UWidgetBase
 {
 public:
 	struct FVector2f                              WidgetSize;                                        // 0x0278(0x0008)(Edit, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -30257,7 +30257,7 @@ static_assert(offsetof(UTextWidget, TextScaleSettings) == 0x0006E0, "Member 'UTe
 
 // Class Stalker2.ThreatIndicator
 // 0x0058 (0x02D0 - 0x0278)
-class UThreatIndicator final : public UChildViewBase
+class UThreatIndicator : public UChildViewBase
 {
 public:
 	class UOverlay*                               ThreatsOverlay;                                    // 0x0278(0x0008)(Edit, ExportObject, ZeroConstructor, DisableEditOnInstance, InstancedReference, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
@@ -30292,7 +30292,7 @@ static_assert(offsetof(UThreatIndicator, ActiveThreatPointers) == 0x0002B8, "Mem
 
 // Class Stalker2.ThreatPointer
 // 0x0050 (0x02C8 - 0x0278)
-class UThreatPointer final : public UWidgetBase
+class UThreatPointer : public UWidgetBase
 {
 public:
 	class UWidgetAnimation*                       AlertAnimation;                                    // 0x0278(0x0008)(BlueprintVisible, ZeroConstructor, Transient, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
@@ -30373,7 +30373,7 @@ static_assert(offsetof(UTickAggregationManager, QuestNodeCollection) == 0x000A30
 
 // Class Stalker2.TilingGridBack
 // 0x0020 (0x0298 - 0x0278)
-class UTilingGridBack final : public UUserWidget
+class UTilingGridBack : public UUserWidget
 {
 public:
 	class USizeBox*                               FullSizeBox;                                       // 0x0278(0x0008)(BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
@@ -30564,7 +30564,7 @@ static_assert(sizeof(UToggleHeldItemIPU) == 0x000040, "Wrong size on UToggleHeld
 
 // Class Stalker2.TooltipRecord
 // 0x0020 (0x0298 - 0x0278)
-class UTooltipRecord final : public UWidgetBase
+class UTooltipRecord : public UWidgetBase
 {
 public:
 	class FString                                 FieldNameSID;                                      // 0x0278(0x0010)(Edit, ZeroConstructor, DisableEditOnTemplate, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -30675,7 +30675,7 @@ static_assert(sizeof(UTouchComponent) == 0x0000A8, "Wrong size on UTouchComponen
 
 // Class Stalker2.ToxicCloudAnomaly
 // 0x0080 (0x0418 - 0x0398)
-class AToxicCloudAnomaly : public AAnomaly
+class AToxicCloudAnomaly final : public AAnomaly
 {
 public:
 	uint8                                         Pad_398[0x38];                                     // 0x0398(0x0038)(Fixing Size After Last Property [ Dumper-7 ])
@@ -31262,7 +31262,7 @@ static_assert(sizeof(UTutorialIPU) == 0x000040, "Wrong size on UTutorialIPU");
 
 // Class Stalker2.TutorialPage
 // 0x00C8 (0x0360 - 0x0298)
-class UTutorialPage final : public UPDAPage
+class UTutorialPage : public UPDAPage
 {
 public:
 	class UPDATutorialDetails*                    TutorialDetails;                                   // 0x0298(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -31539,7 +31539,7 @@ static_assert(sizeof(UUpdateUIHintIPU) == 0x000058, "Wrong size on UUpdateUIHint
 
 // Class Stalker2.UpgradeEffectWidget
 // 0x0040 (0x02B8 - 0x0278)
-class UUpgradeEffectWidget final : public UWidgetBase
+class UUpgradeEffectWidget : public UWidgetBase
 {
 public:
 	class UImage*                                 EffectIcon;                                        // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
@@ -31568,7 +31568,7 @@ static_assert(offsetof(UUpgradeEffectWidget, NeutralEffectValueColor) == 0x0002A
 
 // Class Stalker2.UpgradeItemTooltipWidget
 // 0x00F0 (0x0368 - 0x0278)
-class UUpgradeItemTooltipWidget final : public UUserWidget
+class UUpgradeItemTooltipWidget : public UUserWidget
 {
 public:
 	class UTextBlock*                             TitleText;                                         // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
@@ -31623,7 +31623,7 @@ static_assert(offsetof(UUpgradeItemTooltipWidget, LastUpgradePrototypeSID) == 0x
 
 // Class Stalker2.UpgradeMenuWidget
 // 0x0278 (0x04F0 - 0x0278)
-class alignas(0x10) UUpgradeMenuWidget final : public UWidgetBase
+class alignas(0x10) UUpgradeMenuWidget : public UWidgetBase
 {
 public:
 	uint8                                         Pad_278[0x38];                                     // 0x0278(0x0038)(Fixing Size After Last Property [ Dumper-7 ])
@@ -31737,7 +31737,7 @@ static_assert(offsetof(UUpgradeMenuWidget, BlackWeaponFade) == 0x000478, "Member
 
 // Class Stalker2.UpgradePage
 // 0x0108 (0x03A0 - 0x0298)
-class UUpgradePage final : public UPDAPage
+class UUpgradePage : public UPDAPage
 {
 public:
 	class UPDAUpgradePanel*                       UpgradePanel;                                      // 0x0298(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -31837,7 +31837,7 @@ static_assert(offsetof(UUpgradePage, HintHoldTime) == 0x000374, "Member 'UUpgrad
 
 // Class Stalker2.UpgradePriceWidget
 // 0x0038 (0x02B0 - 0x0278)
-class UUpgradePriceWidget final : public UWidgetBase
+class UUpgradePriceWidget : public UWidgetBase
 {
 public:
 	class UTextBlock*                             Price;                                             // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
@@ -31866,7 +31866,7 @@ static_assert(offsetof(UUpgradePriceWidget, DescriptionL10nSID) == 0x0002A0, "Me
 
 // Class Stalker2.UpgradeSection
 // 0x0150 (0x03C8 - 0x0278)
-class UUpgradeSection final : public UWidgetBase
+class UUpgradeSection : public UWidgetBase
 {
 public:
 	FMulticastInlineDelegateProperty_             OnSectionClicked;                                  // 0x0278(0x0010)(ZeroConstructor, InstancedReference, NativeAccessSpecifierPublic)
@@ -32114,7 +32114,7 @@ static_assert(sizeof(IUpscalingSettingElementInterface) == 0x000028, "Wrong size
 
 // Class Stalker2.UserMarkerCounter
 // 0x0020 (0x0298 - 0x0278)
-class UUserMarkerCounter final : public UWidgetBase
+class UUserMarkerCounter : public UWidgetBase
 {
 public:
 	class UTextWidget*                            CounterText;                                       // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
@@ -32141,7 +32141,7 @@ static_assert(offsetof(UUserMarkerCounter, CounterFormat) == 0x000280, "Member '
 
 // Class Stalker2.UserMarkerSelector
 // 0x00A0 (0x0318 - 0x0278)
-class UUserMarkerSelector final : public UChildViewBase
+class UUserMarkerSelector : public UChildViewBase
 {
 public:
 	uint8                                         Pad_278[0x20];                                     // 0x0278(0x0020)(Fixing Size After Last Property [ Dumper-7 ])
@@ -32199,7 +32199,7 @@ static_assert(offsetof(UUserMarkerSelector, HoveredButton) == 0x000308, "Member 
 
 // Class Stalker2.UserMarkerSelectorButton
 // 0x00C8 (0x0340 - 0x0278)
-class UUserMarkerSelectorButton final : public UWidgetBase
+class UUserMarkerSelectorButton : public UWidgetBase
 {
 public:
 	EMarkerType                                   MarkerType;                                        // 0x0278(0x0001)(Edit, ZeroConstructor, DisableEditOnTemplate, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -33280,7 +33280,7 @@ static_assert(sizeof(UWorldCompositionAnalyzer) == 0x0000C0, "Wrong size on UWor
 
 // Class Stalker2.WorldMap
 // 0x00B0 (0x0328 - 0x0278)
-class UWorldMap final : public UWidgetBase
+class UWorldMap : public UWidgetBase
 {
 public:
 	uint8                                         Pad_278[0x10];                                     // 0x0278(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
@@ -33465,7 +33465,7 @@ static_assert(offsetof(UWorldMapMarkerZone, ZoneCanvas) == 0x0002A8, "Member 'UW
 
 // Class Stalker2.WorldMapPage
 // 0x01B8 (0x0450 - 0x0298)
-class UWorldMapPage final : public UPDAPage
+class UWorldMapPage : public UPDAPage
 {
 public:
 	uint8                                         Pad_298[0x10];                                     // 0x0298(0x0010)(Fixing Size After Last Property [ Dumper-7 ])
@@ -33615,7 +33615,7 @@ static_assert(sizeof(UWorldMapScrollIPU) == 0x000040, "Wrong size on UWorldMapSc
 
 // Class Stalker2.WorldMapTooltip
 // 0x00D8 (0x0350 - 0x0278)
-class UWorldMapTooltip final : public UWidgetBase
+class UWorldMapTooltip : public UWidgetBase
 {
 public:
 	class UWorldMapTooltipHeader*                 HeaderBackground;                                  // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
@@ -33669,7 +33669,7 @@ static_assert(offsetof(UWorldMapTooltip, SecondaryColorQuestStyle) == 0x000340, 
 
 // Class Stalker2.WorldMapTooltipHeader
 // 0x0050 (0x02C8 - 0x0278)
-class UWorldMapTooltipHeader final : public UWidgetBase
+class UWorldMapTooltipHeader : public UWidgetBase
 {
 public:
 	class UImage*                                 TopBackgroundImage;                                // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
@@ -33708,7 +33708,7 @@ static_assert(offsetof(UWorldMapTooltipHeader, DotsImage) == 0x0002C0, "Member '
 
 // Class Stalker2.WorldMapZoomContainer
 // 0x00D8 (0x0350 - 0x0278)
-class UWorldMapZoomContainer final : public UWidgetBase
+class UWorldMapZoomContainer : public UWidgetBase
 {
 public:
 	class UImage*                                 MapTexture;                                        // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -33775,7 +33775,7 @@ static_assert(sizeof(UXboxSaveLoadIO) == 0x000028, "Wrong size on UXboxSaveLoadI
 
 // Class Stalker2.ZoomIndicator
 // 0x0030 (0x02A8 - 0x0278)
-class UZoomIndicator final : public UWidgetBase
+class UZoomIndicator : public UWidgetBase
 {
 public:
 	class UHorizontalBox*                         ZoomPointer;                                       // 0x0278(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)

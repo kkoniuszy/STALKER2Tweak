@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
-#include "S_LightPresset_structs.hpp"
 #include "BP_Light_Base_classes.hpp"
+#include "S_LightPresset_structs.hpp"
+#include "Engine_structs.hpp"
 
 
 namespace SDK

@@ -11,10 +11,10 @@
 #include "Basic.hpp"
 
 #include "S_LightPresset_Radius_structs.hpp"
+#include "Engine_structs.hpp"
+#include "S_LightPresset_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "S_LightPresset_Color_structs.hpp"
-#include "S_LightPresset_structs.hpp"
-#include "Engine_structs.hpp"
 
 
 namespace SDK::Params

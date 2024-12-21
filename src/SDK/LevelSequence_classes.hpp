@@ -306,7 +306,7 @@ static_assert(offsetof(ULevelSequenceBurnIn, LevelSequenceActor) == 0x000328, "M
 
 // Class LevelSequence.LevelSequenceDirector
 // 0x0010 (0x0038 - 0x0028)
-class ULevelSequenceDirector : public UObject
+class ULevelSequenceDirector final : public UObject
 {
 public:
 	class ULevelSequencePlayer*                   Player;                                            // 0x0028(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)

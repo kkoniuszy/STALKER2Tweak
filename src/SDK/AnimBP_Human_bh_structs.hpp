@@ -17,6 +17,19 @@
 namespace SDK
 {
 
+// ScriptStruct AnimBP_Human_bh.AnimBP_Human_bh_C.AnimBlueprintGeneratedMutableData
+// 0x0002 (0x0003 - 0x0001)
+struct AnimBP_Human_bh::FAnimBlueprintGeneratedMutableData final : public FAnimBlueprintMutableData
+{
+public:
+	bool                                          __BoolProperty;                                    // 0x0001(0x0001)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	bool                                          __BoolProperty_0;                                  // 0x0002(0x0001)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+};
+static_assert(alignof(AnimBP_Human_bh::FAnimBlueprintGeneratedMutableData) == 0x000001, "Wrong alignment on AnimBP_Human_bh::FAnimBlueprintGeneratedMutableData");
+static_assert(sizeof(AnimBP_Human_bh::FAnimBlueprintGeneratedMutableData) == 0x000003, "Wrong size on AnimBP_Human_bh::FAnimBlueprintGeneratedMutableData");
+static_assert(offsetof(AnimBP_Human_bh::FAnimBlueprintGeneratedMutableData, __BoolProperty) == 0x000001, "Member 'AnimBP_Human_bh::FAnimBlueprintGeneratedMutableData::__BoolProperty' has a wrong offset!");
+static_assert(offsetof(AnimBP_Human_bh::FAnimBlueprintGeneratedMutableData, __BoolProperty_0) == 0x000002, "Member 'AnimBP_Human_bh::FAnimBlueprintGeneratedMutableData::__BoolProperty_0' has a wrong offset!");
+
 // ScriptStruct AnimBP_Human_bh.AnimBP_Human_bh_C.AnimBlueprintGeneratedConstantData
 // 0x0147 (0x0148 - 0x0001)
 struct AnimBP_Human_bh::FAnimBlueprintGeneratedConstantData final : public FAnimBlueprintConstantData
@@ -67,19 +80,6 @@ static_assert(offsetof(AnimBP_Human_bh::FAnimBlueprintGeneratedConstantData, __B
 static_assert(offsetof(AnimBP_Human_bh::FAnimBlueprintGeneratedConstantData, __NameProperty_54) == 0x0000A4, "Member 'AnimBP_Human_bh::FAnimBlueprintGeneratedConstantData::__NameProperty_54' has a wrong offset!");
 static_assert(offsetof(AnimBP_Human_bh::FAnimBlueprintGeneratedConstantData, AnimBlueprintExtension_PropertyAccess) == 0x0000B0, "Member 'AnimBP_Human_bh::FAnimBlueprintGeneratedConstantData::AnimBlueprintExtension_PropertyAccess' has a wrong offset!");
 static_assert(offsetof(AnimBP_Human_bh::FAnimBlueprintGeneratedConstantData, AnimBlueprintExtension_Base) == 0x000130, "Member 'AnimBP_Human_bh::FAnimBlueprintGeneratedConstantData::AnimBlueprintExtension_Base' has a wrong offset!");
-
-// ScriptStruct AnimBP_Human_bh.AnimBP_Human_bh_C.AnimBlueprintGeneratedMutableData
-// 0x0002 (0x0003 - 0x0001)
-struct AnimBP_Human_bh::FAnimBlueprintGeneratedMutableData final : public FAnimBlueprintMutableData
-{
-public:
-	bool                                          __BoolProperty;                                    // 0x0001(0x0001)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-	bool                                          __BoolProperty_0;                                  // 0x0002(0x0001)(BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-};
-static_assert(alignof(AnimBP_Human_bh::FAnimBlueprintGeneratedMutableData) == 0x000001, "Wrong alignment on AnimBP_Human_bh::FAnimBlueprintGeneratedMutableData");
-static_assert(sizeof(AnimBP_Human_bh::FAnimBlueprintGeneratedMutableData) == 0x000003, "Wrong size on AnimBP_Human_bh::FAnimBlueprintGeneratedMutableData");
-static_assert(offsetof(AnimBP_Human_bh::FAnimBlueprintGeneratedMutableData, __BoolProperty) == 0x000001, "Member 'AnimBP_Human_bh::FAnimBlueprintGeneratedMutableData::__BoolProperty' has a wrong offset!");
-static_assert(offsetof(AnimBP_Human_bh::FAnimBlueprintGeneratedMutableData, __BoolProperty_0) == 0x000002, "Member 'AnimBP_Human_bh::FAnimBlueprintGeneratedMutableData::__BoolProperty_0' has a wrong offset!");
 
 }
 

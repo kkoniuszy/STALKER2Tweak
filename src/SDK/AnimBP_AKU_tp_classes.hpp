@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "AnimGraphRuntime_structs.hpp"
-#include "AnimBP_AKU_tp_structs.hpp"
 #include "Engine_structs.hpp"
+#include "AnimBP_AKU_tp_structs.hpp"
 #include "Stalker2_classes.hpp"
 
 

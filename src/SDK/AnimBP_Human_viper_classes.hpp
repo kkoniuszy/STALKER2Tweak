@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "AnimBP_Human_viper_structs.hpp"
 #include "AnimGraphRuntime_structs.hpp"
 #include "Engine_structs.hpp"
+#include "AnimBP_Human_viper_structs.hpp"
 #include "Stalker2_classes.hpp"
 
 

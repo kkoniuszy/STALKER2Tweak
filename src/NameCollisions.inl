@@ -9,15 +9,13 @@
 // FORWARD DECLARATIONS
 
 
+namespace AnimBP_Radio_80 { struct FAnimBlueprintGeneratedConstantData; }
+
 namespace AnimBP_Player_DeadBody { struct FAnimBlueprintGeneratedConstantData; }
 
-namespace AnimBP_Codelock { struct FAnimBlueprintGeneratedConstantData; }
+namespace AnimBP_Radio_120 { struct FAnimBlueprintGeneratedConstantData; }
 
 namespace AnimBP_player_dummy { struct FAnimBlueprintGeneratedConstantData; }
-
-namespace AnimBP_Template { struct FAnimBlueprintGeneratedConstantData; }
-
-namespace AnimBP_int_chest { struct FAnimBlueprintGeneratedConstantData; }
 
 
 namespace AnimBP_Human_AKU
@@ -26,85 +24,13 @@ namespace AnimBP_Human_AKU
 	struct FAnimBlueprintGeneratedConstantData;
 }
 
-namespace AnimBP_Player_Shadow
+namespace AnimBP_Lever_Vertical
 {
 	struct FAnimBlueprintGeneratedConstantData;
 	struct FAnimBlueprintGeneratedMutableData;
-}
-
-namespace AnimBP_ru_glaunch1
-{
-	struct FAnimBlueprintGeneratedConstantData;
-	struct FAnimBlueprintGeneratedMutableData;
-}
-
-namespace AnimBP_Human_bh
-{
-	struct FAnimBlueprintGeneratedConstantData;
-	struct FAnimBlueprintGeneratedMutableData;
-}
-
-namespace AnimBP_bloodsucker
-{
-	struct FAnimBlueprintGeneratedConstantData;
-	struct FAnimBlueprintGeneratedMutableData;
-}
-
-namespace AnimBP_Human_m16
-{
-	struct FAnimBlueprintGeneratedMutableData;
-	struct FAnimBlueprintGeneratedConstantData;
-}
-
-namespace AnimBP_Human_viper
-{
-	struct FAnimBlueprintGeneratedConstantData;
-	struct FAnimBlueprintGeneratedMutableData;
-}
-
-namespace AnimBP_player_bh
-{
-	struct FAnimBlueprintGeneratedConstantData;
-	struct FAnimBlueprintGeneratedMutableData;
-}
-
-namespace CtrlRig_Standalone_Cutscene_Eyes_Lookat
-{
-	class URigVMMemory_Literal;
-	class URigVMMemory_Work;
-}
-
-namespace AnimBP_viper_tp
-{
-	struct FAnimBlueprintGeneratedConstantData;
-	struct FAnimBlueprintGeneratedMutableData;
-}
-
-namespace AnimBP_Human
-{
-	struct FAnimBlueprintGeneratedMutableData;
-	struct FAnimBlueprintGeneratedConstantData;
-}
-
-namespace CtrlRig_Cutscene_Eyes_Lookat_Runtime
-{
-	class URigVMMemory_Work;
-	class URigVMMemory_Literal;
-}
-
-namespace AnimBP_Player_Slots
-{
-	struct FAnimBlueprintGeneratedMutableData;
-	struct FAnimBlueprintGeneratedConstantData;
 }
 
 namespace AnimBP_Fac
-{
-	struct FAnimBlueprintGeneratedMutableData;
-	struct FAnimBlueprintGeneratedConstantData;
-}
-
-namespace AnimBP_Player_WeaponAutoCover
 {
 	struct FAnimBlueprintGeneratedMutableData;
 	struct FAnimBlueprintGeneratedConstantData;
@@ -116,31 +42,43 @@ namespace AnimBP_Player
 	struct FAnimBlueprintGeneratedMutableData;
 }
 
-namespace AnimBP_m16_tp
+namespace CtrlRig_Cutscene_Eyes_Lookat_Runtime
+{
+	class URigVMMemory_Work;
+	class URigVMMemory_Literal;
+}
+
+namespace AnimBP_player_bh
+{
+	struct FAnimBlueprintGeneratedMutableData;
+	struct FAnimBlueprintGeneratedConstantData;
+}
+
+namespace AnimBP_Player_Slots
+{
+	struct FAnimBlueprintGeneratedMutableData;
+	struct FAnimBlueprintGeneratedConstantData;
+}
+
+namespace AnimBP_viper_tp
+{
+	struct FAnimBlueprintGeneratedMutableData;
+	struct FAnimBlueprintGeneratedConstantData;
+}
+
+namespace AnimBP_Human_bh
 {
 	struct FAnimBlueprintGeneratedConstantData;
 	struct FAnimBlueprintGeneratedMutableData;
 }
 
-namespace AnimBP_AK74_fp
+namespace AnimBP_Human
 {
-	struct FAnimBlueprintGeneratedConstantData;
 	struct FAnimBlueprintGeneratedMutableData;
+	struct FAnimBlueprintGeneratedConstantData;
 }
 
-namespace AnimBP_Player_AK74
-{
-	struct FAnimBlueprintGeneratedConstantData;
-	struct FAnimBlueprintGeneratedMutableData;
-}
-
-namespace AnimBP_BunkerDoor_1
-{
-	struct FAnimBlueprintGeneratedConstantData;
-	struct FAnimBlueprintGeneratedMutableData;
-}
-
-namespace AnimBP_AKU_tp
+namespace AnimBP_Player_Shadow
 {
 	struct FAnimBlueprintGeneratedMutableData;
 	struct FAnimBlueprintGeneratedConstantData;
@@ -150,4 +88,22 @@ namespace CtrlRig_Exoskeleton
 {
 	class URigVMMemory_Literal;
 	class URigVMMemory_Work;
+}
+
+namespace AnimBP_Human_viper
+{
+	struct FAnimBlueprintGeneratedConstantData;
+	struct FAnimBlueprintGeneratedMutableData;
+}
+
+namespace AnimBP_AKU_tp
+{
+	struct FAnimBlueprintGeneratedConstantData;
+	struct FAnimBlueprintGeneratedMutableData;
+}
+
+namespace AnimBP_Military_Radio
+{
+	struct FAnimBlueprintGeneratedConstantData;
+	struct FAnimBlueprintGeneratedMutableData;
 }

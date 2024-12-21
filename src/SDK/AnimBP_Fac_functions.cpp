@@ -17,38 +17,23 @@
 namespace SDK
 {
 
-// Function AnimBP_Fac.AnimBP_Fac_C.AnimGraph
-// (HasOutParams, BlueprintCallable, BlueprintEvent)
+// Function AnimBP_Fac.AnimBP_Fac_C.ExecuteUbergraph_AnimBP_Fac
+// (Final, UbergraphFunction)
 // Parameters:
-// struct FPoseLink                        AnimGraph_0                                            (Parm, OutParm, NoDestructor)
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 
-void UAnimBP_Fac_C::AnimGraph(struct FPoseLink* AnimGraph_0)
+void UAnimBP_Fac_C::ExecuteUbergraph_AnimBP_Fac(int32 EntryPoint)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("AnimBP_Fac_C", "AnimGraph");
+		Func = Class->GetFunction("AnimBP_Fac_C", "ExecuteUbergraph_AnimBP_Fac");
 
-	Params::AnimBP_Fac_C_AnimGraph Parms{};
+	Params::AnimBP_Fac_C_ExecuteUbergraph_AnimBP_Fac Parms{};
+
+	Parms.EntryPoint = EntryPoint;
 
 	UObject::ProcessEvent(Func, &Parms);
-
-	if (AnimGraph_0 != nullptr)
-		*AnimGraph_0 = std::move(Parms.AnimGraph_0);
-}
-
-
-// Function AnimBP_Fac.AnimBP_Fac_C.CutsceneEndLookAt
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void UAnimBP_Fac_C::CutsceneEndLookAt()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("AnimBP_Fac_C", "CutsceneEndLookAt");
-
-	UObject::ProcessEvent(Func, nullptr);
 }
 
 
@@ -76,23 +61,38 @@ void UAnimBP_Fac_C::CutsceneStartLookAt(class AObj* LookAtCharacter, class AActo
 }
 
 
-// Function AnimBP_Fac.AnimBP_Fac_C.ExecuteUbergraph_AnimBP_Fac
-// (Final, UbergraphFunction)
-// Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+// Function AnimBP_Fac.AnimBP_Fac_C.CutsceneEndLookAt
+// (Public, BlueprintCallable, BlueprintEvent)
 
-void UAnimBP_Fac_C::ExecuteUbergraph_AnimBP_Fac(int32 EntryPoint)
+void UAnimBP_Fac_C::CutsceneEndLookAt()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("AnimBP_Fac_C", "ExecuteUbergraph_AnimBP_Fac");
+		Func = Class->GetFunction("AnimBP_Fac_C", "CutsceneEndLookAt");
 
-	Params::AnimBP_Fac_C_ExecuteUbergraph_AnimBP_Fac Parms{};
+	UObject::ProcessEvent(Func, nullptr);
+}
 
-	Parms.EntryPoint = EntryPoint;
+
+// Function AnimBP_Fac.AnimBP_Fac_C.AnimGraph
+// (HasOutParams, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// struct FPoseLink                        AnimGraph_0                                            (Parm, OutParm, NoDestructor)
+
+void UAnimBP_Fac_C::AnimGraph(struct FPoseLink* AnimGraph_0)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("AnimBP_Fac_C", "AnimGraph");
+
+	Params::AnimBP_Fac_C_AnimGraph Parms{};
 
 	UObject::ProcessEvent(Func, &Parms);
+
+	if (AnimGraph_0 != nullptr)
+		*AnimGraph_0 = std::move(Parms.AnimGraph_0);
 }
 
 

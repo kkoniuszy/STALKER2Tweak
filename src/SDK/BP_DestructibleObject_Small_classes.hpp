@@ -18,7 +18,7 @@ namespace SDK
 
 // BlueprintGeneratedClass BP_DestructibleObject_Small.BP_DestructibleObject_Small_C
 // 0x0000 (0x03B8 - 0x03B8)
-class ABP_DestructibleObject_Small_C : public ABP_DestructibleObject_C
+class ABP_DestructibleObject_Small_C final : public ABP_DestructibleObject_C
 {
 public:
 	static class UClass* StaticClass()

@@ -16,16 +16,16 @@
 namespace SDK::Params
 {
 
-// Function AnimBP_Fac.AnimBP_Fac_C.AnimGraph
-// 0x0010 (0x0010 - 0x0000)
-struct AnimBP_Fac_C_AnimGraph final
+// Function AnimBP_Fac.AnimBP_Fac_C.ExecuteUbergraph_AnimBP_Fac
+// 0x0004 (0x0004 - 0x0000)
+struct AnimBP_Fac_C_ExecuteUbergraph_AnimBP_Fac final
 {
 public:
-	struct FPoseLink                              AnimGraph_0;                                       // 0x0000(0x0010)(Parm, OutParm, NoDestructor)
+	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
 };
-static_assert(alignof(AnimBP_Fac_C_AnimGraph) == 0x000008, "Wrong alignment on AnimBP_Fac_C_AnimGraph");
-static_assert(sizeof(AnimBP_Fac_C_AnimGraph) == 0x000010, "Wrong size on AnimBP_Fac_C_AnimGraph");
-static_assert(offsetof(AnimBP_Fac_C_AnimGraph, AnimGraph_0) == 0x000000, "Member 'AnimBP_Fac_C_AnimGraph::AnimGraph_0' has a wrong offset!");
+static_assert(alignof(AnimBP_Fac_C_ExecuteUbergraph_AnimBP_Fac) == 0x000004, "Wrong alignment on AnimBP_Fac_C_ExecuteUbergraph_AnimBP_Fac");
+static_assert(sizeof(AnimBP_Fac_C_ExecuteUbergraph_AnimBP_Fac) == 0x000004, "Wrong size on AnimBP_Fac_C_ExecuteUbergraph_AnimBP_Fac");
+static_assert(offsetof(AnimBP_Fac_C_ExecuteUbergraph_AnimBP_Fac, EntryPoint) == 0x000000, "Member 'AnimBP_Fac_C_ExecuteUbergraph_AnimBP_Fac::EntryPoint' has a wrong offset!");
 
 // Function AnimBP_Fac.AnimBP_Fac_C.CutsceneStartLookAt
 // 0x0018 (0x0018 - 0x0000)
@@ -42,16 +42,16 @@ static_assert(offsetof(AnimBP_Fac_C_CutsceneStartLookAt, LookAtCharacter) == 0x0
 static_assert(offsetof(AnimBP_Fac_C_CutsceneStartLookAt, LookAtActor) == 0x000008, "Member 'AnimBP_Fac_C_CutsceneStartLookAt::LookAtActor' has a wrong offset!");
 static_assert(offsetof(AnimBP_Fac_C_CutsceneStartLookAt, LookAtBone) == 0x000010, "Member 'AnimBP_Fac_C_CutsceneStartLookAt::LookAtBone' has a wrong offset!");
 
-// Function AnimBP_Fac.AnimBP_Fac_C.ExecuteUbergraph_AnimBP_Fac
-// 0x0004 (0x0004 - 0x0000)
-struct AnimBP_Fac_C_ExecuteUbergraph_AnimBP_Fac final
+// Function AnimBP_Fac.AnimBP_Fac_C.AnimGraph
+// 0x0010 (0x0010 - 0x0000)
+struct AnimBP_Fac_C_AnimGraph final
 {
 public:
-	int32                                         EntryPoint;                                        // 0x0000(0x0004)(BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+	struct FPoseLink                              AnimGraph_0;                                       // 0x0000(0x0010)(Parm, OutParm, NoDestructor)
 };
-static_assert(alignof(AnimBP_Fac_C_ExecuteUbergraph_AnimBP_Fac) == 0x000004, "Wrong alignment on AnimBP_Fac_C_ExecuteUbergraph_AnimBP_Fac");
-static_assert(sizeof(AnimBP_Fac_C_ExecuteUbergraph_AnimBP_Fac) == 0x000004, "Wrong size on AnimBP_Fac_C_ExecuteUbergraph_AnimBP_Fac");
-static_assert(offsetof(AnimBP_Fac_C_ExecuteUbergraph_AnimBP_Fac, EntryPoint) == 0x000000, "Member 'AnimBP_Fac_C_ExecuteUbergraph_AnimBP_Fac::EntryPoint' has a wrong offset!");
+static_assert(alignof(AnimBP_Fac_C_AnimGraph) == 0x000008, "Wrong alignment on AnimBP_Fac_C_AnimGraph");
+static_assert(sizeof(AnimBP_Fac_C_AnimGraph) == 0x000010, "Wrong size on AnimBP_Fac_C_AnimGraph");
+static_assert(offsetof(AnimBP_Fac_C_AnimGraph, AnimGraph_0) == 0x000000, "Member 'AnimBP_Fac_C_AnimGraph::AnimGraph_0' has a wrong offset!");
 
 // Function AnimBP_Fac.AnimBP_Fac_C.CanPlayWoundedAnim
 // 0x0005 (0x0005 - 0x0000)

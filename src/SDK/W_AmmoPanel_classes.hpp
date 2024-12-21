@@ -22,7 +22,7 @@ class UW_AmmoPanel_C final : public UAmmoWidget
 {
 public:
 	class UImage*                                 Back;                                              // 0x03A0(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
-	class UImage*                                 circle;                                            // 0x03A8(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UImage*                                 Circle;                                            // 0x03A8(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	class UImage*                                 Dot_slot;                                          // 0x03B0(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	class UImage*                                 Dot_slot_1;                                        // 0x03B8(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	class UImage*                                 Dot_slot_2;                                        // 0x03C0(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
@@ -47,7 +47,7 @@ public:
 static_assert(alignof(UW_AmmoPanel_C) == 0x000008, "Wrong alignment on UW_AmmoPanel_C");
 static_assert(sizeof(UW_AmmoPanel_C) == 0x000400, "Wrong size on UW_AmmoPanel_C");
 static_assert(offsetof(UW_AmmoPanel_C, Back) == 0x0003A0, "Member 'UW_AmmoPanel_C::Back' has a wrong offset!");
-static_assert(offsetof(UW_AmmoPanel_C, circle) == 0x0003A8, "Member 'UW_AmmoPanel_C::circle' has a wrong offset!");
+static_assert(offsetof(UW_AmmoPanel_C, Circle) == 0x0003A8, "Member 'UW_AmmoPanel_C::Circle' has a wrong offset!");
 static_assert(offsetof(UW_AmmoPanel_C, Dot_slot) == 0x0003B0, "Member 'UW_AmmoPanel_C::Dot_slot' has a wrong offset!");
 static_assert(offsetof(UW_AmmoPanel_C, Dot_slot_1) == 0x0003B8, "Member 'UW_AmmoPanel_C::Dot_slot_1' has a wrong offset!");
 static_assert(offsetof(UW_AmmoPanel_C, Dot_slot_2) == 0x0003C0, "Member 'UW_AmmoPanel_C::Dot_slot_2' has a wrong offset!");

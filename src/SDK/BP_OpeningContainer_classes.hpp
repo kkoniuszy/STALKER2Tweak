@@ -11,8 +11,8 @@
 #include "Basic.hpp"
 
 #include "Engine_structs.hpp"
-#include "Stalker2_classes.hpp"
 #include "Enum_InteractObject_Axis_structs.hpp"
+#include "Stalker2_classes.hpp"
 #include "AkAudio_structs.hpp"
 
 

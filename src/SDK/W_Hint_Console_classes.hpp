@@ -25,7 +25,7 @@ public:
 	struct FPointerToUberGraphFrame               UberGraphFrame;                                    // 0x0430(0x0008)(ZeroConstructor, Transient, DuplicateTransient)
 	class UWidgetAnimation*                       OnRunActionAnim;                                   // 0x0438(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, RepSkip, NoDestructor, HasGetValueTypeHash)
 	class UWidgetAnimation*                       SingleCliskAnim;                                   // 0x0440(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, RepSkip, NoDestructor, HasGetValueTypeHash)
-	class UW_Image_C*                             circle;                                            // 0x0448(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
+	class UW_Image_C*                             Circle;                                            // 0x0448(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	class UW_Image_C*                             CircleBeck;                                        // 0x0450(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	class USizeBox*                               HintSizeBox;                                       // 0x0458(0x0008)(BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, InstancedReference, RepSkip, NoDestructor, PersistentInstance, HasGetValueTypeHash)
 	bool                                          bIsPlaydClickAnim;                                 // 0x0460(0x0001)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
@@ -52,7 +52,7 @@ static_assert(sizeof(UW_Hint_Console_C) == 0x000468, "Wrong size on UW_Hint_Cons
 static_assert(offsetof(UW_Hint_Console_C, UberGraphFrame) == 0x000430, "Member 'UW_Hint_Console_C::UberGraphFrame' has a wrong offset!");
 static_assert(offsetof(UW_Hint_Console_C, OnRunActionAnim) == 0x000438, "Member 'UW_Hint_Console_C::OnRunActionAnim' has a wrong offset!");
 static_assert(offsetof(UW_Hint_Console_C, SingleCliskAnim) == 0x000440, "Member 'UW_Hint_Console_C::SingleCliskAnim' has a wrong offset!");
-static_assert(offsetof(UW_Hint_Console_C, circle) == 0x000448, "Member 'UW_Hint_Console_C::circle' has a wrong offset!");
+static_assert(offsetof(UW_Hint_Console_C, Circle) == 0x000448, "Member 'UW_Hint_Console_C::Circle' has a wrong offset!");
 static_assert(offsetof(UW_Hint_Console_C, CircleBeck) == 0x000450, "Member 'UW_Hint_Console_C::CircleBeck' has a wrong offset!");
 static_assert(offsetof(UW_Hint_Console_C, HintSizeBox) == 0x000458, "Member 'UW_Hint_Console_C::HintSizeBox' has a wrong offset!");
 static_assert(offsetof(UW_Hint_Console_C, bIsPlaydClickAnim) == 0x000460, "Member 'UW_Hint_Console_C::bIsPlaydClickAnim' has a wrong offset!");

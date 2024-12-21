@@ -12,8 +12,8 @@
 
 #include "AnimGraphRuntime_structs.hpp"
 #include "Engine_structs.hpp"
-#include "Stalker2_classes.hpp"
 #include "AnimBP_Human_bh_structs.hpp"
+#include "Stalker2_classes.hpp"
 
 
 namespace SDK
@@ -41,8 +41,8 @@ public:
 	struct FAnimNode_SequencePlayer               AnimGraphNode_SequencePlayer;                      // 0x1658(0x0048)()
 
 public:
-	void AnimGraph(const struct FPoseLink& Locomotion, struct FPoseLink* AnimGraph_0);
 	void ExecuteUbergraph_AnimBP_Human_bh(int32 EntryPoint);
+	void AnimGraph(const struct FPoseLink& Locomotion, struct FPoseLink* AnimGraph_0);
 
 public:
 	static class UClass* StaticClass()

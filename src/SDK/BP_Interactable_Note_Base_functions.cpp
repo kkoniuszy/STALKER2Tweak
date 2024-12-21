@@ -17,15 +17,15 @@
 namespace SDK
 {
 
-// Function BP_Interactable_Note_Base.BP_Interactable_Note_Base_C.ReceiveBeginPlay
-// (Event, Protected, BlueprintEvent)
+// Function BP_Interactable_Note_Base.BP_Interactable_Note_Base_C.BndEvt__BP_Interactable_Note_SingleClick_K2Node_ComponentBoundEvent_0_InteractSignature__DelegateSignature
+// (BlueprintEvent)
 
-void ABP_Interactable_Note_Base_C::ReceiveBeginPlay()
+void ABP_Interactable_Note_Base_C::BndEvt__BP_Interactable_Note_SingleClick_K2Node_ComponentBoundEvent_0_InteractSignature__DelegateSignature()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Interactable_Note_Base_C", "ReceiveBeginPlay");
+		Func = Class->GetFunction("BP_Interactable_Note_Base_C", "BndEvt__BP_Interactable_Note_SingleClick_K2Node_ComponentBoundEvent_0_InteractSignature__DelegateSignature");
 
 	UObject::ProcessEvent(Func, nullptr);
 }
@@ -51,15 +51,15 @@ void ABP_Interactable_Note_Base_C::ExecuteUbergraph_BP_Interactable_Note_Base(in
 }
 
 
-// Function BP_Interactable_Note_Base.BP_Interactable_Note_Base_C.BndEvt__BP_Interactable_Note_SingleClick_K2Node_ComponentBoundEvent_0_InteractSignature__DelegateSignature
-// (BlueprintEvent)
+// Function BP_Interactable_Note_Base.BP_Interactable_Note_Base_C.ReceiveBeginPlay
+// (Event, Protected, BlueprintEvent)
 
-void ABP_Interactable_Note_Base_C::BndEvt__BP_Interactable_Note_SingleClick_K2Node_ComponentBoundEvent_0_InteractSignature__DelegateSignature()
+void ABP_Interactable_Note_Base_C::ReceiveBeginPlay()
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Interactable_Note_Base_C", "BndEvt__BP_Interactable_Note_SingleClick_K2Node_ComponentBoundEvent_0_InteractSignature__DelegateSignature");
+		Func = Class->GetFunction("BP_Interactable_Note_Base_C", "ReceiveBeginPlay");
 
 	UObject::ProcessEvent(Func, nullptr);
 }

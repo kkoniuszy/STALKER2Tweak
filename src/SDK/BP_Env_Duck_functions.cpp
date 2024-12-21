@@ -17,6 +17,68 @@
 namespace SDK
 {
 
+// Function BP_Env_Duck.BP_Env_Duck_C.Timeline_0__UpdateFunc
+// (BlueprintEvent)
+
+void ABP_Env_Duck_C::Timeline_0__UpdateFunc()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_Env_Duck_C", "Timeline_0__UpdateFunc");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_Env_Duck.BP_Env_Duck_C.Timeline_0__FinishedFunc
+// (BlueprintEvent)
+
+void ABP_Env_Duck_C::Timeline_0__FinishedFunc()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_Env_Duck_C", "Timeline_0__FinishedFunc");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_Env_Duck.BP_Env_Duck_C.OnEmissionWeatherStarted
+// (Event, Public, BlueprintCallable, BlueprintEvent)
+
+void ABP_Env_Duck_C::OnEmissionWeatherStarted()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_Env_Duck_C", "OnEmissionWeatherStarted");
+
+	UObject::ProcessEvent(Func, nullptr);
+}
+
+
+// Function BP_Env_Duck.BP_Env_Duck_C.ExecuteUbergraph_BP_Env_Duck
+// (Final, UbergraphFunction, HasDefaults)
+// Parameters:
+// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
+
+void ABP_Env_Duck_C::ExecuteUbergraph_BP_Env_Duck(int32 EntryPoint)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("BP_Env_Duck_C", "ExecuteUbergraph_BP_Env_Duck");
+
+	Params::BP_Env_Duck_C_ExecuteUbergraph_BP_Env_Duck Parms{};
+
+	Parms.EntryPoint = EntryPoint;
+
+	UObject::ProcessEvent(Func, &Parms);
+}
+
+
 // Function BP_Env_Duck.BP_Env_Duck_C.BndEvt__BP_CrowLifeUp_Sphere_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature
 // (HasOutParams, BlueprintEvent)
 // Parameters:
@@ -44,68 +106,6 @@ void ABP_Env_Duck_C::BndEvt__BP_CrowLifeUp_Sphere_K2Node_ComponentBoundEvent_0_C
 	Parms.SweepResult = std::move(SweepResult);
 
 	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_Env_Duck.BP_Env_Duck_C.ExecuteUbergraph_BP_Env_Duck
-// (Final, UbergraphFunction, HasDefaults)
-// Parameters:
-// int32                                   EntryPoint                                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash)
-
-void ABP_Env_Duck_C::ExecuteUbergraph_BP_Env_Duck(int32 EntryPoint)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Env_Duck_C", "ExecuteUbergraph_BP_Env_Duck");
-
-	Params::BP_Env_Duck_C_ExecuteUbergraph_BP_Env_Duck Parms{};
-
-	Parms.EntryPoint = EntryPoint;
-
-	UObject::ProcessEvent(Func, &Parms);
-}
-
-
-// Function BP_Env_Duck.BP_Env_Duck_C.OnEmissionWeatherStarted
-// (Event, Public, BlueprintCallable, BlueprintEvent)
-
-void ABP_Env_Duck_C::OnEmissionWeatherStarted()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Env_Duck_C", "OnEmissionWeatherStarted");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_Env_Duck.BP_Env_Duck_C.Timeline_0__FinishedFunc
-// (BlueprintEvent)
-
-void ABP_Env_Duck_C::Timeline_0__FinishedFunc()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Env_Duck_C", "Timeline_0__FinishedFunc");
-
-	UObject::ProcessEvent(Func, nullptr);
-}
-
-
-// Function BP_Env_Duck.BP_Env_Duck_C.Timeline_0__UpdateFunc
-// (BlueprintEvent)
-
-void ABP_Env_Duck_C::Timeline_0__UpdateFunc()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("BP_Env_Duck_C", "Timeline_0__UpdateFunc");
-
-	UObject::ProcessEvent(Func, nullptr);
 }
 
 }

@@ -32,9 +32,9 @@ public:
 	class UAkAudioEvent*                          AkEventPickUp;                                     // 0x0318(0x0008)(Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, NoDestructor, HasGetValueTypeHash)
 
 public:
-	void ReceiveBeginPlay();
-	void ExecuteUbergraph_BP_Interactable_Note_Base(int32 EntryPoint);
 	void BndEvt__BP_Interactable_Note_SingleClick_K2Node_ComponentBoundEvent_0_InteractSignature__DelegateSignature();
+	void ExecuteUbergraph_BP_Interactable_Note_Base(int32 EntryPoint);
+	void ReceiveBeginPlay();
 
 public:
 	static class UClass* StaticClass()

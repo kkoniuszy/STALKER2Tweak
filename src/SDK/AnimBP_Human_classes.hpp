@@ -407,8 +407,8 @@ public:
 	struct FAnimHumanWeaponData                   __CustomProperty_WeaponData_7348F9C447D9B3398892389AE094E363; // 0xA450(0x0038)(NoDestructor, ContainsInstancedReference)
 
 public:
-	void AnimGraph(struct FPoseLink* AnimGraph_0);
 	void ExecuteUbergraph_AnimBP_Human(int32 EntryPoint);
+	void AnimGraph(struct FPoseLink* AnimGraph_0);
 
 public:
 	static class UClass* StaticClass()

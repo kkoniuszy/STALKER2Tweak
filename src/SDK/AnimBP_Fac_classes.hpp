@@ -10,10 +10,10 @@
 
 #include "Basic.hpp"
 
+#include "AnimBP_Fac_structs.hpp"
 #include "AnimGraphRuntime_structs.hpp"
 #include "Engine_structs.hpp"
 #include "ControlRig_structs.hpp"
-#include "AnimBP_Fac_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "Stalker2_classes.hpp"
 
@@ -199,10 +199,10 @@ public:
 	TArray<class FName>                           blink_bs;                                          // 0x4B20(0x0010)(Edit, BlueprintVisible, DisableEditOnInstance)
 
 public:
-	void AnimGraph(struct FPoseLink* AnimGraph_0);
-	void CutsceneEndLookAt();
-	void CutsceneStartLookAt(class AObj* LookAtCharacter, class AActor* LookAtActor, class FName LookAtBone);
 	void ExecuteUbergraph_AnimBP_Fac(int32 EntryPoint);
+	void CutsceneStartLookAt(class AObj* LookAtCharacter, class AActor* LookAtActor, class FName LookAtBone);
+	void CutsceneEndLookAt();
+	void AnimGraph(struct FPoseLink* AnimGraph_0);
 
 	bool CanPlayWoundedAnim() const;
 

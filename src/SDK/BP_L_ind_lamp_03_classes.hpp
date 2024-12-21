@@ -21,7 +21,7 @@ namespace SDK
 class ABP_L_ind_lamp_03_C final : public ABP_Light_Param_C
 {
 public:
-	class UStaticMeshComponent*                   glow;                                              // 0x0788(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, NonTransactional, NoDestructor, HasGetValueTypeHash)
+	class UStaticMeshComponent*                   Glow;                                              // 0x0788(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class USpotLightComponent*                    Main_Light;                                        // 0x0790(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UStaticMeshComponent*                   SM_ind_lamp_03_b;                                  // 0x0798(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, NonTransactional, NoDestructor, HasGetValueTypeHash)
 	class UStaticMeshComponent*                   SM_ind_lamp_03_c;                                  // 0x07A0(0x0008)(BlueprintVisible, ZeroConstructor, InstancedReference, NonTransactional, NoDestructor, HasGetValueTypeHash)
@@ -47,7 +47,7 @@ public:
 };
 static_assert(alignof(ABP_L_ind_lamp_03_C) == 0x000008, "Wrong alignment on ABP_L_ind_lamp_03_C");
 static_assert(sizeof(ABP_L_ind_lamp_03_C) == 0x0007C8, "Wrong size on ABP_L_ind_lamp_03_C");
-static_assert(offsetof(ABP_L_ind_lamp_03_C, glow) == 0x000788, "Member 'ABP_L_ind_lamp_03_C::glow' has a wrong offset!");
+static_assert(offsetof(ABP_L_ind_lamp_03_C, Glow) == 0x000788, "Member 'ABP_L_ind_lamp_03_C::Glow' has a wrong offset!");
 static_assert(offsetof(ABP_L_ind_lamp_03_C, Main_Light) == 0x000790, "Member 'ABP_L_ind_lamp_03_C::Main_Light' has a wrong offset!");
 static_assert(offsetof(ABP_L_ind_lamp_03_C, SM_ind_lamp_03_b) == 0x000798, "Member 'ABP_L_ind_lamp_03_C::SM_ind_lamp_03_b' has a wrong offset!");
 static_assert(offsetof(ABP_L_ind_lamp_03_C, SM_ind_lamp_03_c) == 0x0007A0, "Member 'ABP_L_ind_lamp_03_C::SM_ind_lamp_03_c' has a wrong offset!");

@@ -10,12 +10,12 @@
 
 #include "Basic.hpp"
 
-#include "Engine_structs.hpp"
-#include "Stalker2_structs.hpp"
-#include "Stalker2_classes.hpp"
 #include "S2_ladder_type_structs.hpp"
+#include "Engine_structs.hpp"
 #include "CoreUObject_structs.hpp"
 #include "S2_ladder_material_structs.hpp"
+#include "Stalker2_structs.hpp"
+#include "Stalker2_classes.hpp"
 #include "AkAudio_structs.hpp"
 
 
