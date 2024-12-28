@@ -258,7 +258,7 @@ void IntroSkip()
     }
 
     if (bSkipPSO) {
-        std::uint8_t* PsoRet = Memory::PatternScan(exeModule, "41 b0 ? 48 8d 05 ? ? ? ? 48 c7 44 24 ? ? ? ? 00 48 89 44 24 ? 48 89 bc 24 ? ? ? ? e8 ? ? ? ?");
+        std::uint8_t* PsoRet = Memory::PatternScan(exeModule, "41 b0 01 48 8d 05 ? ? ? ? 48 89 b4 24 ? ? ? ? 48 89 84 24 ? ? ? ? e8 ? ? ? ?");
         if (PsoRet) {
             spdlog::info("Skip PSO Warmup: Address is {:s}+{:x}", sExeName.c_str(), PsoRet - (std::uint8_t*)exeModule);
             Memory::PatchBytes(PsoRet + 2, "\x00", 1);
